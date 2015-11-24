@@ -1,0 +1,16 @@
+<div class="col-1-4">
+  <div class='user'>
+    {% if user is not None %}
+        <div style="width:100%;">
+          <img src="{{user['photo']}}" style="margin-bottom:20px; width:200px; border-radius:5px;" />
+          <h1 class="name" style="margin-top:0;">{{user['name']}}</h1>
+        </div>
+        <div style="margin-top:15px;">
+          <label class="lab"><i class="fa fa-user smallTag"></i>教工号</label><p>{{user['id']}}</p>
+          <label class="lab"><i class="fa fa-envelope smallTag"></i>邮箱</label><p>{{user['email']}}</p>
+        </div>
+        <a href="/createCourse"><button class="btn btn-default left-set-up" style="color: #C9302C;">创建课程</button></a>
+        <a href="/user/publish"><button class="btn btn-default" style="width:100%;margin-top:10px;margin-bottom:20px;color: #C9302C;">信息发布</button></a>
+    {%end%}
+  </div>
+</div>

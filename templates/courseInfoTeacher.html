@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <title>登陆-材料成型工艺课程设计</title>
+    <meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="/static/css/reset.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="/static/css/style.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="/static/css/slider.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="/static/css/zerogrid.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/static/css/responsive.css">
+  <link rel="stylesheet" href="/static/css/font-awesome.min.css" media="screen">
+    <script src="/static/js/jquery-1.11.3.min.js" type="text/javascript"></script>
+    <script src="/static/js/jquery.easing.1.3.js"></script>
+    <script src="/static/js/tms-0.4.1.js"></script>
+	<script src="/static/js/css3-mediaqueries.js"></script>
+    <script src="/static/js/footer.js"></script>
+    <script>
+		$(document).ready(function(){
+			$('.slider')._TMS({
+				show:0,
+				pauseOnHover:true,
+				prevBu:false,
+				nextBu:false,
+				playBu:false,
+				duration:800,
+				preset:'fade',
+				pagination:true,
+				pagNums:false,
+				slideshow:7000,
+				numStatus:false,
+				banners:'fade',
+				waitBannerAnimation:false,
+				progressBar:false
+			})
+		});
+	</script>
+	<!--[if lt IE 8]>
+       <div style=' clear: both; text-align:center; position: relative;'>
+         <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+           <img src="http://storage.ie6countdown.com/assets/100/images/banners/warning_bar_0000_us.jpg" border="0" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today." />
+        </a>
+      </div>
+    <![endif]-->
+    <!--[if lt IE 9]>
+   		<script type="text/javascript" src="/static/js/html5.js"></script>
+    	<link rel="stylesheet" type="text/css" media="screen" href="/static/css/ie.css">
+	<![endif]-->
+  <link rel="stylesheet" href="/static/css/bootstrap.min.css" type="text/css">
+  <script src="/static/js/bootstrap.min.js"></script>
+ <style media="screen">
+  .nav-tabs > li.active > a, .nav-tabs > li.active > a:focus {color: #C9302C;}
+  a{color: #333; }
+  .nav-tabs {margin-bottom:30px;}
+  .course_form{ width: 300px;text-align: left;padding-left: 50px;}
+    </style>
+</head>
+<body style="font:13px/25px Arial,Helvetica,sans-serif">
+   <header>
+   		<div class="nav-responsive"><div>MENU</div>
+			<select onchange="location=this.value">
+				<option></option>
+				<option value="/">Home</option>
+				<option value="/courseInfo">About</option>
+				<option value="/notifications">Services</option>
+				<option value="products.html">Products</option>
+				<option value="login.html">Contacts</option>
+			</select>
+		</div>
+       <div>
+          <div>
+              <h1><a href="/"><img src="/static/images/logo.png" style="margin-top:-4px;" alt=""></a></h1>
+              <nav>
+                <ul class="menu">
+                      <li><a href="/">首页</a></li>
+                      <li class="current"><a href="/courseInfo">课程详情</a></li>
+                      <li><a href="/notifications">课程动态</a></li>
+                      <li><a href="/resource">课程资源</a></li>
+                    {% if not id %}
+                        <li><a href="/login">登陆</a></li>
+                    {% else %}
+                        <li><a href="/user">个人管理</a></li>
+                        <li><a href="/logout">退出</a></li>
+                    {% end %}
+                </ul>
+              </nav>
+              <div class="clear"></div>
+          </div>
+      </div>
+    </header>
+  <!--==============================content================================-->
+    <section id="content" style="background:#fff;">
+      <div class="zerogrid">
+        {% autoescape None %}
+        <div class="row" style="width:100%">
+            <div class="page-header" style="margin-bottom: 40px;">
+                <h2>课程详情</h2>
+                <ul class="nav nav-tabs" style="margin-bottom: -10px;">
+                  <li style="float:right;" class="active"><a href="/courseInfo-teachers">师资队伍</a></li>
+                  <li style="float:right;"><a href="/courseInfo">课程描述</a></li>
+                </ul>
+            </div>
+            <div class="col-full" style="padding-left: 140px; padding-right: 140px;">
+                {% for teacher in teachers %}
+                  <div class="row" style="margin-bottom: 20px;">
+                    <a style="font-weight: bold;float: left;width:100px;font-size: 15px;" href="/courseInfo/teacher/{{ teacher['id'] }}">{{teacher["name"]}}</a>
+                    {% if teacher["introduction"] is not None %}
+                      <a style="float: left;width:100px; overflow: hidden;width: 600px; height: 50px;" href="/courseInfo/teacher/{{ teacher['id'] }}">
+                        <p>{{ teacher["introduction"] }}</p>
+                      </a>
+                    {% end %}
+                  </div>
+                {% end %}
+            </div>
+        </div>
+      </div>
+    </section>
+<!--==============================footer=================================-->
+{% include 'footer.html' %}
+</body>
+</html>
+ 

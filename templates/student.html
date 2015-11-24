@@ -1,0 +1,18 @@
+<div class="col-1-4">
+  <div class='user'>
+    {% if user is not None %}
+        <div style="width:100%;">
+          <h1 class="name" style="margin-top:0;">{{user['name']}}</h1>
+        </div>
+          <div>
+            <i class="fa fa-pencil smallTag"  style="color:#999;"></i><a href="/changeProfile" style="color:#999;">更改资料</a>
+          </div>
+        <div style="margin-top:15px;">
+          <label class="lab"><i class="fa fa-user smallTag"></i>学号</label><p>{{user['id']}}</p>
+          <label class="lab"><i class="fa fa-envelope smallTag"></i>邮箱</label><p>{% if user['email']!='null' %}{{user['email']}}{% else %}无记录{% end %}</p>
+          <label class="lab"><i class="fa fa-circle smallTag"></i>班级</label><p>{% if user['class']!='null' %}{{user['class']}}{% else %}无记录{% end %}</p>
+          <label class="lab"><i class="fa fa-circle-o-notch smallTag"></i>课序号</label><p>{% if user['course']!='null' %}{{user['course'].split('-')[-1]}}{% else %}无记录{% end %}</p>
+        </div>
+    {%end%}
+  </div>
+</div>

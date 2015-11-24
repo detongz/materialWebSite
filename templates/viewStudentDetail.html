@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <title>登陆-材料成型工艺课程设计</title>
+    <meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="/static/css/reset.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="/static/css/style.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="/static/css/slider.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="/static/css/zerogrid.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/static/css/responsive.css">
+  <link rel="stylesheet" href="/static/css/font-awesome.min.css" media="screen">
+    <script src="/static/js/jquery-1.11.3.min.js" type="text/javascript"></script>
+    <script src="/static/js/jquery.easing.1.3.js"></script>
+    <script src="/static/js/tms-0.4.1.js"></script>
+	<script src="/static/js/css3-mediaqueries.js"></script>
+  <script src="/static/js/footer.js" type="text/javascript"></script>
+	<!--[if lt IE 8]>
+       <div style=' clear: both; text-align:center; position: relative;'>
+         <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+           <img src="http://storage.ie6countdown.com/assets/100/images/banners/warning_bar_0000_us.jpg" border="0" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today." />
+        </a>
+      </div>
+    <![endif]-->
+    <!--[if lt IE 9]>
+   		<script type="text/javascript" src="/static/js/html5.js"></script>
+    	<link rel="stylesheet" type="text/css" media="screen" href="/static/css/ie.css">
+	<![endif]-->
+  <link rel="stylesheet" href="/static/css/bootstrap.min.css" type="text/css">
+  <script src="/static/js/bootstrap.min.js"></script>
+   <style media="screen">
+     .nav-tabs > li.active > a, .nav-tabs > li.active > a:focus {color: #C9302C;}
+      .nav-tabs >li>a{color: #333;}
+      .nav-tabs {margin-bottom:30px;}
+        label a{color: #333;}
+        label a:focus{color: #333;}
+        .label-danger{height: 34px;padding:9px 20px;}
+    </style>
+</head>
+<body style="font:13px/25px Arial,Helvetica,sans-serif">
+   <header>
+   		<div class="nav-responsive"><div>MENU</div>
+			<select onchange="location=this.value">
+				<option></option>
+				<option value="/index">Home</option>
+				<option value="/courseInfo">About</option>
+				<option value="/notifications">Services</option>
+				<option value="/resource">Products</option>
+				<option value="login.html">Contacts</option>
+			</select>
+		</div>
+       <div>
+          <div>
+              <h1><a href="/index"><img src="/static/images/logo.png" style="margin-top:-4px;" alt=""></a></h1>
+              <nav>
+                <ul class="menu">
+                      <li><a href="/">首页</a></li>
+                      <li><a href="/courseInfo">课程详情</a></li>
+                      <li><a href="/notifications">课程动态</a></li>
+                      <li><a href="/resource">课程资源</a></li>
+                    {% if not id %}
+                        <li><a href="/login">登陆</a></li>
+                    {% else %}
+                        <li class="current"><a href="/user">个人管理</a></li>
+                        <li><a href="/logout">退出</a></li>
+                    {% end %}
+                </ul>
+              </nav>
+              <div class="clear"></div>
+          </div>
+      </div>
+    </header>
+  <!--==============================content================================-->
+    <section id="content" style="background:#fff; margin-bottom: 50px;">
+      <div class="zerogrid" style=" min-height:380px; height:auto;">
+        <div class="row" style="width:100%">
+          {% include "teacher.html" %}
+          <div class="col-3-4" style="padding-left:30px; float:right;">
+            <ul class="nav nav-tabs">
+              <li style="float:right;" class="active"><a href="/user/AllStudents">我的学生</a></li>
+              <li style="float:right;"><a href="/user/CourseHistory">历史课程</a></li>
+              <li style="float:right;"><a href="/user/courseToStart">近期课程</a></li>
+              <li style="float:right;"><a href="/user">我的课程</a></li>
+            </ul>
+              <div style="margin-bottom: 130px;">
+                <div>
+                  <h1 class="name" style="margin-top:0;">{{stu['name']}}</h1>
+                  <div style="float: right;">
+                  {% if course['applyState']==1 and course['period']<course['max'] %}
+                    <label style="font-size: 20px;"><span class="label label-danger">第{{ course['period']+1 }}次作业提交中</span></label>
+                  {% elif course['applyState']==2 %}
+                    <label style="font-size: 20px; margin-top: 1px;"><span class="label label-danger">课程已结束</span></label>
+                    <button style=" width: 150px; margin-top:-6px;" class="btn btn-default" type="button" name="button"><i style="text-shadow: none; color:#fff; margin:3px 10px auto 0;" class="fa fa-plus-square"></i>查看课程成绩</button>
+                  {% elif course['applyState']==1 and course['period']==course['max'] %}
+                    <label style="font-size: 20px; margin-top: 1px;"><span class="label label-danger">等待老师评价打分</span></label>
+                  {% else %}
+                    <label style="font-size: 20px; margin-top: 1px;"><span class="label label-danger">课程未开始</span></label>
+                  {% end %}
+                  </div>
+                </div>
+                 <div class="col-1-2">
+                  <label class="lab view-stu-info" style="float:left;">学号</label><p>{{stu['id']}}</p>
+                  <label class="lab view-stu-info" style="float:left;">邮箱</label><p>{{stu['email']}}</p>
+                 </div>
+                 <div class="col-1-2">
+                    <label class="lab view-stu-info" style="float:left;">班级</label><p>{{stu['class']}}</p>
+                    <label class="lab view-stu-info" style="float:left;">课序号</label><p>{{stu['course'].split('-')[-1]}}</p>
+                  </div>
+              </div>
+                <div style="margin-top: 20px;">
+                {% if not homework %}
+                <label>没有作业记录</label>
+                {% else %}
+                    {% for h in homework %}
+                    <div style="font-size:15px;width:100%; min-height:100px; float:right;">
+                        <div style="margin:0;">
+                            <label style="float:left;">
+                                {% if h['isCommented'] !=0  %}
+                                  <p style="margin-left: -23px; margin-top: -3px; height:0; float: left;"><span class="label label-primary">{{ h['isCommented'] }}</span></p>
+                                {% end %}
+                                <a href="/user/viewhomeworktypeTeacher/{{ h['courseP'] }}_{{ course['idcourse'] }}_{{stu['id']}}">第{{ h['courseP'] }}次作业</a>
+                            </label>
+                        </div>
+                        <div style="width:470px;float: left; min-height: 100px; margin-left: 30px; ">
+                            {% if h['comment'] is not None%}
+                            <i class="fa fa-commenting-o smallTag lab" style="text-shadow: none; font-size: 13px;"></i>
+                            <p class="comment">{{ h['comment'] }}</p>
+                            {% else %}
+                            <i class="fa fa-commenting-o smallTag lab" style="text-shadow: none; font-size: 13px;"></i>
+                            <p class="comment">未给出评价</p>
+                            {% end %}
+                        </div>
+                        <div>
+                            <a href="/commenting/{{ stu['id'] }}_{{ h['courseP'] }}" style="margin-left:35px;float: right; margin-top: 0;">
+                                <button class="btn btn-default btn-xs" type="button" name="button"><i style="text-shadow: none; color:#666; margin-top:3px; margin-right: 5px;" class="fa fa-plus-square"></i><span class="commenting">给出评价</span></button>
+                                <script>
+                                    $(document).ready(function(){
+                                        if ($('.comment').text() != "未给出评价") {
+                                            $(".commenting").text('更新评价');
+                                        }
+                                    });
+                                </script>
+                            </a>
+                            {% if not h['link'] %}
+                            <a href="/viewAssignment/{{ h['courseP'] }}_{{ stu['id'] }}" style="margin-left:35px;float: right; margin-top: 0;">
+                                <button class="btn btn-info btn-xs" type="button" name="button"><i style="text-shadow: none; color:#fff; margin-top:3px; margin-right: 4px;" class="fa fa-download"></i>下载作业</button>
+                            </a>
+                            {% else %}
+                            <a href="/user/viewhomeworktypeTeacher/{{ h['courseP'] }}_{{ course['idcourse'] }}_{{stu['id']}}" style="margin-left:35px;float: right; margin-top: 0;">
+                                <button class="btn btn-info btn-xs" type="button" name="button"><i style="text-shadow: none; color:#fff; margin-top:3px; margin-right: 6px;" class="fa fa-play"></i>查看作业</button>
+                            </a>
+                            {% end %}
+                            <a href="/user/viewhomeworktypeTeacher/{{ h['courseP'] }}_{{ course['idcourse'] }}_{{stu['id']}}" style="margin-left:35px;float: right; margin-top: 0;">
+                                <button class="btn btn-primary btn-xs" type="button" name="button"><i style="text-shadow: none; color:#fff; margin-top:3px; margin-right: 3px;" class="fa fa-eye"></i>作业预览</button>
+                            </a>
+                        </div>
+                    </div>
+                    {% end %}
+                {% end %}
+                     <div>
+                {% if course['applyState']==1 and course['period']==course['max'] %}
+                  <a href="/mark/{{ stu['id'] }}"><button class="btn btn-default left-set-up" style="color: #C9302C;">结课评价打分</button></a>
+                {% end %}
+            </div>
+              </div>
+          </div>
+        </div>
+      </div>
+    </section>
+<!--==============================footer=================================-->
+{% include 'footer.html' %}
+</body>
+</html>
