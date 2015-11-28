@@ -9,7 +9,6 @@
 	<meta name="author" content="">
 	<link rel="icon" href="/static/images/favicon.ico">
 	<link rel="stylesheet" type="text/css" href="/static/css/navbar.css">
-	<link rel="stylesheet" type="text/css" href="/static/css/">
 
 	<title>首页-材料成型工艺课程设计</title>
 
@@ -38,8 +37,8 @@
 			$("#logoBrand").click(function(event) {
 					event.preventDefault();
 					$("#wrapper").toggleClass("toggled");
+				});
 			});
-		});
 	</script>
   </head>
 
@@ -62,14 +61,13 @@
 					<li><a href="/courseInfo">课程详情</a></li>
 					<li><a href="/notifications">课程动态</a></li>
 					<li><a href="/resource">课程资源</a></li>
-					<li class="logouted"><a href="/login">登录</a></li>
+					<li class="logouted"><a href="/login">登陆</a></li>
 					<li class="logined"><a href="/user">个人管理</a></li>
 					<li class="logined"><a href="/logout">退出</a></li>
 				</ul>
 			</div><!--/.nav-collapse -->
 		</div>
 	</nav>
-	<div id="wrapper">
         {% include 'slidebar.html' %}
   </body>
 </html>
