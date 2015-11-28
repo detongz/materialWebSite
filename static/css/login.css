@@ -1,0 +1,26 @@
+#loginContainer
+{
+	margin-top: 10%;
+	padding-left: auto;
+	padding-right: auto;
+}
+
+#loginContent
+{
+	width: 300px;
+	height: 300px;
+	border: solid 1px #9D9D9D;
+	border-radius: 5px;
+	padding-top: 10px;
+}
+
+.form-group.form-group-margin-15
+{
+	margin-top: 15px;
+	margin-bottom: 15px;
+}
+
+#submitButton
+{
+	margin-top: 30px;
+}
