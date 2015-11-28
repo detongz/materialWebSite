@@ -1,0 +1,50 @@
+#homeLogo
+{
+	width: 230px;
+	height: 56px;
+	margin-top: -17px;
+	background-image: url(../images/logo-m.png);
+	background-repeat: no-repeat;
+	position: fixed;
+	left: 0px;
+}
+
+@media screen and (min-width: 1170px){
+	#navbar
+	{
+		padding-left: 50%;
+	}
+}
+
+@media screen and (max-width: 1169px){
+	#navbar
+	{
+		padding-left: 45%;
+	}
+
+	/*#homeLogo
+	{
+		width: 230px;
+		background-image: url(../images/logo-m.png);
+	}*/
+}
+
+@media screen and (max-width: 1023px){
+	#navbar
+	{
+		padding-left: 30%;
+	}
+
+	/*#homeLogo
+	{
+		width: 56px;
+		background-image: url(../images/logo-s.png);
+	}*/
+}
+
+@media screen and (max-width: 719px){
+	#navbar
+	{
+		padding-left: 0px;
+	}
+}
