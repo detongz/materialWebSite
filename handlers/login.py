@@ -9,8 +9,7 @@ class LoginHandler(BaseHandler):
 
     def get(self, *args, **kwargs):
         if not self.id:
-            self.write(
-                '<form><input name="id" type="text" placeholder="用户名"><br><input placeholder="密码" name="pwd" type="password"><br><input type="submit"></form>')
+            self.render('login.html', id=None)
         else:
             self.write('成功登陆')
 
