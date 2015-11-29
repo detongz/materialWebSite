@@ -4,4 +4,5 @@ from base.base import BaseHandler
 
 class IndexHandler(BaseHandler):
     def get(self, *args, **kwargs):
-        self.render('index.html')
+        id = self.get_secure_cookie('id')
+        self.render('index.html',id=id)
