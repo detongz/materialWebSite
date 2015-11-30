@@ -80,7 +80,7 @@
 {
 	text-decoration: none;
 	color: #FFFFFF;
-	background: rgba(200,0,0,0.8);
+	background: rgba(205,0,0,0.8);
 }
 
 .sidebar-nav li a:active,
@@ -93,7 +93,7 @@
 {
 	text-decoration: none;
 	color: #FFFFFF;
-	background: rgba(200,0,0,0.8);
+	background: rgba(205,0,0,0.8);
 }
 
 .sidebar-nav > .sidebar-brand
