@@ -10,6 +10,7 @@
 	<link rel="icon" href="static/images/favicon.ico">
 	<link rel="stylesheet" type="text/css" href="static/css/navbar.css">
 	<link rel="stylesheet" type="text/css" href="static/css/sidebar.css">
+	<link rel="stylesheet" type="text/css" href="static/css/login.css">
 
 	<title>首页-材料成型工艺课程设计</title>
 
@@ -38,8 +39,13 @@
 			$("#logoBrand").click(function(event) {
 					event.preventDefault();
 					$("#wrapper").toggleClass("toggled");
-				});
 			});
+
+			$('.sidebar-nav li a').click(function(event) {
+				$('.sidebar-nav li a').removeClass('active');
+				$(event.target).addClass('active');
+			})
+		});
 	</script>
   </head>
 
@@ -74,22 +80,13 @@
 		<div id="sidebar-wrapper">
 			<ul class="sidebar-nav">
 				<li>
-					<a href="#">Dashboard</a>
+					<a href="#Dashboard" class="active">我的课程</a>
 				</li>
 				<li>
-					<a href="#">Shortcuts</a>
+					<a href="#Shortcuts">消息提示</a>
 				</li>
 				<li>
-					<a href="#">Overview</a>
-				</li>
-				<li>
-					<a href="#">Events</a>
-				</li>
-				<li>
-					<a href="#">About</a>
-				</li>
-				<li>
-					<a href="#">Services</a>
+					<a href="#Overview">我的作业</a>
 				</li>
 			</ul>
 		</div>

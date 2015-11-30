@@ -51,14 +51,14 @@
 
 				$('#loginFormContainer').find('[for="loginID"]').html(labels[tab.attr('tabName')]);
 				$('#loginID').attr('placeholder', labels[tab.attr('tabName')]);
-                $('#ugp').val(tab.attr('tabName'));
+				$('#ugp').val(tab.attr('tabName'));
 			});
 		});
 	</script>
-    <style>
-        .btn{width: 49%;}
-    </style>
-    </head>
+	<style>
+		.btn{width: 49%;}
+	</style>
+	</head>
 	<body>
 {% include 'navibar.html' %}
 		<!--****************************main content*********************** -->
@@ -82,10 +82,10 @@
 							<label for="loginPassword">密码</label>
 							<input type="password" class="form-control" id="loginPassword" name="password" placeholder="密码">
 						</div>
-                        <input id="ugp" name="ug" value="t" hidden>
+						<input id="ugp" name="ug" value="t" hidden>
 						<div id="submitButton" class="form-group">
 							<input type="submit" class="btn btn-primary" value="登录">
-                            <a href="signup" class="btn btn-info">注册</a>
+							<a href="signup" class="btn btn-info">注册</a>
 						</div>
 					</form>
 				</div>
