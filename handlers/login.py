@@ -13,14 +13,15 @@ class LoginHandler(BaseHandler):
 
     def get(self, *args, **kwargs):
         if not self.id:
-            self.render('login.html', id=None)
+            self.render('login.html', id=None, active='lgin')
         else:
-            self.write('/')
+            self.redirect('/')
 
     def post(self, *args, **kwargs):
         id = self.get_argument('id')
         pwd = self.get_argument('password')
         ugroup = self.get_argument('ug')
+
         if ugroup == 'student':
             stu = stuLogin(id, pwd)
             if not stu:
@@ -35,7 +36,7 @@ class LoginHandler(BaseHandler):
                 pass
             else:
                 self.set_secure_cookie('id', id)
-                self.set_secure_cookie('gp', 's')
+                self.set_secure_cookie('gp', 't')
                 self.redirect('/login')
 
 
