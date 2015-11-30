@@ -40,11 +40,6 @@
 					event.preventDefault();
 					$("#wrapper").toggleClass("toggled");
 			});
-
-			$('.sidebar-nav li a').click(function(event) {
-				$('.sidebar-nav li a').removeClass('active');
-				$(event.target).addClass('active');
-			})
 		});
 	</script>
   </head>
@@ -80,13 +75,13 @@
 		<div id="sidebar-wrapper">
 			<ul class="sidebar-nav">
 				<li>
-					<a href="#Dashboard" class="active">我的课程</a>
+					<a id="myLesson" href="#Dashboard" class="active">我的课程</a>
 				</li>
 				<li>
-					<a href="#Shortcuts">消息提示</a>
+					<a id="myMessage" href="#Shortcuts">消息提示</a>
 				</li>
 				<li>
-					<a href="#Overview">我的作业</a>
+					<a id="myHomework" href="#Overview">我的作业</a>
 				</li>
 			</ul>
 		</div>
