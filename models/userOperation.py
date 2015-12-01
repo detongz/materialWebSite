@@ -1,16 +1,14 @@
 # coding: utf-8
-from pymongo import MongoClient
-
-client = MongoClient('localhost', 27017)
-db = client.Material
+from models import db
+from security import clean
 
 
 def stuLogin(uid, pwd):
-    return db.Student.find_one({}, {'user': uid, 'password': pwd})
+    return db.Student.find_one({}, {'user': clean(uid), 'password': clean(pwd)})
 
 
 def teaLogin(uid, pwd):
-    return db.Teacher.find_one({}, {'user': uid, 'password': pwd})
+    return db.Teacher.find_one({}, {'user': clean(uid), 'password': clean(pwd)})
 
 
 if __name__ == "__main__":

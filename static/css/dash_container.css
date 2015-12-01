@@ -1,0 +1,34 @@
+#mainContainer
+{
+	margin-top: 5%;
+	padding-left: auto;
+	padding-right: auto;
+}
+
+#mainContent
+{
+    padding-left: 150px;
+}
+
+@media screen and (max-width: 719px){
+	#mainContent
+	{
+		padding-left: 12px;
+	}
+}
+
+#message_info{
+	text-align: center;
+	color:#adadad;
+}
+
+.right-btn{
+	float:right;
+	margin-top: 15px;
+}
+
+.row{
+	margin-top: 0;
+	margin-bottom: 20px;
+}
+h1{float:left;}

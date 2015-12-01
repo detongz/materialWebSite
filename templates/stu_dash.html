@@ -30,7 +30,13 @@
 			$("#logoBrand").click(function(event) {
 					event.preventDefault();
 					$("#wrapper").toggleClass("toggled");
-				});
+                    if($('#wrapper').hasClass('toggled')){
+                        $('#mainContent').css('padding-left','0px');
+                    }
+                    else{
+                        $('#mainContent').css('padding-left','150px');
+                    }
+                });
 			});
 	</script>
   </head>

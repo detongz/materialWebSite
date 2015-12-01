@@ -10,7 +10,7 @@
 	<link rel="icon" href="/static/images/favicon.ico">
 	<link rel="stylesheet" type="text/css" href="/static/css/navbar.css">
 	<link rel="stylesheet" type="text/css" href="/static/css/sidebar.css">
-      <link rel="stylesheet" href="/static/css/teacher_index.css">
+    <link rel="stylesheet" href="/static/css/dash_container.css">
 	<title>首页-材料成型工艺课程设计</title>
 
 	<!-- Bootstrap core CSS -->
@@ -30,7 +30,13 @@
 			$("#logoBrand").click(function(event) {
 					event.preventDefault();
 					$("#wrapper").toggleClass("toggled");
-				});
+                    if($('#wrapper').hasClass('toggled')){
+                        $('#mainContent').css('padding-left','12px');
+                    }
+                    else{
+                        $('#mainContent').css('padding-left','150px');
+                    }
+                });
 			});
 	</script>
   </head>

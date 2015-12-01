@@ -1,18 +1,23 @@
+<script>
+    $(document).ready(function(){
+        $("#{{ active_slide }}").addClass('active');
+    });
+</script>
 <!-- Sidebar -->
 <div id="wrapper">
     <div id="sidebar-wrapper">
         <ul class="sidebar-nav">
             <li>
-                <a href="#">我的课程</a>
+                <a id='mycourse' href="#">我的课程</a>
             </li>
             <li>
-                <a href="#">批改作业</a>
+                <a id="correct" href="#">批改作业</a>
             </li>
             <li>
-                <a href="#">课程学生</a>
+                <a id="allstu" href="#">课程学生</a>
             </li>
             <li>
-                <a href="#">课程消息</a>
+                <a id="notif" href="#">课程消息</a>
             </li>
         </ul>
     </div>

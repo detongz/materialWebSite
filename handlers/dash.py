@@ -1,5 +1,6 @@
 # coding: utf-8
 from base.base import BaseHandler
+from models.course import get_teacher_course
 
 
 class DashBoardHandler(BaseHandler):
@@ -10,8 +11,9 @@ class DashBoardHandler(BaseHandler):
         if not uid:
             self.redirect('/login')
         elif gp == 's':
-            self.render('stu_dash.html', id=uid, active='dsh')
+            self.render('stu_dash.html', id=uid, active='dsh', active_slide='mycourse')
         elif gp == 't':
-            self.render('teacher_dash.html', id=uid, active='dsh')
+            self.render('teacher_dash.html', id=uid, active='dsh', active_slide='mycourse',
+                        course=get_teacher_course('zmy'))
         else:
             self.redirect('/404')

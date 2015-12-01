@@ -1,11 +1,29 @@
 <div id="mainContainer" class="container">
   <div id="mainContent" class="container">
-    cvfsdfdsfsd
-      cvfsdfdsfsd
-      cvfsdfdsfsd
-      cvfsdfdsfsd
-      cvfsdfdsfsd
-      cvfsdfdsfsd
-
+      <div class="row">
+          <h1>我的课程</h1>
+          <button class="btn btn-default right-btn">编辑课程</button>
+      </div>
+      {% if course.count()==0 %}
+        <h3 id="message_info">无课程记录</h3>
+      {% else %}
+          {% for i in course %}
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>课序号</th>
+                            <th>课程人数</th>
+                            <th>开课学年</th>
+                            <th>开课周</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+{#      <h3>课序号<span>{{ i['cid'] }}</span></h3>#}
+{#            <h4><span>asdf</span></h4>#}
+          {% end %}{#end for#}
+      {% end %}{#end if#}
   </div>
 </div>
