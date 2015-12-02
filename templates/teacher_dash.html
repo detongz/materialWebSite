@@ -1,3 +1,4 @@
+{% autoescape None %}
 <!DOCTYPE html>
 <html lang="zh-CN">
   <head>
@@ -30,12 +31,6 @@
 			$("#logoBrand").click(function(event) {
 					event.preventDefault();
 					$("#wrapper").toggleClass("toggled");
-                    if($('#wrapper').hasClass('toggled')){
-                        $('#mainContent').css('padding-left','12px');
-                    }
-                    else{
-                        $('#mainContent').css('padding-left','150px');
-                    }
                 });
 			});
 	</script>
@@ -44,6 +39,6 @@
   <body>
 {% include 'navibar.html' %}
 {% include 'teacher_slidebar.html' %}
-  {% include 'teacher_index.html' %}
+  {% block content %}Default Content{% end %}
   </body>
 </html>

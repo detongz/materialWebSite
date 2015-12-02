@@ -13,7 +13,7 @@ class DashBoardHandler(BaseHandler):
         elif gp == 's':
             self.render('stu_dash.html', id=uid, active='dsh', active_slide='mycourse')
         elif gp == 't':
-            self.render('teacher_dash.html', id=uid, active='dsh', active_slide='mycourse',
+            self.render('teacher_index.html', id=uid, active='dsh', active_slide='mycourse',
                         course=get_teacher_course('zmy'))
         else:
             self.redirect('/404')
