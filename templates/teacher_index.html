@@ -1,39 +1,40 @@
 {% autoescape None %}
 {% extends 'teacher_dash.html' %}
 
+{% block title %}我的课程{% end %}
+
 {% block content %}
-<div id="mainContainer" class="container">
-  <div id="mainContent" class="container">
-      <div class="row">
-          <h1>我的课程</h1>
-          <button class="btn btn-default right-btn">编辑课程</button>
-      </div>
-      {% if course.count()==0 %}
-        <h3 id="message_info">无课程记录</h3>
-      {% else %}
-            <div class="table-responsive">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>课序号</th>
-                            <th>课程人数</th>
-                            <th>开课学年</th>
-                            <th>开课周</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-              {% for i in course %}
-                  <tr>
-                      <td>{{ i['cid'] }}</td>
-                      <td>{% if 'attend' in i.keys() %}{{ i['attend'] }}{% else %}NaN{% end %}</td>
-                      <td>{% if 'year' in i.keys() %}{{ i['year'] }}{% else %}NaN{% end %}</td>
-                      <td>{% if 'week' in i.keys() %}{{ i['week'] }}{% else %}NaN{% end %}</td>
-                  </tr>
-              {% end %}{#end for#}
-                    </tbody>
-                </table>
-            </div>
-      {% end %}{#end if#}
-  </div>
+
+<div class="row">
+  <h1>我的课程</h1>
+  <a href="/dash/editCourse"><button class="btn btn-default right-btn">编辑课程</button></a>
 </div>
-{% end %}
+{% if course.count()==0 %}
+<hr id="message_info">
+<h4 id="message_info">无课程记录</h4>
+{% else %}
+<div class="table-responsive">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>课序号</th>
+                <th>课程人数</th>
+                <th>开课学年</th>
+                <th>开课周</th>
+            </tr>
+        </thead>
+        <tbody>
+  {% for i in course %}
+      <tr>
+          <td>{{ i['cid'] }}</td>
+          <td>{% if 'attend' in i.keys() %}{{ i['attend'] }}{% else %}NaN{% end %}</td>
+          <td>{% if 'year' in i.keys() %}{{ i['year'] }}{% else %}NaN{% end %}</td>
+          <td>{% if 'week' in i.keys() %}{{ i['week'] }}{% else %}NaN{% end %}</td>
+      </tr>
+  {% end %}{#end for#}
+        </tbody>
+    </table>
+</div>
+
+{% end %}{#end if#}
+{% end %}{# end block #}

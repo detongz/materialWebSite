@@ -4,8 +4,7 @@ from models.userOperation import stuLogin, teaLogin
 
 
 class LoginHandler(BaseHandler):
-    """ 用户登陆
-    """
+    """ 用户登陆"""
 
     def __init__(self, application, request, **kwargs):
         super(LoginHandler, self).__init__(application, request, **kwargs)
@@ -41,6 +40,8 @@ class LoginHandler(BaseHandler):
 
 
 class LogoutHandler(BaseHandler):
+    """登陆用户注销"""
+
     def get(self, *args, **kwargs):
         self.clear_cookie('id')
         self.clear_cookie('gp')
