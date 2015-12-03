@@ -3,13 +3,14 @@ from handlers.index import IndexHandler
 from handlers.login import LoginHandler, LogoutHandler
 from handlers.error import ErrorHandler
 from handlers.dash import DashBoardHandler
-from handlers.teaDashboard import CourseEditHandler, EditingCertainCourseHandler
+from handlers.teaDashboard import CourseEditHandler, EditingCertainCourseHandler,DeleteCourseHandler
 
 urls = [
     (r'/', IndexHandler),
     (r'/login', LoginHandler),
     (r'/logout', LogoutHandler),
     (r'/dash', DashBoardHandler),
+    (r'/dash/editCourse/delete/(.*)', DeleteCourseHandler),
     (r'/dash/editCourse/(.*)', EditingCertainCourseHandler),
     (r'/dash/editCourse', CourseEditHandler),
 
