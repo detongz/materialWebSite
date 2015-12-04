@@ -4,8 +4,12 @@
 """
 __author__ = 'zdt'
 
+#
+# from pymongo import MongoClient
+#
+# client = MongoClient('localhost', 27017)
+# db = client.Material
 
-from pymongo import MongoClient
+import torndb
 
-client = MongoClient('localhost', 27017)
-db = client.Material
+db = torndb.Connection('127.0.0.1:3306', 'Material', user='root', password='')

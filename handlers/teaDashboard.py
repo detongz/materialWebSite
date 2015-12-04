@@ -37,3 +37,15 @@ class DeleteCourseHandler(BaseHandler):
             self.write('haha')  # 测试消息
         else:
             self.redirect('/404')
+
+
+class CommentingHandler(BaseHandler):
+    """教师评价作业首页"""
+
+    def get(self, *args, **kwargs):
+        gp, uid = is_loged(self)
+        if gp == 't':
+            self.render('teacher_commenting.html', id=uid, active='dsh', active_slide='cmt',
+                        course=get_teacher_course(uid))
+        else:
+            self.redirect('/404')

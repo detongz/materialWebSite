@@ -1,0 +1,111 @@
+{% autoescape None %}
+{% extends 'teacher_dash.html' %}
+
+{% block title %}批改作业{% end %}
+
+{% block content %}
+
+<div class="row">
+  <h1>批改作业</h1>
+  <a href="/dash/editCourse"><button class="btn btn-default right-btn">编辑课程</button></a>
+</div>
+
+
+<div class="row">
+    <ul id="loginHead" class="nav nav-tabs">
+        <li role="presentation" class="active">
+            <a href="#edit" data-toggle="tab">待批改作业</a>
+        </li>
+        <li role="presentation">
+            <a href="#add" data-toggle="tab">已批作业</a>
+        </li>
+        <li role="presentation">
+            <a href="#del" data-toggle="tab">全部作业</a>
+        </li>
+    </ul>
+</div>
+
+    <div class="row tab-content">
+        <!--start edit course-->
+        <div class='tab-pane fade in active' id="edit">
+            {% if course.count()==0 %}
+            <h5 id="message_info">无课程记录</h5>
+            {% else %}
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>课序号</th>
+                            <th>课程人数</th>
+                            <th>开课学年</th>
+                            <th>开课周</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+              {% for i in course %}
+                  <tr>
+                      <td><a class="editCourseLink" href="/dash/editCourse/{{ i['cid'] }}"><i class="ion ion-ios-circle-filled"></i></a></td>
+                      <td><a class="editCourseLink" href="/dash/editCourse/{{ i['cid'] }}">{{ i['cid'] }}</a></td>
+                      <td>{% if 'attend' in i.keys() %}{{ i['attend'] }}{% else %}NaN{% end %}</td>
+                      <td>{% if 'year' in i.keys() %}{{ i['year'] }}{% else %}NaN{% end %}</td>
+                      <td>{% if 'week' in i.keys() %}{{ i['week'] }}{% else %}NaN{% end %}</td>
+                  </tr>
+              {% end %}{#end for#}
+                    </tbody>
+                </table>
+            </div>
+            {% end %}{#end if#}
+        </div>
+        <!--end edit course-->
+        <!--start add course-->
+        <div id="add" class="tab-pane fade">
+            <form method="post">
+                <div class="form-group form-group-margin-15">
+                    <label for="loginID">教工号</label>
+                    <input type="text" class="form-control" id="loginID" name="id" placeholder="教工号">
+                </div>
+                <div class="form-group form-group-margin-15">
+                    <label for="loginPassword">密码</label>
+                    <input type="password" class="form-control" id="loginPassword" name="password" placeholder="密码">
+                </div>
+                <input id="ugp" name="ug" value="t" hidden>
+                <button class="btn btn-default center-btn">确认并开始课程</button>
+            </form>
+        </div>
+        <!--end add course-->
+        <!--start del course-->
+        <div class='tab-pane fade' id="del">
+            {% if course.count()==0 %}
+            <h5 id="message_info">无</h5>
+            {% else %}
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>课序号</th>
+                            <th>课程人数</th>
+                            <th>开课学年</th>
+                            <th>开课周</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+              {% for i in course %}
+                  <tr>
+                      <td><a class="editCourseLink" href="/dash/editCourse/delete/{{ i['cid'] }}"><i class="ion ion-ios-circle-filled"></i></a></td>
+                      <td><a class="editCourseLink" href="/dash/editCourse/delete/{{ i['cid'] }}">{{ i['cid'] }}</a></td>
+                      <td>{% if 'attend' in i.keys() %}{{ i['attend'] }}{% else %}NaN{% end %}</td>
+                      <td>{% if 'year' in i.keys() %}{{ i['year'] }}{% else %}NaN{% end %}</td>
+                      <td>{% if 'week' in i.keys() %}{{ i['week'] }}{% else %}NaN{% end %}</td>
+                  </tr>
+              {% end %}{#end for#}
+                    </tbody>
+                </table>
+            </div>
+            {% end %}{#end if#}
+        </div>
+        <!--end del course-->
+    </div>
+
+{% end %}<!--end block content-->
