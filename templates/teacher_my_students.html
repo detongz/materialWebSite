@@ -1,15 +1,15 @@
 {% autoescape None %}
 {% extends 'teacher_dash.html' %}
 
-{% block title %}我的课程{% end %}
+{% block title %}所有学生{% end %}
 
 {% block content %}
 
 <div class="row">
-  <h1>我的课程</h1>
+  <h1>所有学生</h1>
   <a href="/dash/editCourse"><button class="btn btn-default right-btn">编辑课程</button></a>
 </div>
-{% if not course %}
+{% if not stu %}
 <hr id="message_info">
 <h4 id="message_info">无课程记录</h4>
 {% else %}
@@ -24,9 +24,9 @@
             </tr>
         </thead>
         <tbody>
-  {% for i in course %}
+  {% for i in stu %}
       <tr>
-          <td>{{ i['cid'] }}</td>
+{#          <td>{{ i['cid'] }}</td>#}
           <td>{% if 'attend' in i.keys() %}{{ i['attend'] }}{% else %}NaN{% end %}</td>
           <td>{% if 'year' in i.keys() %}{{ i['year'] }}{% else %}NaN{% end %}</td>
           <td>{% if 'week' in i.keys() %}{{ i['week'] }}{% else %}NaN{% end %}</td>
