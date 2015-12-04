@@ -24,7 +24,7 @@ class LoginHandler(BaseHandler):
         if ugroup == 'student':
             stu = stuLogin(id, pwd)
             if not stu:
-                pass
+                self.render('error.html', content='用户不存在',active='lgin',title=None, id=None)
             else:
                 self.set_secure_cookie('id', id)
                 self.set_secure_cookie('gp', 's')
@@ -32,7 +32,7 @@ class LoginHandler(BaseHandler):
         elif ugroup == 'teacher' or ugroup == 't':
             tea = teaLogin(id, pwd)
             if not tea:
-                pass
+                self.render('error.html', content='用户不存在',active='lgin',title=None, id=None)
             else:
                 self.set_secure_cookie('id', id)
                 self.set_secure_cookie('gp', 't')

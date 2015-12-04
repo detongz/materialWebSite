@@ -2,3 +2,4 @@ front-end/static/*.zip
 front-end/other/*
 .idea/*
 *.pyc
+/user.txt

@@ -10,6 +10,11 @@
     padding-left: 180px;
 }
 
+#errorContain
+{
+    padding-left: 0px;
+}
+
 @media screen and (max-width: 719px){
 	#mainContent
 	{
@@ -20,6 +25,15 @@
 #message_info{
 	text-align: center;
 	color:#adadad;
+}
+
+#error_info i{
+	color:#555555;
+	font-size: 1.2em;
+}
+#error_info{
+	text-align: center;
+	color:#333;
 }
 
 .right-btn{
