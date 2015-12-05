@@ -1,6 +1,6 @@
 # coding: utf-8
 from base.base import BaseHandler
-from models.course import get_teacher_course
+from models.course import get_teacher_course, get_student_course
 
 '''个人管理(dashboard)界面老师/学生通用函数和方法'''
 
@@ -11,7 +11,7 @@ class DashBoardHandler(BaseHandler):
     def get(self, *args, **kwargs):
         gp, uid = is_loged(self)
         if gp == 's':
-            self.render('stu_dash.html', id=uid, active='dsh', active_slide='mcs')
+            self.render('stu_index.html', id=uid, active='dsh', active_slide='mcs', course=get_student_course(uid))
         elif gp == 't':
             self.render('teacher_index.html', id=uid, active='dsh', active_slide='mycourse',
                         course=get_teacher_course(uid))

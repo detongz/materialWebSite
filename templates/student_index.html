@@ -1,5 +1,5 @@
 {% autoescape None %}
-{% extends 'teacher_dash.html' %}
+{% extends 'student_dash.html' %}
 
 {% block title %}我的课程{% end %}
 
@@ -18,9 +18,10 @@
         <thead>
             <tr>
                 <th>课序号</th>
-                <th>课程人数</th>
+                <th>课程状态</th>
                 <th>开课学年</th>
                 <th>开课周</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -30,6 +31,7 @@
           <td>{% if 'attend' in i.keys() %}{{ i['attend'] }}{% else %}NaN{% end %}</td>
           <td>{% if 'year' in i.keys() %}{{ i['year'] }}{% else %}NaN{% end %}</td>
           <td>{% if 'week' in i.keys() %}{{ i['week'] }}{% else %}NaN{% end %}</td>
+          <td><button class="btn btn-primary"></td>
       </tr>
   {% end %}{#end for#}
         </tbody>
