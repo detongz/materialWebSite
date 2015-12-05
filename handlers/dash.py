@@ -11,7 +11,7 @@ class DashBoardHandler(BaseHandler):
     def get(self, *args, **kwargs):
         gp, uid = is_loged(self)
         if gp == 's':
-            self.render('stu_dash.html', id=uid, active='dsh', active_slide='mycourse')
+            self.render('stu_dash.html', id=uid, active='dsh', active_slide='mcs')
         elif gp == 't':
             self.render('teacher_index.html', id=uid, active='dsh', active_slide='mycourse',
                         course=get_teacher_course(uid))
@@ -20,7 +20,7 @@ class DashBoardHandler(BaseHandler):
 
 
 def is_loged(request):
-    """判断用户是否已经登陆后返回用户名密码"""
+    """判断用户是否已经登陆并返回用户名密码"""
 
     uid = request.get_secure_cookie('id')
     gp = request.get_secure_cookie('gp')

@@ -10,8 +10,10 @@
 	<link rel="icon" href="/static/images/favicon.ico">
 	<link rel="stylesheet" type="text/css" href="/static/css/navbar.css">
 	<link rel="stylesheet" type="text/css" href="/static/css/sidebar.css">
+  <link rel="stylesheet" type="text/css" href="/static/css/ionicons.min.css">
+  <link rel="stylesheet" href="/static/css/dash_container.css">
 
-	<title>首页-材料成型工艺课程设计</title>
+	<title>{% block title %}首页{% end %}-材料成型工艺课程设计</title>
 
 	<!-- Bootstrap core CSS -->
 	<link href="/static/css/bootstrap.min.css" rel="stylesheet">
@@ -30,12 +32,6 @@
 			$("#logoBrand").click(function(event) {
 					event.preventDefault();
 					$("#wrapper").toggleClass("toggled");
-                    if($('#wrapper').hasClass('toggled')){
-                        $('#mainContent').css('padding-left','0px');
-                    }
-                    else{
-                        $('#mainContent').css('padding-left','150px');
-                    }
                 });
 			});
 	</script>
@@ -46,7 +42,7 @@
 {% include 'stu_slidebar.html' %}
   <div class="container">
       <div class="container">
-
+{% block content %}Student Content{% end %}
       </div>
   </div>
   </body>

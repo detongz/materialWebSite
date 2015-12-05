@@ -1,6 +1,6 @@
 <script>
     $(document).ready(function(){
-        $("#{{ active }}").addClass('active');
+        $("#{{ active_slide }}").addClass('active');
     });
 </script>
 <!-- Sidebar -->
@@ -8,13 +8,13 @@
     <div id="sidebar-wrapper">
         <ul class="sidebar-nav">
             <li>
-                <a href="#">我的课程</a>
+                <a id='mcs' href="/dash">我的课程</a>
             </li>
             <li>
-                <a href="#">消息提示</a>
+                <a id='msg' href="/dash/messages">消息提示</a>
             </li>
             <li>
-                <a href="#">我的作业</a>
+                <a id='hmwk' href="/dash/myHomework">我的作业</a>
             </li>
         </ul>
     </div>
