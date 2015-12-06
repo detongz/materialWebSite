@@ -6,11 +6,13 @@ from handlers.dash import DashBoardHandler
 from handlers.teaDashboard import CourseEditHandler, EditingCertainCourseHandler, DeleteCourseHandler, \
     CommentingHandler, MyStudentsHandler, MyNotifHandler
 from handlers.stuDashboard import MyHomeworkHandler, MyMessagesHandler,MyCourseHandler
+from handlers.newuser import SignUpHandler
 
 urls = [
     (r'/', IndexHandler),
     (r'/login', LoginHandler),
     (r'/logout', LogoutHandler),
+    (r'/signUp',SignUpHandler),
 
     #教师接口
     # (r'/dash/commenting/(.*)', ),
