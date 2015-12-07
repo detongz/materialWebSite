@@ -12,7 +12,7 @@ urls = [
     (r'/', IndexHandler),
     (r'/login', LoginHandler),
     (r'/logout', LogoutHandler),
-    (r'/signUp', SignUpHandler),
+    (r'/signup', SignUpHandler),
 
     # 教师接口
     # (r'/dash/commenting/(.*)', ),

@@ -19,10 +19,29 @@ def teaLogin(uid, pwd):
     return db.get(sql)
 
 
+def getTeacher(uid):
+    """获取某位教师信息"""
+    sql = "select * from Teacher where idTeacher='%s'" % (clean(uid))
+    return db.get(sql)
+
+
+def getStudent(uid):
+    """获取某位学生信息"""
+    sql = 'select * from Student where idStudent = "%s"' % (clean(uid))
+    return db.get(sql)
+
+
 def getTempUser():
-    '''获取所有申请教师用户的老师账号'''
+    """获取所有申请教师用户的账号"""
     sql = 'select * from tempuser;'
     return db.query(sql)
+
+
+def insertIntoTempUser(id, type, name, pwd):
+    """将新申请的用户加入数据库"""
+    sql = "insert into tempuser (id,type,name,pwd) values ('%s','%s','%s','%s');" % (
+        clean(id), clean(type), clean(name), clean(pwd))
+    db.execute(sql)
 
 
 if __name__ == "__main__":

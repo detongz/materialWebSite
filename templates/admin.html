@@ -13,7 +13,7 @@
 	<link rel="stylesheet" type="text/css" href="/static/css/sidebar.css">
 	<link rel="stylesheet" type="text/css" href="/static/css/ionicons.min.css">
   <link rel="stylesheet" href="/static/css/dash_container.css">
-	<title>认证教师用户-材料成型工艺课程设计</title>
+	<title>认证用户-材料成型工艺课程设计</title>
 
 	<!-- Bootstrap core CSS -->
 	<link href="/static/css/bootstrap.min.css" rel="stylesheet">
@@ -39,23 +39,25 @@
 
   <body>
     {% include 'navibar.html' %}
-    <div class="container">
-      <div class="container">
+    <div id="mainContainer" class="container">
+      <div id="errorContain" class="container">
         {% for i in temp %}
         {% if i['type']!='s' %}
         <div class='tabel-responsive'>
           <table class="table">
             <thead>
               <tr>
-                <th>教师姓名</th>
-                <th>教工号</th>
+                <th>姓名</th>
+                <th>类型</th>
+                <th>教工号/学号</th>
                 <th></th>
               </tr>
             </thead>
             <tr>
               <td>{{i['name']}}</td>
+              <td>{% if i['type']=='s' %}学生{% else %}教师{% end %}</td>
               <td>{{i['id']}}</td>
-              <td><a><button name="button" class='btn btn-primary'>确认教师申请</button></a></td>
+              <td><a><button name="button" class='btn btn-default'>确认申请</button></a></td>
             </tr>
           </table>
         </div>

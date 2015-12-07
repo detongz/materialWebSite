@@ -49,43 +49,46 @@
 				$('#loginHead li').removeClass('active');
 				tab.addClass('active');
 
-				$('#loginFormContainer').find('[for="loginID"]').html(labels[tab.attr('tabName')]);
-				$('#loginID').attr('placeholder', labels[tab.attr('tabName')]);
+				$('#loginFormContainer').find('[for="signupId"]').html(labels[tab.attr('tabName')]);
+				$('#signupId').attr('placeholder', labels[tab.attr('tabName')]);
 				$('#ugp').val(tab.attr('tabName'));
 			});
 		});
 	</script>
 	<style>
-		.btn{width: 49%;}
+		.btn{width: 100%;}
 	</style>
 	</head>
 	<body>
 {% include 'navibar.html' %}
 		<!--****************************main content*********************** -->
 		<div id="loginContainer" class="container">
-			<div id="loginContent" class="container">
+			<div id="signupContent" class="container">
 				<ul id="loginHead" class="nav nav-tabs">
-					<li tabName="teacher" role="presentation" class="active">
-						<a href="javascript:void(0);">教师</a>
-					</li>
-					<li tabName="student" role="presentation" class="">
+                    <li tabName="student" role="presentation" class="active">
 						<a href="javascript:void(0);">学生</a>
+					</li>
+                    <li tabName="teacher" role="presentation" >
+						<a href="javascript:void(0);">教师</a>
 					</li>
 				</ul>
 				<div id="loginFormContainer">
-					<form method="post">
+					<form method="post" action="/signup">
 						<div class="form-group form-group-margin-15">
-							<label for="loginID">教工号</label>
-							<input type="text" class="form-control" id="loginID" name="id" placeholder="教工号">
+							<label for="signupId">学号</label>
+							<input type="text" class="form-control" id="signupId" name="id" placeholder="学号">
 						</div>
 						<div class="form-group form-group-margin-15">
-							<label for="loginPassword">密码</label>
-							<input type="password" class="form-control" id="loginPassword" name="password" placeholder="密码">
+							<label for="signupPwd">密码</label>
+							<input type="password" class="form-control" id="signupPwd" name="password" placeholder="密码">
+						</div>
+                        <div class="form-group form-group-margin-15">
+							<label for="signupName">姓名</label>
+							<input type="text" class="form-control" id="signupName" name="signupName" placeholder="姓名">
 						</div>
 						<input id="ugp" name="ug" value="t" hidden>
 						<div id="submitButton" class="form-group">
-							<input type="submit" class="btn btn-primary" value="登录">
-							<a href="signup" class="btn btn-info">注册</a>
+							<input type="submit" class="btn btn-primary" value="确定">
 						</div>
 					</form>
 				</div>
