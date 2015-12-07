@@ -1,3 +1,4 @@
+{% autoescape None %}
 <!DOCTYPE html>
 <html lang="zh-CN">
   <head>
@@ -10,10 +11,9 @@
 	<link rel="icon" href="/static/images/favicon.ico">
 	<link rel="stylesheet" type="text/css" href="/static/css/navbar.css">
 	<link rel="stylesheet" type="text/css" href="/static/css/sidebar.css">
-  <link rel="stylesheet" type="text/css" href="/static/css/ionicons.min.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/ionicons.min.css">
   <link rel="stylesheet" href="/static/css/dash_container.css">
-
-	<title>{% block title %}首页{% end %}-材料成型工艺课程设计</title>
+	<title>认证教师用户-材料成型工艺课程设计</title>
 
 	<!-- Bootstrap core CSS -->
 	<link href="/static/css/bootstrap.min.css" rel="stylesheet">
@@ -38,12 +38,30 @@
   </head>
 
   <body>
-{% include 'navibar.html' %}
-{% include 'stu_slidebar.html' %}
-  <div class="container">
+    {% include 'navibar.html' %}
+    <div class="container">
       <div class="container">
-{% block content %}Student Content{% end %}
+        {% for i in temp %}
+        {% if i['type']!='s' %}
+        <div class='tabel-responsive'>
+          <table class="table">
+            <thead>
+              <tr>
+                <th>教师姓名</th>
+                <th>教工号</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tr>
+              <td>{{i['name']}}</td>
+              <td>{{i['id']}}</td>
+              <td><a><button name="button" class='btn btn-primary'>确认教师申请</button></a></td>
+            </tr>
+          </table>
+        </div>
+        {% end %}<!-- end if-->
+      {% end %}<!-- end for-->
       </div>
-  </div>
+    </div>
   </body>
 </html>

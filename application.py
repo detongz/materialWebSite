@@ -10,7 +10,7 @@ settings = dict(
     template_path=TEMPLATE_PATH,
     static_path=STATIC_PATH,
     debug="True",
-    cookie_secret="asdfasdfasdfasdf",
+    cookie_secret="Vm10YWIyTnNiM2hYV0d4WFlsZDRTMVZzVm1GTk1XdDNXa1JTYWxKdGQ",
     login_url="/login",
 )
 

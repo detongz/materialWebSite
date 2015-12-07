@@ -1,0 +1,91 @@
+{% autoescape None %}
+{% extends 'student_dash.html' %}
+
+{% block title %}消息提示{% end %}
+
+{% block content %}
+
+<div class="row">
+  <h1>消息提示</h1>
+</div>
+
+
+<div class="row">
+    <ul id="loginHead" class="nav nav-tabs">
+        <li role="presentation" class="active">
+            <a href="#teachercmt" data-toggle="tab">教师评语</a>
+        </li>
+        <li role="presentation">
+            <a href="#coursemsg" data-toggle="tab">课程消息</a>
+        </li>
+    </ul>
+</div>
+
+    <div class="row tab-content">
+        <!--start edit course-->
+        <div class='tab-pane fade in active' id="teachercmt">
+            {% if not comments %}
+            <h5 id="message_info">暂时没有教师评语记录</h5>
+            {% else %}
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>提交名</th>
+                            <th>更新时间</th>
+                            <th>作业类型</th>
+                            <th>教师评语</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                      {% for i in comments %}
+                          <tr>
+                              <td><a class="editCourseLink" href="/dash/editCourse/{{ i['idHomework'] }}"><i class="ion ion-ios-circle-filled"></i></a></td>
+                              <td><a class="editCourseLink" href="/dash/editCourse/{{ i['idHomework'] }}">{{ i['tag'] }}</a></td>
+                              <td>{{ i['date'] }}</td>
+                              <td>{% if i['type']=='vedio' %}视频链接{% else %}三视图截图{% end %}</td>
+                              <td>{{ i['comment'] }}</td>
+                          </tr>
+                      {% end %}{#end for#}
+                    </tbody>
+                </table>
+            </div>
+            {% end %}{#end if#}
+        </div>
+        <!--end edit course-->
+        <!--start edit course-->
+        <div class='tab-pane fade' id="coursemsg">
+            {% if not message %}
+            <h5 id="message_info">暂时没有发布的消息提示</h5>
+            {% else %}
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>消息标题</th>
+                            <th>更新时间</th>
+                            <th>消息类型</th>
+                            <th>发布教师</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                      {% for i in message %}
+                          <tr>
+                              <td><a class="editCourseLink" href="/dash/editCourse/{{ i['idInfo'] }}"><i class="ion ion-ios-circle-filled"></i></a></td>
+                              <td><a class="editCourseLink" href="/dash/editCourse/{{ i['idInfo'] }}">{{ i['t‎itle'] }}</a></td>
+                              <td>{{ i['date'] }}</td>
+                              <td>{% if i['type']=='info' %}课程消息{% else %}课程资源{% end %}</td>
+                              <td><a href="/detailCourse/{{ i['tid'] }}">{{ i['name'] }}</a></td>
+                          </tr>
+                      {% end %}{#end for#}
+                    </tbody>
+                </table>
+            </div>
+            {% end %}{#end if#}
+        </div>
+        <!--end edit course-->
+    </div>
+
+{% end %}<!--end block content-->

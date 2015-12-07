@@ -5,16 +5,16 @@ from handlers.error import ErrorHandler
 from handlers.dash import DashBoardHandler
 from handlers.teaDashboard import CourseEditHandler, EditingCertainCourseHandler, DeleteCourseHandler, \
     CommentingHandler, MyStudentsHandler, MyNotifHandler
-from handlers.stuDashboard import MyHomeworkHandler, MyMessagesHandler,MyCourseHandler
-from handlers.newuser import SignUpHandler
+from handlers.stuDashboard import MyHomeworkHandler, MyMessagesHandler, MyCourseHandler
+from handlers.newuser import SignUpHandler, AdminHandler
 
 urls = [
     (r'/', IndexHandler),
     (r'/login', LoginHandler),
     (r'/logout', LogoutHandler),
-    (r'/signUp',SignUpHandler),
+    (r'/signUp', SignUpHandler),
 
-    #教师接口
+    # 教师接口
     # (r'/dash/commenting/(.*)', ),
     (r'/dash/commenting', CommentingHandler),
 
@@ -24,10 +24,11 @@ urls = [
     (r'/dash/allStudents', MyStudentsHandler),
     (r'/dash/notifications', MyNotifHandler),
 
-    #学生接口
-    (r'/dash/messages',MyMessagesHandler),
-    (r'/dash/myHomework',MyHomeworkHandler),
+    # 学生接口
+    (r'/dash/messages', MyMessagesHandler),
+    (r'/dash/myHomework', MyHomeworkHandler),
 
     (r'/dash', DashBoardHandler),
-    (r'/.*', ErrorHandler)
+    (r'/Material/Admin/TWF5IEplZmYgRGVhbiBCbGVzcyBNeSBXaWVyZCBXZWIgQXBwbGljYXRpb24=', AdminHandler),
+    (r'/.*', ErrorHandler),
 ]

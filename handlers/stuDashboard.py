@@ -1,17 +1,8 @@
 # coding: utf-8
 from base.base import BaseHandler
 from dash import is_loged
-
-
-class StudentIndex(BaseHandler):
-    """学生 dashboard 首页"""
-
-    def get(self, *args, **kwargs):
-        gp, uid = is_loged(self)
-        if gp == 's':
-            self.render('dashboardIndex.html', id=uid)
-        else:
-            self.redirect('/404')
+from models.notification import get_all_notif, get_all_comments
+from models.homework import get_my_homework
 
 
 class MyHomeworkHandler(BaseHandler):
@@ -20,10 +11,10 @@ class MyHomeworkHandler(BaseHandler):
     def get(self, *args, **kwargs):
         gp, uid = is_loged(self)
         if gp == 's':
-            # self.render('')
-            pass
+            self.render('stu_homework.html', homework=get_my_homework(uid), id=uid, active='dsh', active_slide='hmwk')
         else:
             self.redirect('/404')
+
 
 class MyMessagesHandler(BaseHandler):
     """所有消息提示"""
@@ -31,9 +22,11 @@ class MyMessagesHandler(BaseHandler):
     def get(self, *args, **kwargs):
         gp, uid = is_loged(self)
         if gp == 's':
-            pass
+            self.render('stu_message.html', id=uid, message=get_all_notif(), comments=get_all_comments(uid),
+                        active='dsh', active_slide='msg')
         else:
             self.redirect('/404')
+
 
 class MyCourseHandler(BaseHandler):
     """我的课程界面"""

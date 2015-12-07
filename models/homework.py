@@ -15,5 +15,5 @@ def get_teacher_homework(uid):
 
 def get_my_homework(uid):
     """获取学生提交的所有作业"""
-    sql = 'select * from Student where sid="%s";' % (clean(uid))
+    sql = 'select * from Homework where sid="%s";' % (clean(uid))
     return db.query(sql)

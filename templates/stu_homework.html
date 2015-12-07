@@ -1,0 +1,39 @@
+{% autoescape None %}
+{% extends 'student_dash.html' %}
+
+{% block title %}我的作业{% end %}
+
+{% block content %}
+
+<div class="row">
+  <h1>我的作业</h1>
+</div>
+{% if not homework %}
+<hr id="message_info">
+<h4 id="message_info">无作业记录</h4>
+{% else %}
+<div class="table-responsive">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>标题</th>
+                <th>教师评语</th>
+                <th>作业类型</th>
+                <th>更新时间</th>
+            </tr>
+        </thead>
+        <tbody>
+  {% for i in homework %}
+      <tr>
+          <td>{{ i['tag'] }}</td>
+          <td>{{ i['comment'] }}</td>
+          <td>{% if i['type']=='info' %}课程消息{% else %}课程资源{% end %}</td>
+          <td>{{ i['date'] }}</td>
+      </tr>
+  {% end %}{#end for#}
+        </tbody>
+    </table>
+</div>
+
+{% end %}{#end if#}
+{% end %}{# end block #}

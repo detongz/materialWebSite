@@ -18,9 +18,12 @@ def teaLogin(uid, pwd):
     sql = 'select * from Teacher where idTeacher="%s" and pwd="%s"' % (clean(uid), clean(pwd))
     return db.get(sql)
 
-def teacherEnagle():
-    """管理员开通教师账户"""
-    
+
+def getTempUser():
+    '''获取所有申请教师用户的老师账号'''
+    sql = 'select * from tempuser;'
+    return db.query(sql)
+
 
 if __name__ == "__main__":
     print(stuLogin('zdt', '11'))

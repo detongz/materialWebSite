@@ -7,7 +7,6 @@
 
 <div class="row">
   <h1>我的课程</h1>
-  <a href="/dash/editCourse"><button class="btn btn-default right-btn">编辑课程</button></a>
 </div>
 {% if not course %}
 <hr id="message_info">
@@ -21,7 +20,6 @@
                 <th>课程状态</th>
                 <th>开课学年</th>
                 <th>开课周</th>
-                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -31,7 +29,6 @@
           <td>{% if 'attend' in i.keys() %}{{ i['attend'] }}{% else %}NaN{% end %}</td>
           <td>{% if 'year' in i.keys() %}{{ i['year'] }}{% else %}NaN{% end %}</td>
           <td>{% if 'week' in i.keys() %}{{ i['week'] }}{% else %}NaN{% end %}</td>
-          <td><button class="btn btn-primary"></td>
       </tr>
   {% end %}{#end for#}
         </tbody>

@@ -3,3 +3,5 @@ front-end/other/*
 .idea/*
 *.pyc
 /user.txt
+.fuse_hidden00*
+*.doc
