@@ -6,7 +6,7 @@ from handlers.dash import DashBoardHandler
 from handlers.teaDashboard import CourseEditHandler, EditingCertainCourseHandler, DeleteCourseHandler, \
     CommentingHandler, MyStudentsHandler, MyNotifHandler
 from handlers.stuDashboard import MyHomeworkHandler, MyMessagesHandler, MyCourseHandler
-from handlers.newuser import SignUpHandler, AdminHandler
+from handlers.newuser import SignUpHandler, AdminHandler, AuthUserHandler
 
 urls = [
     (r'/', IndexHandler),
@@ -29,6 +29,7 @@ urls = [
     (r'/dash/myHomework', MyHomeworkHandler),
 
     (r'/dash', DashBoardHandler),
-    (r'/Material/Admin/TWF5IEplZmYgRGVhbiBCbGVzcyBNeSBXaWVyZCBXZWIgQXBwbGljYXRpb24=', AdminHandler),
+    (r'/TWF5IEplZmYgRGVhbiBCbGVzcyBNeSBXaWVyZCBXZWIgQXBwbGljYXRpb24=/(.*)', AuthUserHandler),
+    (r'/TWF5IEplZmYgRGVhbiBCbGVzcyBNeSBXaWVyZCBXZWIgQXBwbGljYXRpb24=', AdminHandler),
     (r'/.*', ErrorHandler),
 ]

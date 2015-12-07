@@ -37,10 +37,22 @@ def getTempUser():
     return db.query(sql)
 
 
+def getATempUser(uid):
+    """获取某一位临时用户"""
+    sql = 'select * from tempuser where id="%s"' % (clean(uid))
+    return db.query(sql)
+
+
 def insertIntoTempUser(id, type, name, pwd):
     """将新申请的用户加入数据库"""
     sql = "insert into tempuser (id,type,name,pwd) values ('%s','%s','%s','%s');" % (
         clean(id), clean(type), clean(name), clean(pwd))
+    db.execute(sql)
+
+
+def authNewUser(id, type, name, pwd):
+    """管理员通过信用户申请"""
+    sql = ''
     db.execute(sql)
 
 
