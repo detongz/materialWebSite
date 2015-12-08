@@ -50,10 +50,27 @@ def insertIntoTempUser(id, type, name, pwd):
     db.execute(sql)
 
 
-def authNewUser(id, type, name, pwd):
+def authNewUser(id):
     """管理员通过信用户申请"""
-    sql = ''
-    db.execute(sql)
+
+    sql = "select * from tempuser where id='%s';" % (clean(id))
+
+    user = db.get(sql)
+
+    name = user['name']
+    pwd = user['pwd']
+    type = user['type']
+
+    if type == 't':
+        sql = "insert into Teacher (idTeacher,name,pwd) values ('%s','%s','%s');" % (clean(id), name, pwd)
+        db.execute(sql)
+        return 'success'
+    elif type == 's':
+        sql = "insert into Student (idStudent,name,pwd) values ('%s','%s','%s');" % (clean(id), name, pwd)
+        db.execute(sql)
+        return 'success'
+    else:
+        return 'fail'
 
 
 if __name__ == "__main__":

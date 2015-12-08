@@ -1,7 +1,7 @@
 # coding: utf-8
 from base.base import BaseHandler
 from dash import is_loged
-from models.userOperation import getTempUser, insertIntoTempUser, getStudent, getTeacher, getATempUser
+from models.userOperation import getTempUser, insertIntoTempUser, getStudent, getTeacher, getATempUser, authNewUser
 
 
 class SignUpHandler(BaseHandler):
@@ -28,14 +28,18 @@ class SignUpHandler(BaseHandler):
             ugroup = 's'
         try:
             if getStudent(id) is None and getTeacher(id) is None:
+                # 账户不存在
                 if getATempUser(id) is None:
+                    # 在临时表中没有记录
                     insertIntoTempUser(id, ugroup, name, pwd)
                     self.render('error.html', title='申请成功', content='请等待管理员通过你的申请吧', icon='ion-checkmark-circled',
                                 active='none', id=None)
                 else:
+                    # 这个账户已经申请过，在临时表里有记录
                     self.render('error.html', title=None, content='请等待管理员通过你的申请吧', icon='ion-alert-circled',
                                 active='none', id=None)
             else:
+                # 账户已经存在， 一个账户只能存在于一个用户组里
                 self.render('error.html', title=None, content='这个号码已经被注册过了', icon='ion-alert-circled', active='none',
                             id=None)
         except Exception as e:
@@ -61,6 +65,12 @@ class AuthUserHandler(BaseHandler):
     def get(self, tp_id):
         gp, uid = is_loged(self)
         if uid == str(int(1e6)):
-            pass
+            returned = authNewUser(uid)
+            if returned == "success":
+                self.render('error.html', title='认证成功', content='新用户授权成功', icon='ion-checkmark-circled', active='none',
+                            id=None)
+            elif returned == 'fail':
+                self.render('error.html', title='认证失败', content='新用户授权失败', icon='ion-close-circled', active='none',
+                            id=None)
         else:
             self.redirect('/404')
