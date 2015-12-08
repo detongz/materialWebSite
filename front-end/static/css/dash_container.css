@@ -85,7 +85,12 @@ label{
 
 #assignmentForm{
 	width: 60%;
-	margin-left: 150px;
+}
+
+#formContainer
+{
+	padding-left: auto;
+	padding-right: auto;
 }
 
 @media screen and (max-width: 719px){
