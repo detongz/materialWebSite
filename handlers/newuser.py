@@ -28,8 +28,8 @@ class SignUpHandler(BaseHandler):
             ugroup = 's'
         try:
             if getStudent(id) is None and getTeacher(id) is None:
-                # 账户不存在
-                if getATempUser(id) is None:
+                # 账户不存在'
+                if not getATempUser(id):
                     # 在临时表中没有记录
                     insertIntoTempUser(id, ugroup, name, pwd)
                     self.render('error.html', title='申请成功', content='请等待管理员通过你的申请吧', icon='ion-checkmark-circled',
@@ -64,13 +64,17 @@ class AuthUserHandler(BaseHandler):
 
     def get(self, tp_id):
         gp, uid = is_loged(self)
-        if uid == str(int(1e6)):
-            returned = authNewUser(uid)
-            if returned == "success":
-                self.render('error.html', title='认证成功', content='新用户授权成功', icon='ion-checkmark-circled', active='none',
-                            id=None)
-            elif returned == 'fail':
-                self.render('error.html', title='认证失败', content='新用户授权失败', icon='ion-close-circled', active='none',
-                            id=None)
-        else:
-            self.redirect('/404')
+        try:
+            if uid == str(int(1e6)):
+                returned = authNewUser(tp_id)
+                if returned == "success":
+                    self.render('error.html', title='认证成功', content='新用户授权成功', icon='ion-checkmark-circled', active='',
+                                id=uid)
+                elif returned == 'fail':
+                    self.render('error.html', title='认证失败', content='新用户授权失败', icon='ion-close-circled', active='',
+                                id=uid)
+            else:
+                self.redirect('/404')
+        except:
+            self.render('error.html', title=None, content='出错啦', icon='ion-alert-circled', active='none', id=uid)
+            # 页面渲染有问题！！

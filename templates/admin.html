@@ -41,28 +41,31 @@
     {% include 'navibar.html' %}
     <div id="mainContainer" class="container">
       <div id="errorContain" class="container">
-        {% for i in temp %}
-        {% if i['type']!='s' %}
         <div class='tabel-responsive'>
-          <table class="table">
-            <thead>
-              <tr>
-                <th>姓名</th>
-                <th>类型</th>
-                <th>教工号/学号</th>
-                <th></th>
-              </tr>
-            </thead>
-            <tr>
-              <td>{{i['name']}}</td>
-              <td>{% if i['type']=='s' %}学生{% else %}教师{% end %}</td>
-              <td>{{i['id']}}</td>
-              <td><a href="/TWF5IEplZmYgRGVhbiBCbGVzcyBNeSBXaWVyZCBXZWIgQXBwbGljYXRpb24=/{{ i['id'] }}"><button name="button" class='btn btn-default'>确认申请</button></a></td>
-            </tr>
-          </table>
+         {% if not temp %}
+            <hr id="message_info">
+            <h4 id="message_info">无用户申请记录</h4>
+         {% else %}
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th>姓名</th>
+                    <th>类型</th>
+                    <th>教工号/学号</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                  {% for i in temp %}
+                <tr>
+                  <td>{{i['name']}}</td>
+                  <td>{% if i['type']=='s' %}学生{% else %}教师{% end %}</td>
+                  <td>{{i['id']}}</td>
+                  <td><a href="/TWF5IEplZmYgRGVhbiBCbGVzcyBNeSBXaWVyZCBXZWIgQXBwbGljYXRpb24=/{{ i['id'] }}"><button name="button" class='btn btn-default'>确认申请</button></a></td>
+                </tr>
+                  {% end %}<!-- end for-->
+              </table>
+            {% end %}
         </div>
-        {% end %}<!-- end if-->
-      {% end %}<!-- end for-->
       </div>
     </div>
   </body>

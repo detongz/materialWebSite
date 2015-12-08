@@ -40,7 +40,7 @@ def getTempUser():
 def getATempUser(uid):
     """获取某一位临时用户"""
     sql = 'select * from tempuser where id="%s"' % (clean(uid))
-    return db.query(sql)
+    return db.get(sql)
 
 
 def insertIntoTempUser(id, type, name, pwd):
@@ -64,9 +64,13 @@ def authNewUser(id):
     if type == 't':
         sql = "insert into Teacher (idTeacher,name,pwd) values ('%s','%s','%s');" % (clean(id), name, pwd)
         db.execute(sql)
+        sql = "delete from tempuser where id='%s';" % (clean(id))
+        db.execute(sql)
         return 'success'
     elif type == 's':
         sql = "insert into Student (idStudent,name,pwd) values ('%s','%s','%s');" % (clean(id), name, pwd)
+        db.execute(sql)
+        sql = "delete from tempuser where id='%s';" % (clean(id))
         db.execute(sql)
         return 'success'
     else:
