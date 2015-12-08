@@ -4,18 +4,17 @@
 {% block title %}我的课程{% end %}
 
 {% block content %}
-  <link rel="stylesheet" href="/static/css/login.css">
 <div class="row">
   <h1>提交作业</h1>
 </div>
-<div class="loginContainer">
-    <form>
+<div id="mainContainer" class="container">
+    <form action="post" class="container" id="assignmentForm">
         <div class="form-group">
             <label for="pics">请提交作业三视图截图</label>
         </div>
         <div class="form-group">
             <a class="btn btn-primary" href="javascript:void(0);" id="picsButton">
-                选择文件<input type="file" name="pics" id="pics">
+                选择作业文件<input type="file" name="pics" id="pics">
             </a>
         </div>
         <div class="form-group">

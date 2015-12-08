@@ -75,3 +75,15 @@ label{
 	/*width: 50px;*/
 	/*margin-top: -50px;*/
 }
+
+#assignmentForm{
+	width: 60%;
+	margin-left: 150px;
+}
+
+@media screen and (max-width: 719px){
+	#assignmentForm
+	{
+		padding-left: 0;
+	}
+}
