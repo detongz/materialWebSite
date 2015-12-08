@@ -55,3 +55,23 @@
 }
 
 h1{float:left;}
+
+label{
+	color:#666;
+}
+
+
+/*******submitassignment*********/
+
+#pics {
+	opacity: 0.0;
+	display: inline;
+	position: relative;
+	left: -60px;
+}
+
+#picsButton
+{
+	/*width: 50px;*/
+	/*margin-top: -50px;*/
+}

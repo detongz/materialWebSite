@@ -17,3 +17,9 @@ def get_my_homework(uid):
     """获取学生提交的所有作业"""
     sql = 'select * from Homework where sid="%s";' % (clean(uid))
     return db.query(sql)
+
+
+def homework():
+    """学生提交作业"""
+    sql="insert into Homework (cid,sid,type,idHomework,content,tag) values (%s,%s,%s,%s,%s,%s);" % ()
+    return db.query(sql)

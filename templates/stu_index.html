@@ -14,26 +14,20 @@
 {% else %}
 <div class="table-responsive">
     <table class="table">
-        <thead>
-            <tr>
-                <th>课序号</th>
-                <th>课程状态</th>
-                <th>开课学年</th>
-                <th>开课周</th>
-            </tr>
-        </thead>
-        <tbody>
-  {% for i in course %}
+        <tr>
+            <th>课序号</th>
+            <th>课程状态</th>
+            <th>开课学年</th>
+            <th>开课周</th>
+        </tr>
       <tr>
-          <td>{{ i['cid'] }}</td>
-          <td>{% if 'attend' in i.keys() %}{{ i['attend'] }}{% else %}NaN{% end %}</td>
-          <td>{% if 'year' in i.keys() %}{{ i['year'] }}{% else %}NaN{% end %}</td>
-          <td>{% if 'week' in i.keys() %}{{ i['week'] }}{% else %}NaN{% end %}</td>
+          <td>{{ course['idCourse'] }}</td>
+          <td>{% if course['state'] %}课程进行中{% else %}课程未进行{% end %}</td>
       </tr>
-  {% end %}{#end for#}
-        </tbody>
     </table>
 </div>
-
+<div class="row">
+    <a href="/submitAssgnment"><button class="btn btn-default right-btn">提交作业</button></a>
+</div>
 {% end %}{#end if#}
 {% end %}{# end block #}

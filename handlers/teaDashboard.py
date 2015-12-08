@@ -18,6 +18,9 @@ class CourseEditHandler(BaseHandler):
         else:
             self.redirect('/404')
 
+    def post(self, *args, **kwargs):
+        pass
+
 
 class EditingCertainCourseHandler(BaseHandler):
     """教师编辑特定课程页面"""

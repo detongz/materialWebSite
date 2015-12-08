@@ -37,3 +37,13 @@ class MyCourseHandler(BaseHandler):
             pass
         else:
             self.redirect('/404')
+
+
+class submitAssgnmentHandler(BaseHandler):
+    """ 学生提交作业 """
+    def get(self, *args, **kwargs):
+        gp, uid = is_loged(self)
+        if gp == 's':
+            self.render('stu_submitassignment.html',id=uid, active='dsh', active_slide='mcs')
+        else:
+            self.render('error.html', title=None, content='提交作业要先登陆哦', icon='ion-happy', active='', id=uid)

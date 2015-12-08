@@ -8,4 +8,3 @@ class ErrorHandler(BaseHandler):
     def get(self, *args, **kwargs):
         uid = self.get_secure_cookie('id')
         self.render('error.html', title=None, content='<br>404<br><br><br>页面没有找到', icon='ion-sad', active='', id=uid)
-# 出错啦<br>页面没有找到

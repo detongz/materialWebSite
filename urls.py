@@ -5,7 +5,7 @@ from handlers.error import ErrorHandler
 from handlers.dash import DashBoardHandler
 from handlers.teaDashboard import CourseEditHandler, EditingCertainCourseHandler, DeleteCourseHandler, \
     CommentingHandler, MyStudentsHandler, MyNotifHandler
-from handlers.stuDashboard import MyHomeworkHandler, MyMessagesHandler, MyCourseHandler
+from handlers.stuDashboard import MyHomeworkHandler, MyMessagesHandler, MyCourseHandler, submitAssgnmentHandler
 from handlers.newuser import SignUpHandler, AdminHandler, AuthUserHandler
 
 urls = [
@@ -27,9 +27,14 @@ urls = [
     # 学生接口
     (r'/dash/messages', MyMessagesHandler),
     (r'/dash/myHomework', MyHomeworkHandler),
+    (r'/submitAssgnment',submitAssgnmentHandler),
 
     (r'/dash', DashBoardHandler),
+
+    # 管理员新用户认证
     (r'/TWF5IEplZmYgRGVhbiBCbGVzcyBNeSBXaWVyZCBXZWIgQXBwbGljYXRpb24=/(.*)', AuthUserHandler),
     (r'/TWF5IEplZmYgRGVhbiBCbGVzcyBNeSBXaWVyZCBXZWIgQXBwbGljYXRpb24=', AdminHandler),
+
+    # error
     (r'/.*', ErrorHandler),
 ]

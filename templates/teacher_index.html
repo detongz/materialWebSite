@@ -26,7 +26,7 @@
         <tbody>
   {% for i in course %}
       <tr>
-          <td>{{ i['cid'] }}</td>
+          <td>{{ i['idCourse'] }}</td>
           <td>{% if 'attend' in i.keys() %}{{ i['attend'] }}{% else %}NaN{% end %}</td>
           <td>{% if 'year' in i.keys() %}{{ i['year'] }}{% else %}NaN{% end %}</td>
           <td>{% if 'week' in i.keys() %}{{ i['week'] }}{% else %}NaN{% end %}</td>
