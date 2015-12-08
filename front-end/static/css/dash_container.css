@@ -7,7 +7,7 @@
 
 #mainContent
 {
-    padding-left: 180px;
+    padding-left: 230px;
 }
 
 #errorContain
@@ -56,17 +56,19 @@
 
 label{
 	color:#666;
+	margin-left: 0px;
 }
 
 
 /*******submitassignment*********/
+
 .put-file
 {
 	position: relative;
 	left: 15px;
 	overflow: hidden;
 	color: #2423CC;
-	width: 120px;
+	width: 112px;
 	height: 35px;
 	text-align: center;
 }
@@ -86,9 +88,9 @@ label{
 	margin-left: 150px;
 }
 
-@media screen and (max-width: 850px){
-	.title
+@media screen and (max-width: 719px){
+	#assignmentForm
 	{
-		/*margin-left: 250px;*/
+		padding-left: 0;
 	}
 }
