@@ -20,7 +20,7 @@ def get_my_homework(uid):
 
 
 def submit_homework(idHomework, sid, content, tag):
-    """学生提交作业"""
+    """学生提交作业 三视图"""
     sql = "insert into Homework " \
           "(idHomework,cid,sid,content,tag) " \
           "values " \
@@ -29,7 +29,14 @@ def submit_homework(idHomework, sid, content, tag):
           "'%s'," \
           "'%s'," \
           "'%s')" % (clean(idHomework), clean(sid), clean(sid), cleanLink(content), clean(tag))
-    print sql
+    return db.execute(sql)
+
+
+def submit_homework_vedio(idHomework, sid, content, tag):
+    """学生提交作业 视频"""
+    sql = "insert into Homework (idHomework,cid,sid,content,tag,type) values " \
+          "('%s',(select cid from Student where idStudent='%s'),'%s','%s','%s','video')" \
+          % (clean(idHomework), clean(sid), clean(sid), cleanLink(content), clean(tag))
     return db.execute(sql)
 
 

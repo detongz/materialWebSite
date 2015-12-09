@@ -26,8 +26,8 @@
   {% for i in homework %}
       <tr>
           <td>{{ i['tag'] }}</td>
-          <td>{{ i['comment'] }}</td>
-          <td>{% if i['type']=='info' %}课程消息{% else %}课程资源{% end %}</td>
+          <td>{% if i['comment'] =="" %}无{% else %}{{ i['comment'] }}{% end %}</td>
+          <td>{% if i['type']=='video' %}展示视频{% else %}三视图截图{% end %}</td>
           <td>{{ i['date'] }}</td>
       </tr>
   {% end %}{#end for#}
