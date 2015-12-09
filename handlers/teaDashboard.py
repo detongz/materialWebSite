@@ -2,8 +2,9 @@
 from base.base import BaseHandler
 from models.course import get_teacher_course, get_teacher_course_delete
 from models.student import get_my_student
-from models.homework import get_teacher_homework
+from models.homework import get_teacher_homework, get_homework, update_comment
 from models.notification import get_teacher_notif
+from models.security import html2Text
 from dash import is_loged
 
 
@@ -87,6 +88,18 @@ class CommentingHandler(BaseHandler):
     def get(self, hid):
         gp, uid = is_loged(self)
         if gp == 't':
-            pass
+            h = get_homework(hid)
+            comment = html2Text(h['comment'])
+            self.render('teacher_cmt_homework.html', id=uid, active='dsh', active_slide='cmt', hid=hid, comment=comment)
         else:
             self.redirect('/404')
+
+    def post(self, hid):
+        gp, uid = is_loged(self)
+        if gp == 't':
+            comment = self.get_argument('comment')
+            try:
+                update_comment(hid, comment)
+                self.render('error.html', title='评价成功', content='您对这次作业已经评价过了！', icon='ion-happy', active='dsh', id=uid)
+            except Exception as e:
+                print(e)

@@ -33,6 +33,25 @@ def text2Html(content):
     content = escape(content)
     lines = content.split('\n')
     for i, line in enumerate(lines):
-        lines[i] = '<p>' + line + '</p><br>'
+        lines[i] = '<p>' + line + '</p>'
+    content = ''.join(lines)
+    return content
+
+
+def html2Text(content):
+    def escape(txt):
+        """将数据库中的html标签去掉，仅仅留下txt文档"""
+        txt = txt.replace('&#38;', '&')
+        txt = txt.replace('&#160;', ' ')
+        txt = txt.replace('&#60;', '<')
+        txt = txt.replace('&#62;', '>')
+        txt = txt.replace('&#34;', '"')
+        txt = txt.replace('&#39;', '\'')
+        return txt
+
+    content = escape(content)
+    lines = content.split('</p>')
+    for i, line in enumerate(lines):
+        lines[i] = line.strip('<p>').strip('<br>').strip('<\p>') + '\n'
     content = ''.join(lines)
     return content

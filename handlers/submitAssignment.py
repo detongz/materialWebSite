@@ -18,7 +18,7 @@ class submitAssgnmentHandler(BaseHandler):
         if gp == 's':
             # 判断是否登陆
             cid = get_student_course(uid)
-            if not cid:
+            if cid == '':
                 # 数据库中没有课程号记录
                 self.render('error.html', title=None, content='提交作业要先录入课程号哦', icon='ion-happy', active='', id=uid)
             else:
@@ -43,7 +43,12 @@ class submitAssgnmentHandler(BaseHandler):
                 idHomework = uid + str(random.randint(99, 1000))
 
             # 删除文件夹下所有相同id的文件
-
+            # 未实现！！！！
+            self.clear_cookie('content')
+            self.clear_cookie('submitName')
+            self.clear_cookie('hid')
+            self.clear_cookie('frontal')
+            self.clear_cookie('top')
 
             self.set_secure_cookie('content', base64.encodestring(content.encode('utf8')))  # 命名简单加密后加载到cookie中保存
             self.set_secure_cookie('submitName', base64.encodestring(submitName.encode('utf8')))
@@ -62,7 +67,7 @@ class submitStep2(BaseHandler):
 
                 hid = self.get_secure_cookie('hid')
 
-                if self.get_secure_cookie('submitName') is not None and hid is not None:
+                if self.get_secure_cookie('submitName') != '' and hid != '':
                     # 判断是否已经完成了之前的提交步骤
                     f = self.request.files['frontal'][0].body
 
@@ -87,7 +92,7 @@ class submitStep3(BaseHandler):
                 hid = self.get_secure_cookie('hid')
 
                 if self.get_secure_cookie('frontal') == '1' and self.get_secure_cookie(
-                        'submitName') is not None and hid is not None:
+                        'submitName') is not None and hid != '':
                     # 判断是否已经完成了之前的提交步骤
 
                     f = self.request.files['top'][0].body
@@ -126,6 +131,7 @@ class submitStep4(BaseHandler):
 
                         self.clear_cookie('content')
                         self.clear_cookie('submitName')
+                        self.clear_cookie('hid')
                         self.clear_cookie('frontal')
                         self.clear_cookie('top')
 
@@ -199,6 +205,7 @@ class submitVedio(BaseHandler):
 
             try:
                 submit_homework_vedio(idHomework, uid, content, name)
-                self.render('error.html', title="提交成功", content='作业提交成功', icon='ion-checkmark-circled', id=uid, active='dsh')
+                self.render('error.html', title="提交成功", content='作业提交成功', icon='ion-checkmark-circled', id=uid,
+                            active='dsh')
             except Exception as e:
                 print e
