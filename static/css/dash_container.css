@@ -58,19 +58,21 @@ h1{float:left;}
 
 label{
 	color:#666;
+	margin-top: 30px;
+	font-size: 0.93em;
 }
 
 
 /*******submitassignment*********/
 
-#pics {
+.pics {
 	opacity: 0.0;
 	display: inline;
 	position: relative;
 	left: -60px;
 }
 
-#picsButton
+.picsButton
 {
 	/*width: 50px;*/
 	/*margin-top: -50px;*/

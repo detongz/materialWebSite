@@ -1,0 +1,23 @@
+{% autoescape None %}
+{% extends 'student_dash.html' %}
+
+{% block title %}我的课程{% end %}
+
+{% block content %}
+<div class="row">
+  <h1>提交作业</h1>
+</div>
+<div id="mainContainer" class="container">
+    <form action="/submitAssgnment-3" method="post" class="container form-3" enctype="multipart/form-data"  id="assignmentForm">
+         <label>请上传作业的左视图截图</label>
+        <div class="form-group">
+            <a class="btn btn-primary picsButton" href="javascript:void(0);">左视图<input type="file" name="profile" id="profile" class="pics" accept='image/jpeg'></a>
+            <label id="porfileLab"></label>
+        </div>
+        <div class="form-group">
+            <input type="submit" class="btn btn-default btn-form-3" value="完成提交">
+        </div>
+    </form>
+</div>
+
+{% end %}{# end block #}

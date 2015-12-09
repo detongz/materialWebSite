@@ -8,17 +8,18 @@
   <h1>提交作业</h1>
 </div>
 <div id="mainContainer" class="container">
-    <form action="post" class="container" id="assignmentForm">
+    <form method="post" class="container form-0" id="assignmentForm">
+        <h4>请提交作业三视图截图</h4>
         <div class="form-group">
-            <label for="pics">请提交作业三视图截图</label>
+            <label>请为这次提交命名吧</label>
+            <input name="submitName" type="text" class="form-control" placeholder="请填写本次提交作业的名称"/>
         </div>
         <div class="form-group">
-            <a class="btn btn-primary" href="javascript:void(0);" id="picsButton">
-                选择作业文件<input type="file" name="pics" id="pics">
-            </a>
+            <label>请填写你的工程文件分享链接<br><label>是否需要提交文件分享链接，请同学们关注老师发布的消息</label></label>
+            <input name="content" type="text" class="form-control" placeholder="请填写本次提交作业的名称"/>
         </div>
         <div class="form-group">
-            <input type="submit" class="btn btn-default">
+            <input type="submit" class="btn btn-default btn-form-0" value="下一步">
         </div>
     </form>
 </div>
