@@ -42,6 +42,9 @@ class submitAssgnmentHandler(BaseHandler):
                     break
                 idHomework = uid + str(random.randint(99, 1000))
 
+            # 删除文件夹下所有相同id的文件
+
+
             self.set_secure_cookie('content', base64.encodestring(content.encode('utf8')))  # 命名简单加密后加载到cookie中保存
             self.set_secure_cookie('submitName', base64.encodestring(submitName.encode('utf8')))
             self.set_secure_cookie('hid', idHomework)

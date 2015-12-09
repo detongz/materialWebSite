@@ -20,6 +20,7 @@
                 <th>教师评语</th>
                 <th>作业类型</th>
                 <th>更新时间</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -29,6 +30,7 @@
           <td>{% if i['comment'] =="" %}无{% else %}{{ i['comment'] }}{% end %}</td>
           <td>{% if i['type']=='video' %}展示视频{% else %}三视图截图{% end %}</td>
           <td>{{ i['date'] }}</td>
+          <td><a href="/dash/myHomework/view/{{ i['idHomework'] }}" class="btn btn-default btn-xs">查看</a></td>
       </tr>
   {% end %}{#end for#}
         </tbody>
