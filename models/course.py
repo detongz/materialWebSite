@@ -22,7 +22,7 @@ def get_teacher_course_delete(uid):
 
 
 def get_student_course(uid):
-    """获取学生所有的课程"""
+    """获取学生参加的课程"""
     sql='select * from Course where idCourse in (select cid from Student where idStudent="%s");' % (clean(uid))
     return db.get(sql)
 

@@ -7,13 +7,13 @@ def clean(s):
     for stuff in dirty_stuff:
         if s.find(stuff) >= 0:
             s = s.replace(stuff, "")
-    return s
+    return s.decode('utf-8')
 
 
 def cleanLink(s):
     """清洗文件分享链接"""
     dirty_stuff = ["\"", "\\", "*", "'", "-", "#", ";", "<", ">", "+", "%"]
     for suff in dirty_stuff:
-        if s.find(suff) >=0:
-            s=s.replace(suff,"")
-    return s
+        if s.find(suff) >= 0:
+            s = s.replace(suff, "")
+    return s.decode('utf-8')

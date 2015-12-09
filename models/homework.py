@@ -1,7 +1,7 @@
 # coding: utf-8
 
 from models import db
-from security import clean
+from security import clean, cleanLink
 
 """作业操作"""
 
@@ -19,7 +19,21 @@ def get_my_homework(uid):
     return db.query(sql)
 
 
-def homework():
+def submit_homework(idHomework, sid, content, tag):
     """学生提交作业"""
-    sql="insert into Homework (cid,sid,type,idHomework,content,tag) values (%s,%s,%s,%s,%s,%s);" % ()
-    return db.query(sql)
+    sql = "insert into Homework " \
+          "(idHomework,cid,sid,content,tag) " \
+          "values " \
+          "('%s'," \
+          "(select cid from Student where idStudent='%s')," \
+          "'%s'," \
+          "'%s'," \
+          "'%s')" % (clean(idHomework), clean(sid), clean(sid), cleanLink(content), clean(tag))
+    print sql
+    return db.execute(sql)
+
+
+def get_homework(hid):
+    """根据作业id，获取某次作业"""
+    sql = "select * from Homework where idHomework='%s';" % (clean(hid))
+    return db.get(sql)
