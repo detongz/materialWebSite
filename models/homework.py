@@ -9,7 +9,12 @@ from security import clean, cleanLink
 def get_teacher_homework(uid):
     """获取教师所有作业"""
     # return db.Course.find({'tid': 'uid'})
-    sql = "select * from Homework where cid in (select idCourse from Course where tid='%s')" % (clean(uid))
+    sql = """
+            select Homework.cid,name,type,date,comment,idHomework,tag from Homework,Student
+            where Homework.cid in (select idCourse from Course where tid='%s') and Student.idStudent = Homework.sid
+            order by date desc;
+            """ \
+          % (clean(uid))
     return db.query(sql)
 
 

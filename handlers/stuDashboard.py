@@ -33,46 +33,50 @@ class MyMessagesHandler(BaseHandler):
 
 
 class ViewHomeworkHandler(BaseHandler):
-    """查看某次作业"""
+    """教师/学生 查看某次作业"""
 
     def get(self, hid, *args, **kwargs):
         gp, uid = is_loged(self)
-        if gp == 's':
 
-            homework = get_homework(hid)
+        homework = get_homework(hid)
 
-            if not homework:
+        if not homework:
                 self.render('error.html', title=None, content="作业不存在", icon='ion-sad', active='dsh', id=uid)
 
-            else:
-                if homework['type'] == 'pic':
-                    # 作业是图片类型
-
-                    path = get_file_path(hid)
-
-                    if len(path) != 3:
-                        # 没有获得三个文件
-                        self.render('error.html', title=None, content=None, icon='ion-sad', active='dsh', id=uid)
-                    else:
-
-                        fname = []
-                        for p in path:
-                            f = p.split('/')[-1]
-                            if f.split('.')[-1] in {'jpg', 'jpeg', 'png', 'gif', 'JPEG', 'JPG', 'tiff', 'tif', 'raw'}:
-                                fname.append(f)
-
-                        if len(fname) != 3:
-                            # 没有获得三个图片文件
-                            self.render('error.html', title=None, content=None, icon='ion-sad', active='dsh', id=uid)
-
-                        else:
-                            self.render('stu_homework_once.html', homework=homework, id=uid, active='dsh',
-                                        active_slide='hmwk', front=fname[0], portrait=fname[1], top=fname[2])
-                else:
-                    # video类型作业
-                    self.render('stu_homework_once.html', homework=homework, id=uid, active='dsh', active_slide='hmwk')
         else:
-            self.redirect('/404')
+            if homework['type'] == 'pic':
+                # 作业是图片类型
+
+                path = get_file_path(hid)
+
+                if len(path) != 3:
+                    # 没有获得三个文件
+                    self.render('error.html', title=None, content=None, icon='ion-sad', active='dsh', id=uid)
+                else:
+
+                    fname = []
+                    for p in path:
+                        f = p.split('/')[-1]
+                        if f.split('.')[-1] in {'jpg', 'jpeg', 'png', 'gif', 'JPEG', 'JPG', 'tiff', 'tif', 'raw'}:
+                            fname.append(f)
+
+                    if len(fname) != 3:
+                        # 没有获得三个图片文件
+                        self.render('error.html', title=None, content=None, icon='ion-sad', active='dsh', id=uid)
+
+                    else:
+                        if gp=='s':
+                            self.render('stu_homework_once.html', homework=homework, id=uid, active='dsh',
+                                    active_slide='hmwk', front=fname[0], portrait=fname[1], top=fname[2])
+                        elif gp=='t':
+                            self.render('teacher_view_homework.html',homework=homework, id=uid, active='dsh',
+                                    active_slide='cmt', front=fname[0], portrait=fname[1], top=fname[2])
+            else:
+                # video类型作业
+                if gp=='s':
+                    self.render('stu_homework_once.html', homework=homework, id=uid, active='dsh', active_slide='hmwk')
+                elif gp=='t':
+                    self.render('teacher_view_homework.html', homework=homework, id=uid, active='dsh', active_slide='cmt')
 
 
 class RemoveHomeworkHandler(BaseHandler):

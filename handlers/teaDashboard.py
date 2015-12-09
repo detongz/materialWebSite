@@ -2,6 +2,7 @@
 from base.base import BaseHandler
 from models.course import get_teacher_course, get_teacher_course_delete
 from models.student import get_my_student
+from models.homework import get_teacher_homework
 from models.notification import get_teacher_notif
 from dash import is_loged
 
@@ -44,18 +45,6 @@ class DeleteCourseHandler(BaseHandler):
             self.redirect('/404')
 
 
-class CommentingHandler(BaseHandler):
-    """教师评价作业首页"""
-
-    def get(self, *args, **kwargs):
-        gp, uid = is_loged(self)
-        if gp == 't':
-            self.render('teacher_commenting.html', id=uid, active='dsh', active_slide='cmt',
-                        course=get_teacher_course(uid))
-        else:
-            self.redirect('/404')
-
-
 class MyStudentsHandler(BaseHandler):
     """获取教师所有学生"""
 
@@ -76,5 +65,28 @@ class MyNotifHandler(BaseHandler):
         if gp == 't':
             self.render('teacher_my_notifications.html', id=uid, active='dsh', active_slide='ntfc',
                         info=get_teacher_notif(uid))
+        else:
+            self.redirect('/404')
+
+
+class CommentingIndexHandler(BaseHandler):
+    """教师评价作业首页"""
+
+    def get(self, *args, **kwargs):
+        gp, uid = is_loged(self)
+        if gp == 't':
+            self.render('teacher_commenting.html', id=uid, active='dsh', active_slide='cmt',
+                        homework=get_teacher_homework(uid))
+        else:
+            self.redirect('/404')
+
+
+class CommentingHandler(BaseHandler):
+    """教师评价某位同学某的次作业"""
+
+    def get(self, hid):
+        gp, uid = is_loged(self)
+        if gp == 't':
+            pass
         else:
             self.redirect('/404')
