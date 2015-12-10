@@ -1,6 +1,6 @@
 # coding: utf-8
 from base.base import BaseHandler
-from models.course import get_teacher_course, get_teacher_course_delete
+from models.course import get_teacher_course, get_teacher_course_delete, new_course, get_course
 from models.student import get_my_student
 from models.homework import get_teacher_homework, get_homework, update_comment
 from models.notification import get_teacher_notif
@@ -21,7 +21,29 @@ class CourseEditHandler(BaseHandler):
             self.redirect('/404')
 
     def post(self, *args, **kwargs):
-        pass
+        """教师新增课程"""
+
+        gp, uid = is_loged(self)
+
+        if gp == 't':
+            cid = self.get_argument('cid')
+            year = self.get_argument('year')
+            start_week = int(self.get_argument('sw'))
+            end_week = int(self.get_argument('ew'))
+
+            if end_week > 20 or end_week < start_week or not (0 < start_week < 18):
+                self.render('error.html', title='输入错误', content='周数输入有误<br><br>请重新输入', icon='ion-alert-circled',
+                            active='dsh', id=uid)
+            elif get_course(cid) is not None:
+                self.render('error.html', title='输入错误', content='课序号已经存在<br><br>请删除相应课程后在进行创建新课程的操作',
+                            icon='ion-alert-circled', active='dsh', id=uid)
+            else:
+                try:
+                    new_course(uid, cid, year, str(start_week), str(end_week))
+                    self.render('error.html', title='操作成功', content='课程创建成功', icon='ion-checkmark-circled', active='dsh', id=uid)
+                except Exception as e:
+                    print e
+                    self.render('error.html', title=None, content=None, icon='ion-bug', active='dsh', id=uid)
 
 
 class EditingCertainCourseHandler(BaseHandler):

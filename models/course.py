@@ -56,6 +56,15 @@ def set_course(uid, cid):
     db.execute(sql)
 
 
+def new_course(tid, idc, year, st, en):
+    """教师新增加课程"""
+
+    sql = "insert into Course (idCourse,tid,year,start_week,end_week) " \
+          "values ('%s','%s','%s','%s','%s');" \
+          % (clean(idc), clean(tid), year, st, en)
+    db.execute(sql)
+
+
 if __name__ == "__main__":
     for i in get_teacher_course('zmy**'):
         print i

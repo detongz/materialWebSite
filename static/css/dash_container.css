@@ -70,6 +70,13 @@ label{
 }
 
 
+.form-group label{
+	color:#666;
+	margin-top: 20px;
+	font-size: 0.97em;
+}
+
+
 /*******submitassignment*********/
 
 .pics {

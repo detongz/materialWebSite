@@ -10,10 +10,10 @@
 </div>
     <div class="row">
         <ul id="loginHead" class="nav nav-tabs">
+{#            <li role="presentation" class="active">#}
+{#                <a href="#edit" data-toggle="tab">编辑课程</a>#}
+{#            </li>#}
             <li role="presentation" class="active">
-                <a href="#edit" data-toggle="tab">编辑课程</a>
-            </li>
-            <li role="presentation">
                 <a href="#add" data-toggle="tab">新增课程</a>
             </li>
             <li role="presentation">
@@ -22,51 +22,59 @@
         </ul>
     </div>
     <div class="row tab-content">
-        <!--start edit course-->
-        <div class='tab-pane fade in active' id="edit">
-            {% if not course %}
-            <h5 id="message_info">无课程记录</h5>
-            {% else %}
-            <div class="table-responsive">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th></th>
-                            <th>课序号</th>
-                            <th>课程人数</th>
-                            <th>开课学年</th>
-                            <th>开课周</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-              {% for i in course %}
-                  <tr>
-                      <td><a class="editCourseLink" href="/dash/editCourse/{{ i['idCourse'] }}"><i class="ion ion-ios-circle-filled"></i></a></td>
-                      <td><a class="editCourseLink" href="/dash/editCourse/{{ i['idCourse'] }}">{{ i['idCourse'] }}</a></td>
-                      <td>{% if 'attend' in i.keys() %}{{ i['attend'] }}{% else %}NaN{% end %}</td>
-                      <td>{% if 'year' in i.keys() %}{{ i['year'] }}{% else %}NaN{% end %}</td>
-                      <td>{% if 'week' in i.keys() %}{{ i['week'] }}{% else %}NaN{% end %}</td>
-                  </tr>
-              {% end %}{#end for#}
-                    </tbody>
-                </table>
-            </div>
-            {% end %}{#end if#}
-        </div>
+{#        <!--start edit course-->#}
+{#        <div class='tab-pane fade in active' id="edit">#}
+{#            {% if not course %}#}
+{#            <h5 id="message_info">无课程记录</h5>#}
+{#            {% else %}#}
+{#            <div class="table-responsive">#}
+{#                <table class="table">#}
+{#                    <thead>#}
+{#                        <tr>#}
+{#                            <th></th>#}
+{#                            <th>课序号</th>#}
+{#                            <th>课程人数</th>#}
+{#                            <th>开课学年</th>#}
+{#                            <th>开课周</th>#}
+{#                        </tr>#}
+{#                    </thead>#}
+{#                    <tbody>#}
+{#              {% for i in course %}#}
+{#                  <tr>#}
+{#                      <td><a class="editCourseLink" href="/dash/editCourse/{{ i['idCourse'] }}"><i class="ion ion-ios-circle-filled"></i></a></td>#}
+{#                      <td><a class="editCourseLink" href="/dash/editCourse/{{ i['idCourse'] }}">{{ i['idCourse'] }}</a></td>#}
+{#                      <td>{% if 'attend' in i.keys() %}{{ i['attend'] }}{% else %}NaN{% end %}</td>#}
+{#                      <td>{% if 'year' in i.keys() %}{{ i['year'] }}{% else %}NaN{% end %}</td>#}
+{#                      <td>{% if 'week' in i.keys() %}{{ i['week'] }}{% else %}NaN{% end %}</td>#}
+{#                  </tr>#}
+{#              {% end %}{#end for#}
+{#                    </tbody>#}
+{#                </table>#}
+{#            </div>#}
+{#            {% end %}{#end if#}
+{#        </div>#}
         <!--end edit course-->
         <!--start add course-->
-        <div id="add" class="tab-pane fade">
+        <div id="add" class="tab-pane fade in active">
             <form method="post">
-                <div class="form-group form-group-margin-15">
-                    <label for="loginID">教工号</label>
-                    <input type="text" class="form-control" id="loginID" name="id" placeholder="教工号">
+                <div class="form-group">
+                    <label>课序号<br><label>两位数字的课序号</label></label>
+                    <input type="number" class="form-control" name='cid' placeholder="请输入课序号" required autofocus>
                 </div>
-                <div class="form-group form-group-margin-15">
-                    <label for="loginPassword">密码</label>
-                    <input type="password" class="form-control" id="loginPassword" name="password" placeholder="密码">
+                <div class="form-group ">
+                    <label>学年<br></label>
+                    <input type="text" class="form-control" name="year" placeholder="请输入课程学年" required>
                 </div>
-                <input id="ugp" name="ug" value="t" hidden>
-                <button class="btn btn-default center-btn">确认并开始课程</button>
+                <div class="form-group ">
+                    <label>开课周<br><label>两位数字的周数,可以不填写</label></label>
+                    <input type="number" class="form-control" name="sw" placeholder="请输入课程课程开始的周数">
+                </div>
+                <div class="form-group">
+                    <label>结束周<br><label>两位数字的周数,可以不填写</label></label>
+                    <input type="number" class="form-control" name="ew" placeholder="请输入课程课程结束的周数">
+                </div>
+                <label>如果不填写开始周和结束周，则课程记录默认设为第一周到第十八周</label>
+                <button class="btn btn-primary center-btn">确认并开始课程</button>
             </form>
         </div>
         <!--end add course-->
