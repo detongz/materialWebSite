@@ -42,6 +42,12 @@
 	width:20%;
 }
 
+.left-btn{
+	float:left;
+	margin-top: 15px;
+	width:20%;
+}
+
 .center-btn{
 	margin-left: 40%;
 	margin-right: 40%;
