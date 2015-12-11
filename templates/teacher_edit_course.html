@@ -56,7 +56,7 @@
         <!--end edit course-->
         <!--start add course-->
         <div id="add" class="tab-pane fade in active">
-            <form method="post">
+            <form method="post" action="/dash/editCourse">
                 <div class="form-group">
                     <label>课序号<br><label>两位数字的课序号</label></label>
                     <input type="number" class="form-control" name='cid' placeholder="请输入课序号" required autofocus>
@@ -66,14 +66,13 @@
                     <input type="text" class="form-control" name="year" placeholder="请输入课程学年" required>
                 </div>
                 <div class="form-group ">
-                    <label>开课周<br><label>两位数字的周数,可以不填写</label></label>
-                    <input type="number" class="form-control" name="sw" placeholder="请输入课程课程开始的周数">
+                    <label>开课周<br><label>请填写两位数字的周数</label></label>
+                    <input type="number" class="form-control" name="sw" placeholder="请输入课程课程开始的周数" required>
                 </div>
                 <div class="form-group">
-                    <label>结束周<br><label>两位数字的周数,可以不填写</label></label>
-                    <input type="number" class="form-control" name="ew" placeholder="请输入课程课程结束的周数">
+                    <label>结束周<br><label>请填写两位数字的周数</label></label>
+                    <input type="number" class="form-control" name="ew" placeholder="请输入课程课程结束的周数" required>
                 </div>
-                <label>如果不填写开始周和结束周，则课程记录默认设为第一周到第十八周</label>
                 <button class="btn btn-primary center-btn">确认并开始课程</button>
             </form>
         </div>
