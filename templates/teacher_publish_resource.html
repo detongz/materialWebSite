@@ -1,0 +1,28 @@
+{% autoescape None %}
+{% extends 'teacher_dash.html' %}
+
+{% block title %}我的课程{% end %}
+
+{% block content %}
+
+<div class="row">
+  <h1>消息发布</h1>
+</div>
+
+<div class="row">
+    <form method="post" action="">
+        <h4>发布课程资源</h4>
+        <div class="form-group">
+            <label>课程资源标题</label>
+            <input rows="10" name="title" type="text" class="form-control" placeholder="请填写课程资源标题" required autofocus/>
+        </div>
+        <div class="form-group">
+            <label>课程资源详细内容<label>目前发布课程资源支持文字信息</label></label>
+            <textarea rows="20" name="content" type="text" class="form-control" placeholder="请为课程资源填写详细内容" required/>
+{#                {% if comment !='' %}{{ comment }}{% end %}#}
+            </textarea>
+        </div>
+        <input type="submit" class="btn btn-primary btn-lg" value="确认发布">
+    </form>
+</div>
+{% end %}{# end block #}
