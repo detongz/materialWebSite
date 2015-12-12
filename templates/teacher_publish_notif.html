@@ -1,7 +1,8 @@
+
 {% autoescape None %}
 {% extends 'teacher_dash.html' %}
 
-{% block title %}我的课程{% end %}
+{% block title %}发布通知{% end %}
 
 {% block content %}
 
@@ -13,7 +14,7 @@
     <form method="post" action="">
         <h4>发布课程通知</h4>
         <div class="form-group">
-            <label>课程资源标题</label>
+            <label>课程通知标题</label>
             <input rows="10" name="title" type="text" class="form-control" placeholder="请填写课程通知标题" required autofocus/>
         </div>
         <div class="form-group">

@@ -17,20 +17,25 @@
     <table class="table">
         <thead>
             <tr>
-                <th>课序号</th>
-                <th>课程人数</th>
-                <th>开课学年</th>
-                <th>开课周</th>
+                <th></th>
+                <th>消息标题</th>
+                <th>发布日期</th>
+                <th>详细时间</th>
+                <th></th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
   {% for i in info %}
+  {% if i['type']=='info' %}
       <tr>
-          <td>{{ i['cid'] }}</td>
-          <td>{% if 'attend' in i.keys() %}{{ i['attend'] }}{% else %}NaN{% end %}</td>
-          <td>{% if 'year' in i.keys() %}{{ i['year'] }}{% else %}NaN{% end %}</td>
-          <td>{% if 'week' in i.keys() %}{{ i['week'] }}{% else %}NaN{% end %}</td>
+          <td><a href="/notification/{{ i['idInfo'] }}"><i class="ion ion-record"></i></a></td>
+          <td><a href="/notification/{{ i['idInfo'] }}">{{ i['t‎itle'] }}</a></td>
+          <td>{{ i['date'].strftime('%Y-%m-%d') }}</td>
+          <td>{{ i['date'].strftime('%R:%S') }}</td>
+          <td><a href="编辑消息" class="btn btn-default btn-xs">编辑</a><a href="删除消息" class="btn btn-default btn-xs">删除</a></td>
       </tr>
+  {% end %}{#end if#}
   {% end %}{#end for#}
         </tbody>
     </table>

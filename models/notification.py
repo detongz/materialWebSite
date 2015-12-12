@@ -54,8 +54,10 @@ def publish_notif(tid, idInfo, detail, title):
     detail = text2Html(detail)
     title = clean(title)
 
-    sql = "insert into Info (tid,idInfo,detail,title) values ('%s','%s','%s','%s');" \
+    sql = "insert into Info (tid,idInfo,detail,t‎itle) values  ('%s','%s','%s','%s');" \
           % (clean(tid), clean(idInfo), detail, title);
+
+    db.execute(sql)
 
 
 def publish_res(tid, idInfo, detail, title):
@@ -68,5 +70,7 @@ def publish_res(tid, idInfo, detail, title):
     detail = text2Html(detail)
     title = clean(title)
 
-    sql = "insert into Info (type,tid,idInfo,detail,title) values ('res','%s','%s','%s','%s');" \
+    sql = "insert into Info (tid,idInfo,detail,t‎itle) values  ('res','%s','%s','%s','%s');" \
           % (clean(tid), clean(idInfo), detail, title);
+
+    db.execute(sql)
