@@ -74,3 +74,18 @@ def publish_res(tid, idInfo, detail, title):
           % (clean(tid), clean(idInfo), detail, title);
 
     db.execute(sql)
+
+
+def get_info(idInfo):
+    """按照infoId获取info内容"""
+
+    sql = "select * from Info where idInfo = '%s';" % (clean(idInfo))
+    return db.get(sql)
+
+
+def update_notif(idInfo, detail, title):
+    """更新消息"""
+
+    detail = text2Html(detail)
+    sql = "update Info set detail='%s',t‎itle='%s' where idInfo='%s';" % (detail,title,idInfo)
+    db.execute(sql)

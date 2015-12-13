@@ -4,8 +4,9 @@ from handlers.login import LoginHandler, LogoutHandler
 from handlers.error import ErrorHandler
 from handlers.dash import DashBoardHandler
 from handlers.teaDashboard import CourseEditHandler, EditingCertainCourseHandler, DeleteCourseHandler, \
-    CommentingHandler, CommentingIndexHandler, MyStudentsHandler, MyNotifHandler, PublishEntrenceHandler, \
-    PublishNotificationHandler, PublishResourceHandler
+    CommentingHandler, CommentingIndexHandler, MyStudentsHandler, MyNotifHandler, PublishEntrenceHandler
+from handlers.information import PublishNotificationHandler, PublishResourceHandler, EditNotificationHandler, \
+    EditResourceHandler
 from handlers.stuDashboard import MyHomeworkHandler, MyMessagesHandler, ViewHomeworkHandler, RemoveHomeworkHandler, \
     SetCourseHandler, SetCourseListHandler
 from handlers.submitAssignment import submitAssgnmentHandler, submitStep2, submitStep3, submitStep4, submitVedio
@@ -26,6 +27,8 @@ urls = [
     (r'/dash/editCourse', CourseEditHandler),
     (r'/dash/publishing/notification', PublishNotificationHandler),
     (r'/dash/publishing/resource', PublishResourceHandler),
+    (r'/dash/editing/notification/(.*)', EditNotificationHandler),
+    (r'/dash/editing/resource/(.*)', EditResourceHandler),
     (r'/dash/publishing', PublishEntrenceHandler),
     (r'/dash/allStudents', MyStudentsHandler),
     (r'/dash/notifications', MyNotifHandler),
