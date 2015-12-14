@@ -4,6 +4,11 @@ from models import db
 from security import clean, text2Html
 from userOperation import getTeacher
 
+import sys
+
+reload(sys)
+sys.setdefaultencoding('utf-8')
+
 """对学生操作"""
 
 
@@ -70,8 +75,8 @@ def publish_res(tid, idInfo, detail, title):
     detail = text2Html(detail)
     title = clean(title)
 
-    sql = "insert into Info (tid,idInfo,detail,t‎itle) values  ('res','%s','%s','%s','%s');" \
-          % (clean(tid), clean(idInfo), detail, title);
+    sql = '''insert into Info (tid,idInfo,detail,t‎itle,type) values  ('%s','%s','%s','%s','%s');''' \
+          % (clean(tid), clean(idInfo), detail, title, 'res');
 
     db.execute(sql)
 
@@ -87,5 +92,5 @@ def update_notif(idInfo, detail, title):
     """更新消息"""
 
     detail = text2Html(detail)
-    sql = "update Info set detail='%s',t‎itle='%s' where idInfo='%s';" % (detail,title,idInfo)
+    sql = "update Info set detail='%s',t‎itle='%s' where idInfo='%s';" % (detail, title, idInfo)
     db.execute(sql)

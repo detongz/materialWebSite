@@ -48,7 +48,10 @@
                   <td><a href="/notification/{{ i['idInfo'] }}">{{ i['t‎itle'] }}</a></td>
                   <td>{{ i['date'].strftime('%Y-%m-%d') }}</td>
                   <td>{{ i['date'].strftime('%R:%S') }}</td>
-                  <td><a href="编辑消息" class="btn btn-default btn-xs">编辑</a><a href="删除消息" class="btn btn-default btn-xs">删除</a></td>
+                  <td>
+                      <a href="/dash/editing/{% if i['type']=='info' %}notification/{{ i['idInfo'] }}{% else %}resource/{{ i['idInfo'] }}{% end %}" class="btn btn-default btn-xs">编辑</a>
+                      <a href="删除消息" class="btn btn-default btn-xs">删除</a>
+                  </td>
               </tr>
           {% end %}{#end if#}
           {% end %}{#end for#}
@@ -71,13 +74,16 @@
                 </thead>
                 <tbody>
           {% for i in info %}
-          {% if i['type']=='resource' %}
+          {% if i['type']=='res' %}
               <tr>
                   <td><a href="/notification/{{ i['idInfo'] }}"><i class="ion ion-ios-circle-outline "></i></a></td>
                   <td><a href="/notification/{{ i['idInfo'] }}">{{ i['t‎itle'] }}</a></td>
                   <td>{{ i['date'].strftime('%Y-%m-%d') }}</td>
                   <td>{{ i['date'].strftime('%R:%S') }}</td>
-                  <td><a href="编辑消息" class="btn btn-default btn-xs">编辑</a><a href="删除消息" class="btn btn-default btn-xs">删除</a></td>
+                  <td>
+                      <a href="/dash/editing/{% if i['type']=='info' %}notification/{{ i['idInfo'] }}{% else %}resource/{{ i['idInfo'] }}{% end %}" class="btn btn-default btn-xs">编辑</a>
+                      <a href="删除消息" class="btn btn-default btn-xs">删除</a>
+                  </td>
               </tr>
           {% end %}{#end if#}
           {% end %}{#end for#}

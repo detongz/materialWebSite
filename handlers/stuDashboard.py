@@ -9,6 +9,11 @@ from models.homework import get_my_homework, get_homework
 from models.course import get_all_course, get_course, set_course
 from models.security import clean
 
+import sys
+
+reload(sys)
+sys.setdefaultencoding('utf-8')
+
 
 class MyHomeworkHandler(BaseHandler):
     """我的所有作业"""

@@ -7,18 +7,18 @@
 {% block content %}
 
 <div class="row">
-  <h1>消息发布</h1>
+  <h1>消息{% if act=='edit' %}编辑{% else %}发布{% end %}</h1>
 </div>
 
 <div class="row">
     <form method="post" action="">
-        <h4>发布课程通知</h4>
+        <h4>{% if act=='edit' %}编辑{% else %}发布{% end %}课程通知</h4>
         <div class="form-group">
-            <label>{% if not n_title %}课程通知标题{% else %}{{ r_title }}{% end %}</label>
-            <input rows="10" name="title" type="text" class="form-control" placeholder="请填写课程通知标题" required autofocus/>
+            <label>课程通知标题<label>标题请控制在50字内</label></label>
+            <input rows="10" name="title" type="text" class="form-control" placeholder="请填写课程通知标题" value="{% if not n_title %}{% else %}{{ n_title }}{% end %}" required autofocus/>
         </div>
         <div class="form-group">
-            <label>课程通知详细内容<label>目前发布课程通知支持文字信息</label></label>
+            <label>课程通知详细内容<label>目前发布课程通知支持文字信息</label><label>通知内容请控制在3000字内</label></label>
             <textarea rows="20" name="content" type="text" class="form-control" placeholder="请为课程通知填写详细内容" required/>
                 {% if content !='' and content is not None %}{{ content }}{% end %}
             </textarea>

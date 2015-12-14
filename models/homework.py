@@ -3,6 +3,11 @@
 from models import db
 from security import clean, cleanLink, text2Html
 
+import sys
+
+reload(sys)
+sys.setdefaultencoding('utf-8')
+
 """作业操作"""
 
 
