@@ -10,6 +10,11 @@
   <a href="/dash/publishing" target="_blank"><button class="btn btn-default right-btn">发布消息</button></a>
 </div>
 
+{% if not info %}
+<hr id="message_info">
+<h4 id="message_info">无消息记录</h4>
+{% else %}
+
 <div class="row">
     <ul id="loginHead" class="nav nav-tabs">
         <li role="presentation" class="active">
@@ -20,11 +25,6 @@
         </li>
     </ul>
 </div>
-
-{% if not info %}
-<hr id="message_info">
-<h4 id="message_info">无消息记录</h4>
-{% else %}
 
 <div class="tab-content">
     <div class="tab-pane fade in active" id="Myinfo">
