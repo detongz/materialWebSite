@@ -6,3 +6,5 @@ front-end/other/*
 .fuse_hidden00*
 *.doc
 /static/homework/*
+.metadata
+/RemoteSystemsTempFiles
