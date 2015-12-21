@@ -1,13 +1,14 @@
 #mainContainer
 {
-	margin-top: 5%;
+	margin-top: 50px;
+	margin-bottom: 10px;
 	padding-left: auto;
 	padding-right: auto;
 }
 
 #mainContent
 {
-    padding-left: 180px;
+    	padding-left: 230px;
 }
 
 #errorContain
@@ -31,7 +32,6 @@
 	color:#555555;
 	font-size: 1.2em;
 }
-
 #error_info{
 	text-align: center;
 	color:#333;
@@ -39,12 +39,6 @@
 
 .right-btn{
 	float:right;
-	margin-top: 15px;
-	width:20%;
-}
-
-.left-btn{
-	float:left;
 	margin-top: 15px;
 	width:20%;
 }
@@ -61,54 +55,30 @@
 	margin-bottom: 20px;
 }
 
-<<<<<<< HEAD
-=======
-
-h1{float:left;}
-
->>>>>>> 2a426dd45477f7da06ca34945c97f2d791fb2d4d
 label{
 	color:#666;
-	margin-top: 30px;
-	font-size: 0.93em;
-}
-
-
-.form-group label{
-	color:#666;
-	margin-top: 20px;
-	font-size: 0.97em;
+	margin-left: 0px;
 }
 
 
 /*******submitassignment*********/
-<<<<<<< HEAD
+
 .put-file
 {
-=======
-
-.pics {
-	opacity: 0.0;
-	display: inline;
->>>>>>> 2a426dd45477f7da06ca34945c97f2d791fb2d4d
 	position: relative;
 	left: 15px;
 	overflow: hidden;
 	color: #2423CC;
-	width: 120px;
+	width: 112px;
 	height: 35px;
 	text-align: center;
 }
 
-<<<<<<< HEAD
 .put-file input
-=======
-.picsButton
->>>>>>> 2a426dd45477f7da06ca34945c97f2d791fb2d4d
 {
 	opacity: 0;
 	position: absolute;
-	height: 32px;
+	height: 35px;
 	right: 0;
 	top: 0;
 	cursor: pointer;
@@ -116,23 +86,17 @@ label{
 
 #assignmentForm{
 	width: 60%;
-	margin-left: 150px;
 }
 
-@media screen and (max-width: 850px){
-	.title
+#formContainer
+{
+	padding-left: auto;
+	padding-right: auto;
+}
+
+@media screen and (max-width: 719px){
+	#assignmentForm
 	{
-		/*margin-left: 250px;*/
+		padding-left: 0;
 	}
 }
-
-form h4{
-	margin-top: 50px;
-}
-
-.pic-homework {
-	max-width: 600px;
-}
-
-textarea{
-	resize: none;}
