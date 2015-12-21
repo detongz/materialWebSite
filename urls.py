@@ -6,7 +6,7 @@ from handlers.dash import DashBoardHandler
 from handlers.teaDashboard import CourseEditHandler, EditingCertainCourseHandler, DeleteCourseHandler, \
     CommentingHandler, CommentingIndexHandler, MyStudentsHandler, MyNotifHandler, PublishEntrenceHandler
 from handlers.information import PublishNotificationHandler, PublishResourceHandler, EditNotificationHandler, \
-    EditResourceHandler
+    EditResourceHandler,NotificationIndexHandler
 from handlers.stuDashboard import MyHomeworkHandler, MyMessagesHandler, ViewHomeworkHandler, RemoveHomeworkHandler, \
     SetCourseHandler, SetCourseListHandler
 from handlers.submitAssignment import submitAssgnmentHandler, submitStep2, submitStep3, submitStep4, submitVedio
@@ -17,6 +17,9 @@ urls = [
     (r'/login', LoginHandler),
     (r'/logout', LogoutHandler),
     (r'/signup', SignUpHandler),
+
+    (r'/notification',NotificationIndexHandler),
+
 
     # 教师接口
     (r'/dash/commenting/viewHomework/(.*)', ViewHomeworkHandler),

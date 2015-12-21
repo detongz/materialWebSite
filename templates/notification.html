@@ -10,7 +10,7 @@
 	<link rel="icon" href="static/images/favicon.ico">
 	<link rel="stylesheet" type="text/css" href="static/css/navbar.css">
 	<link rel="stylesheet" type="text/css" href="static/css/sidebar.css">
-
+    <link rel="stylesheet" href="/static/css/dash_container.css">
 	<title>首页-材料成型工艺课程设计</title>
 
 	<!-- Bootstrap core CSS -->
@@ -44,13 +44,21 @@
 
   <body>
 {% include 'navibar.html' %}
-  <div class="container">
-      <div class="container">
+  <div id="mainContainer" class="container">
+      <div id="mainContainer" class="container">
           <div class="row">
-              {% if not info %}
-                <h5 id="message_info">无课程资源</h5>
-              {% else %}
-              <table class="table">
+            {% if not info %}
+              <h5 id="message_info">无课程资源</h5>
+            {% else %}
+            <div class="row">
+                <ul class="nav nav-tabs">
+                  <li class='active'><a href="#notifs" data-toggle="tab">课程通知</a></li>
+                  <li><a href="#resourses" data-toggle="tab">课程资源</a></li>
+                </ul>
+            </div>
+            <div class="row tab-content">
+              <div id='notifs' class="tab-pane fade in active">
+                <table class="table">
                   <thead>
                   <tr>
                       <th>标题</th>
@@ -60,15 +68,41 @@
                   </thead>
                   <tbody>
                   {% for i in info %}
-                  <tr>
-                      <td>{{ i['title'] }}</td>
-                      <td>{{ i['name'] }}</td>
-                      <td>{{ i['date'].strftime('%Y年%m月%d') }}</td>
-                  </tr>
-                  {% end %}
+                    {% if i['type']=='info' %}
+                    <tr>
+                        <td>{{ i['t\xe2\x80\x8eitle'] }}</td>
+                        <td>{{ i['name'] }}</td>
+                        <td>{{ i['date'].strftime('%Y年%m月%d日') }}</td>
+                    </tr>
+                    {% end %}<!-- end if -->
+                  {% end %}<!-- end for -->
                   </tbody>
-              </table>
-              {% end %}
+                </table>
+              </div>
+              <div id='resourses' class="tab-pane">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>标题</th>
+                        <th>作者</th>
+                        <th>发布时间</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for i in info %}
+                      {% if i['type']=='resourse' %}
+                      <tr>
+                          <td>{{ i['t\xe2\x80\x8eitle'] }}</td>
+                          <td>{{ i['name'] }}</td>
+                          <td>{{ i['date'].strftime('%Y年%m月%d日') }}</td>
+                      </tr>
+                      {% end %}<!-- end if -->
+                    {% end %}<!-- end for -->
+                    </tbody>
+                </table>
+              </div>
+            </div>
+            {% end %}<!--end if-->
           </div>
       </div>
   </div>

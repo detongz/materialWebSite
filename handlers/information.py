@@ -1,7 +1,7 @@
 # coding: utf-8
 from base.base import BaseHandler
 from dash import is_loged
-from models.notification import get_info_by_infoid, publish_notif, publish_res, get_info, update_notif
+from models.notification import get_info_by_infoid, publish_notif, publish_res, get_info, update_notif, get_all_notif
 from models.security import html2Text
 
 import sys
@@ -170,3 +170,13 @@ class EditResourceHandler(BaseHandler):
                             print 'teacher not exist'
                     except Exception as e:
                         print e
+
+
+class NotificationIndexHandler(BaseHandler):
+    """课程资源"""
+
+    def get(self):
+        uid = self.get_secure_cookie('id')
+        info = get_all_notif()
+
+        self.render('notification.html',id=uid,active='notification', info = info)

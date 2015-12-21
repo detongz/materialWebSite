@@ -1,5 +1,8 @@
 # coding: utf-8
 
+# import torndb
+# db = torndb.Connection('127.0.0.1:3306', 'Material', user='root', password='')
+
 from models import db
 from security import clean, text2Html
 from userOperation import getTeacher
@@ -94,3 +97,7 @@ def update_notif(idInfo, detail, title):
     detail = text2Html(detail)
     sql = "update Info set detail='%s',t‎itle='%s' where idInfo='%s';" % (detail, title, idInfo)
     db.execute(sql)
+
+
+if __name__=="__main__":
+    print get_all_notif()

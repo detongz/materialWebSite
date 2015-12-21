@@ -43,7 +43,8 @@ class submitAssgnmentHandler(BaseHandler):
                 idHomework = uid + str(random.randint(99, 1000))
 
             # 删除文件夹下所有相同id的文件
-            # 未实现！！！！
+            delete_updated(idHomework)
+
             self.clear_cookie('content')
             self.clear_cookie('submitName')
             self.clear_cookie('hid')
@@ -168,6 +169,15 @@ def extensionJudge(fname, uid, request):
         request.render('error.html', title="提交失败", content='请提交图片格式的作业哦', icon='ion-happy', id=uid, active='dsh')
         return 'error'
     return None
+
+
+def delete_updated(hid):
+    """删除同id的文件"""
+
+    cmd = 'find -name "%s.*" | xargs rm' % hid
+
+    #若没有相同id文件，则命令行会打印奇怪的东西。不是报错
+    os.system(cmd)
 
 
 class submitVedio(BaseHandler):
