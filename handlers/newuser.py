@@ -53,6 +53,7 @@ class AdminHandler(BaseHandler):
 
     def get(self):
         gp, uid = is_loged(self)
+        print uid
         if uid == str(int(1e6)):
             self.render('admin.html', temp=getTempUser(), active='none')
         else:

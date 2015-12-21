@@ -8,3 +8,4 @@ front-end/other/*
 /static/homework/*
 .metadata
 /RemoteSystemsTempFiles
+*.lock
