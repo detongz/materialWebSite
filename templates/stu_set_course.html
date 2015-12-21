@@ -1,0 +1,26 @@
+{% autoescape None %}
+{% extends 'student_dash.html' %}
+
+{% block title %}我的课程{% end %}
+
+{% block content %}
+<div class="row">
+  <h1>录入课程</h1>
+</div>
+<div id="mainContainer" class="container">
+    <div class="container" id="assignmentForm">
+        {% if not course %}
+
+        {% else %}
+        <table class="table">
+            <tbody>
+                <th>课序号</th>
+                {% for i in course %}
+                <td><a class="btn btn-default btn-lg" href="/dash/setCourse/{{ i['idCourse'] }}" target="_blank">{{ i['idCourse'] }}</a></td>
+                {% end %}<!-- end for-->
+            </tbody>
+        </table>
+        {% end %}<!--end if-->
+    </div>
+</div>
+{% end %}{# end block #}

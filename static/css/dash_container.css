@@ -31,6 +31,7 @@
 	color:#555555;
 	font-size: 1.2em;
 }
+
 #error_info{
 	text-align: center;
 	color:#333;
@@ -38,6 +39,12 @@
 
 .right-btn{
 	float:right;
+	margin-top: 15px;
+	width:20%;
+}
+
+.left-btn{
+	float:left;
 	margin-top: 15px;
 	width:20%;
 }
@@ -54,14 +61,36 @@
 	margin-bottom: 20px;
 }
 
+<<<<<<< HEAD
+=======
+
+h1{float:left;}
+
+>>>>>>> 2a426dd45477f7da06ca34945c97f2d791fb2d4d
 label{
 	color:#666;
+	margin-top: 30px;
+	font-size: 0.93em;
+}
+
+
+.form-group label{
+	color:#666;
+	margin-top: 20px;
+	font-size: 0.97em;
 }
 
 
 /*******submitassignment*********/
+<<<<<<< HEAD
 .put-file
 {
+=======
+
+.pics {
+	opacity: 0.0;
+	display: inline;
+>>>>>>> 2a426dd45477f7da06ca34945c97f2d791fb2d4d
 	position: relative;
 	left: 15px;
 	overflow: hidden;
@@ -71,7 +100,11 @@ label{
 	text-align: center;
 }
 
+<<<<<<< HEAD
 .put-file input
+=======
+.picsButton
+>>>>>>> 2a426dd45477f7da06ca34945c97f2d791fb2d4d
 {
 	opacity: 0;
 	position: absolute;
@@ -92,3 +125,14 @@ label{
 		/*margin-left: 250px;*/
 	}
 }
+
+form h4{
+	margin-top: 50px;
+}
+
+.pic-homework {
+	max-width: 600px;
+}
+
+textarea{
+	resize: none;}

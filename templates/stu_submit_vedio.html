@@ -8,28 +8,28 @@
   <h1>提交作业</h1>
 </div>
 <div id="mainContainer" class="container">
-    <form method="post" class="container form-0" id="assignmentForm">
+    <form action="/submitAssgnment-Vedio" method="post" class="container form-0" id="assignmentForm">
         <div class="row">
             <ul class="nav nav-tabs">
-                <li class="active nav-right">
-                    <a href="">提交三视图截图</a>
-                </li>
                 <li>
-                    <a href="/submitAssgnment-Vedio">提交展示视频</a>
+                    <a href="/submitAssgnment">提交三视图截图</a>
+                </li>
+                <li class="active">
+                    <a href="">提交展示视频</a>
                 </li>
             </ul>
         </div>
-        <h4>请提交作业三视图截图</h4>
+        <h4>请提交作业展示视频</h4>
         <div class="form-group">
             <label>请为这次提交命名吧</label>
             <input name="submitName" type="text" class="form-control" placeholder="请填写本次提交作业的名称" required autofocus/>
         </div>
         <div class="form-group">
-            <label>请填写你的工程文件分享链接<br><label>是否需要提交文件分享链接，请同学们关注老师发布的通知</label></label>
-            <input name="content" type="text" class="form-control" placeholder="请填写本次提交作业的工程文件网盘分享链接"/>
+            <label>请填写你的视频文件分享链接<br><label>视频链接的具体要求，请同学们关注老师发布的通知</label></label>
+            <input name="content" type="text" class="form-control" placeholder="请填写本次提交作业视频文件分享链接" required/>
         </div>
         <div class="form-group">
-            <input type="submit" class="btn btn-default btn-form-0" value="下一步">
+            <input type="submit" class="btn btn-default btn-form-0" value="确认提交">
         </div>
     </form>
 </div>

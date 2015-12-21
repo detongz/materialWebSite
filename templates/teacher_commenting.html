@@ -7,7 +7,6 @@
 
 <div class="row">
   <h1>批改作业</h1>
-  <a href="/dash/editCourse"><button class="btn btn-default right-btn">编辑课程</button></a>
 </div>
 
 
@@ -28,29 +27,37 @@
     <div class="row tab-content">
         <!--start edit course-->
         <div class='tab-pane fade in active' id="edit">
-            {% if not course %}
-            <h5 id="message_info">无需要批改的作业记录</h5>
+            {% if not homework %}
+            <h5 id="message_info">没有需要批改的作业的记录</h5>
             {% else %}
             <div class="table-responsive">
                 <table class="table">
                     <thead>
                         <tr>
                             <th></th>
+                            <th>提交名称</th>
+                            <th>提交人</th>
+                            <th>作业类型</th>
                             <th>课序号</th>
-                            <th>课程人数</th>
-                            <th>开课学年</th>
-                            <th>开课周</th>
+                            <th>作业评价</th>
+                            <th>更新时间</th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
-              {% for i in course %}
+              {% for i in homework %}
+                {% if i['comment']=='' %}
                   <tr>
-                      <td><a class="editCourseLink" href="/dash/editCourse/{{ i['cid'] }}"><i class="ion ion-ios-circle-filled"></i></a></td>
-                      <td><a class="editCourseLink" href="/dash/editCourse/{{ i['cid'] }}">{{ i['cid'] }}</a></td>
-                      <td>{% if 'attend' in i.keys() %}{{ i['attend'] }}{% else %}NaN{% end %}</td>
-                      <td>{% if 'year' in i.keys() %}{{ i['year'] }}{% else %}NaN{% end %}</td>
-                      <td>{% if 'week' in i.keys() %}{{ i['week'] }}{% else %}NaN{% end %}</td>
+                      <td><a class="editCourseLink" href="/dash/commenting/viewHomework/{{ i['idHomework'] }}"><i class="ion ion-ios-circle-filled"></i></a></td>
+                      <td><a class="editCourseLink" href="/dash/commenting/viewHomework/{{ i['idHomework'] }}">{{ i['tag'] }}</a></td>
+                      <td>{{ i['name'] }}</td>
+                      <td>{% if i['type']=='video' %}展示视频{% else %}三视图截图{% end %}</td>
+                      <td>{{ i['cid'] }}</td>
+                      <td>{% if i['comment'] =="" %}无{% else %}{{ i['comment'] }}{% end %}</td>
+                      <td>{{ i['date'].strftime('%Y-%m-%d') }}</td>
+                      <td><a href="/dash/commenting/{{ i['idHomework'] }}" class="btn btn-default btn-xs">评价</a></td>
                   </tr>
+                {% end %}{#end if#}
               {% end %}{#end for#}
                     </tbody>
                 </table>
@@ -60,23 +67,47 @@
         <!--end edit course-->
         <!--start add course-->
         <div id="add" class="tab-pane fade">
-            <form method="post">
-                <div class="form-group form-group-margin-15">
-                    <label for="loginID">教工号</label>
-                    <input type="text" class="form-control" id="loginID" name="id" placeholder="教工号">
-                </div>
-                <div class="form-group form-group-margin-15">
-                    <label for="loginPassword">密码</label>
-                    <input type="password" class="form-control" id="loginPassword" name="password" placeholder="密码">
-                </div>
-                <input id="ugp" name="ug" value="t" hidden>
-                <button class="btn btn-default center-btn">确认并开始课程</button>
-            </form>
+            {% if not homework %}
+            <h5 id="message_info">没有已经批改过的作业的记录</h5>
+            {% else %}
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>提交名称</th>
+                            <th>提交人</th>
+                            <th>作业类型</th>
+                            <th>课序号</th>
+                            <th>作业评价</th>
+                            <th>更新时间</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+              {% for i in homework %}
+                {% if i['comment']!='' %}
+                  <tr>
+                      <td><a class="editCourseLink" href="/dash/commenting/viewHomework/{{ i['idHomework'] }}"><i class="ion ion-ios-circle-filled"></i></a></td>
+                      <td><a class="editCourseLink" href="/dash/commenting/viewHomework/{{ i['idHomework'] }}">{{ i['tag'] }}</a></td>
+                      <td>{{ i['name'] }}</td>
+                      <td>{% if i['type']=='video' %}展示视频{% else %}三视图截图{% end %}</td>
+                      <td>{{ i['cid'] }}</td>
+                      <td>{% if i['comment'] =="" %}无{% else %}{{ i['comment'] }}{% end %}</td>
+                      <td>{{ i['date'] }}</td>
+                      <td><a href="/dash/commenting/{{ i['idHomework'] }}" class="btn btn-default btn-xs">修改评价</a></td>
+                  </tr>
+                {% end %}{#end if#}
+              {% end %}{#end for#}
+                    </tbody>
+                </table>
+            </div>
+            {% end %}{#end if#}
         </div>
         <!--end add course-->
         <!--start del course-->
         <div class='tab-pane fade' id="del">
-            {% if not course %}
+            {% if not homework %}
             <h5 id="message_info">无作业记录</h5>
             {% else %}
             <div class="table-responsive">
@@ -84,20 +115,24 @@
                     <thead>
                         <tr>
                             <th></th>
+                            <th>提交名称</th>
+                            <th>提交人</th>
+                            <th>作业类型</th>
                             <th>课序号</th>
-                            <th>课程人数</th>
-                            <th>开课学年</th>
-                            <th>开课周</th>
+                            <th>作业评价</th>
+                            <th>更新时间</th>
                         </tr>
                     </thead>
                     <tbody>
-              {% for i in course %}
+              {% for i in homework %}
                   <tr>
-                      <td><a class="editCourseLink" href="/dash/editCourse/delete/{{ i['cid'] }}"><i class="ion ion-ios-circle-filled"></i></a></td>
-                      <td><a class="editCourseLink" href="/dash/editCourse/delete/{{ i['cid'] }}">{{ i['cid'] }}</a></td>
-                      <td>{% if 'attend' in i.keys() %}{{ i['attend'] }}{% else %}NaN{% end %}</td>
-                      <td>{% if 'year' in i.keys() %}{{ i['year'] }}{% else %}NaN{% end %}</td>
-                      <td>{% if 'week' in i.keys() %}{{ i['week'] }}{% else %}NaN{% end %}</td>
+                      <td><a class="editCourseLink" href="/dash/commenting/viewHomework/{{ i['idHomework'] }}"><i class="ion ion-ios-circle-filled"></i></a></td>
+                      <td><a class="editCourseLink" href="/dash/commenting/viewHomework/{{ i['idHomework'] }}">{{ i['tag'] }}</a></td>
+                      <td>{{ i['name'] }}</td>
+                      <td>{% if i['type']=='video' %}展示视频{% else %}三视图截图{% end %}</td>
+                      <td>{{ i['cid'] }}</td>
+                      <td>{% if i['comment'] =="" %}无{% else %}{{ i['comment'] }}{% end %}</td>
+                      <td>{{ i['date'] }}</td>
                   </tr>
               {% end %}{#end for#}
                     </tbody>

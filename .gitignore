@@ -5,3 +5,4 @@ front-end/other/*
 /user.txt
 .fuse_hidden00*
 *.doc
+/static/homework/*

@@ -1,0 +1,18 @@
+{% autoescape None %}
+{% extends 'teacher_dash.html' %}
+
+{% block title %}选择消息类型{% end %}
+
+{% block content %}
+
+<div class="row">
+  <h1>消息发布</h1>
+</div>
+
+<div id="mainContainer" class="container">
+    <div id="assignmentForm" class="container">
+        <a class="btn btn-primary btn-lg" href="/dash/publishing/notification">发布通知</a>
+        <a class="btn btn-primary btn-lg" href="/dash/publishing/resource">发布课程资源</a>
+    </div>
+</div>
+{% end %}{# end block #}

@@ -1,39 +1,96 @@
 {% autoescape None %}
 {% extends 'teacher_dash.html' %}
 
-{% block title %}我的课程{% end %}
+{% block title %}我发布的消息{% end %}
 
 {% block content %}
 
 <div class="row">
   <h1>我发布的消息</h1>
-  <a href="/dash/editCourse"><button class="btn btn-default right-btn">编辑课程</button></a>
+  <a href="/dash/publishing" target="_blank"><button class="btn btn-default right-btn">发布消息</button></a>
 </div>
+
 {% if not info %}
 <hr id="message_info">
 <h4 id="message_info">无消息记录</h4>
 {% else %}
-<div class="table-responsive">
-    <table class="table">
-        <thead>
-            <tr>
-                <th>课序号</th>
-                <th>课程人数</th>
-                <th>开课学年</th>
-                <th>开课周</th>
-            </tr>
-        </thead>
-        <tbody>
-  {% for i in info %}
-      <tr>
-          <td>{{ i['cid'] }}</td>
-          <td>{% if 'attend' in i.keys() %}{{ i['attend'] }}{% else %}NaN{% end %}</td>
-          <td>{% if 'year' in i.keys() %}{{ i['year'] }}{% else %}NaN{% end %}</td>
-          <td>{% if 'week' in i.keys() %}{{ i['week'] }}{% else %}NaN{% end %}</td>
-      </tr>
-  {% end %}{#end for#}
-        </tbody>
-    </table>
+
+<div class="row">
+    <ul id="loginHead" class="nav nav-tabs">
+        <li role="presentation" class="active">
+            <a href="#Myinfo" data-toggle="tab">课程通知</a>
+        </li>
+        <li role="presentation">
+            <a href="#Myresource" data-toggle="tab">课程资源</a>
+        </li>
+    </ul>
+</div>
+
+<div class="tab-content">
+    <div class="tab-pane fade in active" id="Myinfo">
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>消息标题</th>
+                        <th>发布日期</th>
+                        <th>详细时间</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+          {% for i in info %}
+          {% if i['type']=='info' %}
+              <tr>
+                  <td><a href="/notification/{{ i['idInfo'] }}"><i class="ion ion-ios-circle-outline"></i></a></td>
+                  <td><a href="/notification/{{ i['idInfo'] }}">{{ i['t‎itle'] }}</a></td>
+                  <td>{{ i['date'].strftime('%Y-%m-%d') }}</td>
+                  <td>{{ i['date'].strftime('%R:%S') }}</td>
+                  <td>
+                      <a href="/dash/editing/{% if i['type']=='info' %}notification/{{ i['idInfo'] }}{% else %}resource/{{ i['idInfo'] }}{% end %}" class="btn btn-default btn-xs">编辑</a>
+                      <a href="删除消息" class="btn btn-default btn-xs">删除</a>
+                  </td>
+              </tr>
+          {% end %}{#end if#}
+          {% end %}{#end for#}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="tab-pane fade" id="Myresource">
+       <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>消息标题</th>
+                        <th>发布日期</th>
+                        <th>详细时间</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+          {% for i in info %}
+          {% if i['type']=='res' %}
+              <tr>
+                  <td><a href="/notification/{{ i['idInfo'] }}"><i class="ion ion-ios-circle-outline "></i></a></td>
+                  <td><a href="/notification/{{ i['idInfo'] }}">{{ i['t‎itle'] }}</a></td>
+                  <td>{{ i['date'].strftime('%Y-%m-%d') }}</td>
+                  <td>{{ i['date'].strftime('%R:%S') }}</td>
+                  <td>
+                      <a href="/dash/editing/{% if i['type']=='info' %}notification/{{ i['idInfo'] }}{% else %}resource/{{ i['idInfo'] }}{% end %}" class="btn btn-default btn-xs">编辑</a>
+                      <a href="删除消息" class="btn btn-default btn-xs">删除</a>
+                  </td>
+              </tr>
+          {% end %}{#end if#}
+          {% end %}{#end for#}
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
 
 {% end %}{#end if#}

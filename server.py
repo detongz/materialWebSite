@@ -5,7 +5,7 @@ import tornado.httpserver
 from tornado.options import define, options
 from application import application
 
-define("port", default=9000)
+define("port", default=8080)
 
 
 def main():

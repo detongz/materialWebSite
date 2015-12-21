@@ -1,0 +1,28 @@
+{% autoescape None %}
+{% extends 'teacher_dash.html' %}
+
+{% block title %}发布资源{% end %}
+
+{% block content %}
+
+<div class="row">
+  <h1>消息{% if act=='edit' %}编辑{% else %}发布{% end %}</h1>
+</div>
+
+<div class="row">
+    <form method="post" action="">
+        <h4>{% if act=='edit' %}编辑{% else %}发布{% end %}课程资源</h4>
+        <div class="form-group">
+            <label>课程资源标题<label>标题请控制在50字内</label></label>
+            <input rows="10" name="title" type="text" class="form-control" placeholder="请填写课程资源标题" value="{% if not r_title %}{% else %}{{ r_title }}{% end %}" required autofocus/>
+        </div>
+        <div class="form-group">
+            <label>课程资源详细内容<label>目前发布课程资源支持文字信息</label><label>课程资源内容请控制在3000字内</label></label>
+            <textarea rows="20" name="content" type="text" class="form-control" placeholder="请为课程资源填写详细内容" required/>
+                {% if r_content !='' and r_content is not None %}{{ r_content }}{% end %}
+            </textarea>
+        </div>
+        <input type="submit" class="btn btn-primary btn-lg" value="确认发布">
+    </form>
+</div>
+{% end %}{# end block #}

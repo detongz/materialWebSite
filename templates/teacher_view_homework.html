@@ -1,0 +1,69 @@
+{% autoescape None %}
+{% extends 'teacher_dash.html' %}
+
+{% block title %}我的作业{% end %}
+
+{% block content %}
+
+<div class="row">
+  <h1>查看作业</h1>
+</div>
+<div class="table-responsive">
+        <table class="table">
+            <tbody>
+                <tr>
+                    <th>标题</th>
+                    <td>{{ homework['tag'] }}</td>
+                </tr>
+                <tr>
+                    <th>教师评语</th>
+                  <td>{% if homework['comment'] =="" %}无{% else %}{{ homework['comment'] }}{% end %}</td>
+                </tr>
+                <tr>
+                    <th>作业类型</th>
+                  <td>{% if homework['type']=='video' %}展示视频{% else %}三视图截图{% end %}</td>
+                </tr>
+                <tr>
+                    <th>更新时间</th>
+                  <td>{{ homework['date'] }}</td>
+                </tr>
+                <tr>
+                    <th></th>
+                    <td><a href="/dash/commenting/{{ homework['idHomework'] }}" class="btn btn-primary btn-lg right-btn" target="_blank">评价</a></td>
+                </tr>
+            </tbody>
+        </table>
+{% if homework['type']=='pic' %}
+    <table class="table">
+        <tr>
+            <th>源文件链接</th>
+            <th>{{ homework['content'] }}</th>
+        </tr>
+        <tr>
+            <th>主视图</th>
+            <td><img class="pic-homework" src="/static/homework/{{ front }}"></td>
+        </tr>
+        <tr>
+            <th>侧视图</th>
+            <td><img class="pic-homework" src="/static/homework/{{ portrait }}"></td>
+        </tr>
+        <tr>
+            <th>俯视图</th><br><br>
+            <td><img class="pic-homework" src="/static/homework/{{ top }}"></td>
+        </tr>
+    </table>
+{% else %}
+    <div>
+        <table class="table">
+            <tbody>
+                <tr>
+                    <th>视频分享链接</th>
+                    <th>{{ homework['content'] }}</th>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+{% end %}<!-- end if -->
+</div>
+
+{% end %}{# end block #}
