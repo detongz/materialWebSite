@@ -52,6 +52,17 @@ def get_info_by_infoid(Iid):
     return db.get(sql)
 
 
+def get_info_by_infoid_all(Iid):
+    """使用信息id号查找消息 02"""
+
+    sql='''
+        select I.idInfo,I.t‎itle,I.date,I.type,T.name,I.tid,I.detail
+        from Teacher as T,Info as I
+        where T.idTeacher=I.tid and I.idInfo = %s
+        ''' % clean(Iid)
+    return db.get(sql)
+
+
 def publish_notif(tid, idInfo, detail, title):
     """教师发布课程 通知 """
 

@@ -1,7 +1,7 @@
 # coding: utf-8
 from base.base import BaseHandler
 from dash import is_loged
-from models.notification import get_info_by_infoid, publish_notif, publish_res, get_info, update_notif, get_all_notif
+from models.notification import get_info_by_infoid, publish_notif, publish_res, get_info, update_notif, get_all_notif,get_info_by_infoid_all
 from models.security import html2Text
 
 import sys
@@ -173,10 +173,30 @@ class EditResourceHandler(BaseHandler):
 
 
 class NotificationIndexHandler(BaseHandler):
-    """课程资源"""
+    """课程资源里列表"""
 
     def get(self):
         uid = self.get_secure_cookie('id')
         info = get_all_notif()
 
         self.render('notification.html',id=uid,active='notification', info = info)
+
+
+class ResourseDetailHandler(BaseHandler):
+    """课程通知详情"""
+
+    def get(self, Iid):
+        uid = self.get_secure_cookie('id')
+        info = get_info_by_infoid_all(Iid)
+
+        self.render('infoDetail.html',id=uid,info=info,active='notification')
+
+
+class InfoDetailHandler(BaseHandler):
+    """课程资源详情"""
+
+    def get(self, Iid):
+        uid = self.get_secure_cookie('id')
+        info = get_info_by_infoid_all(Iid)
+
+        self.render('infoDetail.html',id=uid,info=info,active='notification')
