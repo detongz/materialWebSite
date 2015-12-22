@@ -43,10 +43,12 @@ def getATempUser(uid):
     return db.get(sql)
 
 
-def insertIntoTempUser(id, type, name, pwd):
+def insertIntoTempUser(id, type, name, pwd, email):
     """将新申请的用户加入数据库"""
-    sql = "insert into tempuser (id,type,name,pwd) values ('%s','%s','%s','%s');" % (
-        clean(id), clean(type), clean(name), clean(pwd))
+    sql = "insert into tempuser (id,type,name,pwd,email) values ('%s','%s','%s','%s','%s');" % (
+        clean(id), clean(type), clean(name), clean(pwd), email)
+
+        # email到底怎么防止注入呢orz 并不会啊，需要改进
     db.execute(sql)
 
 
@@ -60,15 +62,18 @@ def authNewUser(id):
     name = user['name']
     pwd = user['pwd']
     type = user['type']
+    email = user['email']
 
     if type == 't':
-        sql = "insert into Teacher (idTeacher,name,pwd) values ('%s','%s','%s');" % (clean(id), name, pwd)
+        sql = "insert into Teacher (idTeacher,name,pwd,email) values ('%s','%s','%s','%s');" \
+                % (clean(id), name, pwd, email)
         db.execute(sql)
         sql = "delete from tempuser where id='%s';" % (clean(id))
         db.execute(sql)
         return 'success'
     elif type == 's':
-        sql = "insert into Student (idStudent,name,pwd) values ('%s','%s','%s');" % (clean(id), name, pwd)
+        sql = "insert into Student (idStudent,name,pwd,email) values ('%s','%s','%s','%s');" \
+                % (clean(id), name, pwd, email)
         db.execute(sql)
         sql = "delete from tempuser where id='%s';" % (clean(id))
         db.execute(sql)

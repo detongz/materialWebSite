@@ -51,3 +51,15 @@ class LogoutHandler(BaseHandler):
         self.clear_cookie('id')
         self.clear_cookie('gp')
         self.redirect('/')
+
+
+class forgetPassword(BaseHandler):
+    """忘记密码"""
+
+    def get(self):
+        uid = self.get_secure_cookie('id')
+        if uid is not None:
+            self.redirect('/dash')
+        else:
+            # self.render('')
+            pass

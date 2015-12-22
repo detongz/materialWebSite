@@ -1,6 +1,6 @@
 # coding: utf-8
 from handlers.index import IndexHandler
-from handlers.login import LoginHandler, LogoutHandler
+from handlers.login import LoginHandler, LogoutHandler, forgetPassword
 from handlers.error import ErrorHandler
 from handlers.dash import DashBoardHandler
 from handlers.teaDashboard import CourseEditHandler, EditingCertainCourseHandler, DeleteCourseHandler, \
@@ -17,6 +17,7 @@ urls = [
     (r'/login', LoginHandler),
     (r'/logout', LogoutHandler),
     (r'/signup', SignUpHandler),
+    (r'/forgetPassword',forgetPassword),
 
     (r'/notification/info/(.*)',InfoDetailHandler),
     (r'/notification/resource/(.*)',ResourseDetailHandler),
