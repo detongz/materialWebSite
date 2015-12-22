@@ -14,7 +14,7 @@
         <h4>{% if act=='edit' %}编辑{% else %}发布{% end %}课程资源</h4>
         <div class="form-group">
             <label>课程资源标题<label>标题请控制在50字内</label></label>
-            <input rows="10" name="title" type="text" class="form-control" placeholder="请填写课程资源标题" value="{% if not r_title %}{% else %}{{ r_title }}{% end %}" required autofocus/>
+            <input rows="10" name="title" type="text" class="form-control" placeholder="请填写课程资源标题" value="{% if r_title is not None %}{{ r_title }}{% end %}" required autofocus/>
         </div>
         <div class="form-group">
             <label>课程资源详细内容<label>目前发布课程资源支持文字信息</label><label>课程资源内容请控制在3000字内</label></label>

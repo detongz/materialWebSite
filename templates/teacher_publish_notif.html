@@ -15,7 +15,7 @@
         <h4>{% if act=='edit' %}编辑{% else %}发布{% end %}课程通知</h4>
         <div class="form-group">
             <label>课程通知标题<label>标题请控制在50字内</label></label>
-            <input rows="10" name="title" type="text" class="form-control" placeholder="请填写课程通知标题" value="{% if not n_title %}{% else %}{{ n_title }}{% end %}" required autofocus/>
+            <input rows="10" name="title" type="text" class="form-control" placeholder="请填写课程通知标题" value="{% if n_title is not None %}{{ n_title }}{% end %}" required autofocus/>
         </div>
         <div class="form-group">
             <label>课程通知详细内容<label>目前发布课程通知支持文字信息</label><label>通知内容请控制在3000字内</label></label>
