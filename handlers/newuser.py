@@ -75,6 +75,7 @@ class AuthUserHandler(BaseHandler):
                     self.render('error.html', title='认证失败', content='新用户授权失败', icon='ion-close-circled', active='',
                                 id=uid)
             else:
+                print uid
                 self.redirect('/404')
         except:
             self.render('error.html', title=None, content='出错啦', icon='ion-alert-circled', active='none', id=uid)
