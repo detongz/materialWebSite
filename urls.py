@@ -17,6 +17,8 @@ urls = [
     (r'/login', LoginHandler),
     (r'/logout', LogoutHandler),
     (r'/signup', SignUpHandler),
+    (r'/forgetpass', ForgetPassHandler),
+    (r'/varifycode',VarifyCodeHandler),
 
     (r'/notification/info/(.*)',InfoDetailHandler),
     (r'/notification/resource/(.*)',ResourseDetailHandler),
