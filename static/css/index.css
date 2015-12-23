@@ -81,6 +81,9 @@
 /**************footer*************/
 #footer
 {
-	background-color: #660000;
-	height: 70px;
+	background-color: #F1563C;
+	height: 100px;
+	padding: 30px;
+	text-align: center;
+	color: #111;
 }
