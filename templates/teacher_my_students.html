@@ -17,19 +17,19 @@
     <table class="table">
         <thead>
             <tr>
+                <th>姓名</th>
+                <th>学号</th>
                 <th>课序号</th>
-                <th>课程人数</th>
-                <th>开课学年</th>
-                <th>开课周</th>
+                <th>邮箱</th>
             </tr>
         </thead>
         <tbody>
   {% for i in stu %}
       <tr>
-{#          <td>{{ i['cid'] }}</td>#}
-          <td>{% if 'attend' in i.keys() %}{{ i['attend'] }}{% else %}NaN{% end %}</td>
-          <td>{% if 'year' in i.keys() %}{{ i['year'] }}{% else %}NaN{% end %}</td>
-          <td>{% if 'week' in i.keys() %}{{ i['week'] }}{% else %}NaN{% end %}</td>
+        <td>{{ i['name'] }}</td>
+        <td>{{ i['idStudent'] }}</td>
+        <td>{% if cid =='' or cid is None %}无记录{% else %}{{ i['cid'] }}{% end %}</td>
+        <td>{{ i['email'] }}</td>
       </tr>
   {% end %}{#end for#}
         </tbody>
