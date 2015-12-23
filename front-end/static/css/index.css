@@ -59,6 +59,9 @@
 	margin: 8px 4%;
 	vertical-align: top;
 	cursor: default;
+	padding-left: 2%;
+	padding-right: 2%;
+	padding-bottom: 1%;
 }
 
 .sub-part:hover
