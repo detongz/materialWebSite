@@ -28,7 +28,7 @@
       <tr>
         <td>{{ i['name'] }}</td>
         <td>{{ i['idStudent'] }}</td>
-        <td>{% if cid =='' or cid is None %}无记录{% else %}{{ i['cid'] }}{% end %}</td>
+        <td>{% if i['cid'] =='' or i['cid'] is None %}无记录{% else %}{{ i['cid'] }}{% end %}</td>
         <td>{{ i['email'] }}</td>
       </tr>
   {% end %}{#end for#}
