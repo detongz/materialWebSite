@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>forget Pass</title>
+</head>
+<body>
+<form action="./forgetpass" method="post">
+  <p>id: <input type="text" name="id" /></p>
+  <p>email: <input type="text" name="email" /></p>
+
+  <p>VerriftCide: <input type="text" name="code" /></p>
+    <img src="/varifycode">
+    <input type="hidden" name = "group" value="{{group}}" >
+  <input type="submit" value="Submit" />
+</form>
+{{msg}}
+</body>
+</html>
