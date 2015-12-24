@@ -40,6 +40,10 @@ class ForgetPassHandler(BaseHandler):
             if u['email'] == email:
                 send_forget_mail(email,User  = u)
                 return self.render('forget_pass.html',msg = '已将密码发往您的邮箱',group=ug)
+            else:
+                return self.render('forget_pass.html',msg = '邮箱地址错误',group=ug)
+        else:
+            return self.render('forget_pass.html',msg = '验证码错误',group=ug)
 
 class VarifyCodeHandler(BaseHandler):
     def get(self, *args, **kwargs):
