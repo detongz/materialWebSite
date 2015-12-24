@@ -18,7 +18,6 @@
         <thead>
             <tr>
                 <th>课序号</th>
-                <th>课程人数</th>
                 <th>开课学年</th>
                 <th>开课周</th>
             </tr>
@@ -27,9 +26,8 @@
   {% for i in course %}
       <tr>
           <td>{{ i['idCourse'] }}</td>
-          <td>{% if 'attend' in i.keys() %}{{ i['attend'] }}{% else %}NaN{% end %}</td>
           <td>{% if 'year' in i.keys() %}{{ i['year'] }}{% else %}NaN{% end %}</td>
-          <td>{% if 'week' in i.keys() %}{{ i['week'] }}{% else %}NaN{% end %}</td>
+          <td>{% if 'start_week' in i.keys() %}{{ i['start_week'] }}{% else %}NaN{% end %}</td>
       </tr>
   {% end %}{#end for#}
         </tbody>
