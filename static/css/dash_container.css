@@ -88,12 +88,6 @@ label{
 <<<<<<< HEAD
 .put-file
 {
-=======
-
-.pics {
-	opacity: 0.0;
-	display: inline;
->>>>>>> 2a426dd45477f7da06ca34945c97f2d791fb2d4d
 	position: relative;
 	left: 15px;
 	overflow: hidden;
@@ -103,11 +97,7 @@ label{
 	text-align: center;
 }
 
-<<<<<<< HEAD
 .put-file input
-=======
-.picsButton
->>>>>>> 2a426dd45477f7da06ca34945c97f2d791fb2d4d
 {
 	opacity: 0;
 	position: absolute;
@@ -133,9 +123,11 @@ form h4{
 	margin-top: 50px;
 }
 
+/* 作业预览控制文件大小的 */
 .pic-homework {
-	max-width: 600px;
+	max-width: 500px;
 }
 
 textarea{
-	resize: none;}
+	resize: none;
+}

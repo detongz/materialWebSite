@@ -109,6 +109,12 @@ def update_notif(idInfo, detail, title):
     sql = "update Info set detail='%s',t‎itle='%s' where idInfo='%s';" % (detail, title, idInfo)
     db.execute(sql)
 
+def delete_notif(iid,tid):
+    """教师删除发布的消息"""
+
+    sql='delete from Info where tid="%s" and idInfo="%s"' % (clean(tid),clean(iid))
+    db.execute(sql)
+
 
 if __name__=="__main__":
     print get_all_notif()

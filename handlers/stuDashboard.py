@@ -5,7 +5,7 @@ import commands
 from base.base import BaseHandler
 from dash import is_loged
 from models.notification import get_all_notif, get_all_comments
-from models.homework import get_my_homework, get_homework
+from models.homework import get_my_homework, get_homework, delete_homework
 from models.course import get_all_course, get_course, set_course
 from models.security import clean
 
@@ -88,23 +88,31 @@ class ViewHomeworkHandler(BaseHandler):
 
 class RemoveHomeworkHandler(BaseHandler):
     """删去某次作业"""
-    """未实现！"""
 
     def get(self, hid, *args, **kwargs):
         gp, uid = is_loged(self)
         if gp == 's':
-
+            # 仅学生可以删除自己的作业..？
             homework = get_homework(hid)
 
             if not homework:
                 self.render('error.html', title=None, content="作业不存在", icon='ion-sad', active='dsh', id=uid)
 
             else:
-                if homework['type'] == 'pic':
-                    # 作业是图片类型
-                    pass
-                else:
-                    pass
+                try:
+                    if homework['type'] == 'pic':
+                        # 作业是图片类型
+                        from submitAssignment import delete_updated
+                        from models.security import clean
+                        delete_updated(clean(hid))
+                        delete_homework(hid,uid)
+                    else:
+                        delete_homework(hid,uid)
+
+                    self.redirect('/dash/myHomework')
+
+                except Exception as e:
+                    print e
 
         else:
             self.redirect('/404')

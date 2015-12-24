@@ -27,6 +27,11 @@
                     <th>更新时间</th>
                   <td>{{ homework['date'] }}</td>
                 </tr>
+                <tr>
+                  <td>
+                    <a href="/dash/myHomework/delete/{{homework['idHomework']}}" class="btn btn-default btn-xs">删除本次作业</a>
+                  </td>
+                </tr>
             </tbody>
         </table>
 {% if homework['type']=='pic' %}
@@ -36,15 +41,15 @@
             <th>{{ homework['content'] }}</th>
         </tr>
         <tr>
-            <th>主视图</th>
+            <th>三维造型图</th>
             <td><img class="pic-homework" src="/static/homework/{{ front }}"></td>
         </tr>
         <tr>
-            <th>侧视图</th>
+            <th>二维装配图</th>
             <td><img class="pic-homework" src="/static/homework/{{ portrait }}"></td>
         </tr>
         <tr>
-            <th>俯视图</th><br><br>
+            <th>工艺图</th><br><br>
             <td><img class="pic-homework" src="/static/homework/{{ top }}"></td>
         </tr>
     </table>

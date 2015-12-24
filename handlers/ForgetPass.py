@@ -1,12 +1,12 @@
 # coding: utf-8
 from base.base import BaseHandler
-from myCaptcha import Captcha
+# from myCaptcha import Captcha
 import random
 from sendMail import send_forget_mail
 
-#TODO:这里用了模拟数据{‘name’:'zhj','pwd':'123','email':'928835127@qq.com','id':'201492470'}
-#TODO:正式使用时请解除下行注释
-#from models.userOperation import getTeacher, getStudent
+# TODO:这里用了模拟数据{‘name’:'zhj','pwd':'123','email':'928835127@qq.com','id':'201492470'}
+# TODO:正式使用时请解除下行注释
+# from models.userOperation import getTeacher, getStudent
 
 class ForgetPassHandler(BaseHandler):
     #忘记密码首页

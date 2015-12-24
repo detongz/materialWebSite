@@ -41,8 +41,8 @@
                     <tbody>
                       {% for i in comments %}
                           <tr>
-                              <td><a class="editCourseLink" href="/dash/editCourse/{{ i['idHomework'] }}"><i class="ion ion-ios-circle-filled"></i></a></td>
-                              <td><a class="editCourseLink" href="/dash/editCourse/{{ i['idHomework'] }}">{{ i['tag'] }}</a></td>
+                              <td><a class="editCourseLink" href="/dash/myHomework/view/{{ i['idHomework'] }}"><i class="ion ion-ios-circle-filled"></i></a></td>
+                              <td><a class="editCourseLink" href="/dash/myHomework/view/{{ i['idHomework'] }}">{{ i['tag'] }}</a></td>
                               <td>{{ i['date'] }}</td>
                               <td>{% if i['type']=='vedio' %}视频链接{% else %}三视图截图{% end %}</td>
                               <td>{{ i['comment'] }}</td>

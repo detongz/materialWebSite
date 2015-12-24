@@ -1,7 +1,8 @@
 # coding: utf-8
 from base.base import BaseHandler
 from dash import is_loged
-from models.notification import get_info_by_infoid, publish_notif, publish_res, get_info, update_notif, get_all_notif,get_info_by_infoid_all
+from models.notification import get_info_by_infoid, publish_notif, publish_res, get_info, update_notif, get_all_notif,\
+            get_info_by_infoid_all, delete_notif
 from models.security import html2Text
 
 import sys
@@ -200,3 +201,18 @@ class InfoDetailHandler(BaseHandler):
         info = get_info_by_infoid_all(Iid)
 
         self.render('infoDetail.html',id=uid,info=info,active='notification')
+
+class RemoveNotifHandler(BaseHandler):
+    """删除已经发布的信息"""
+
+    def get(self,iid):
+        gp, uid = is_loged(self)
+
+        if gp == 't':
+            try:
+                delete_notif(iid,uid)
+                self.redirect('/dash/notifications')
+            except Exception as e:
+                print e
+        else:
+            self.redirect('/')

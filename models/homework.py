@@ -66,3 +66,9 @@ def update_comment(hid, comment):
 
     sql = 'update Homework set comment="%s" where idHomework="%s";' % (text2Html(comment), clean(hid))
     return db.execute(sql)
+
+def delete_homework(hid,sid):
+    """删除已上传的作业"""
+
+    sql= "delete from Homework where sid='%s' and idHomework='%s'" % (clean(sid),clean(hid))
+    db.execute(sql)
