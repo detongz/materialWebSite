@@ -11,12 +11,14 @@ from handlers.stuDashboard import MyHomeworkHandler, MyMessagesHandler, ViewHome
     SetCourseHandler, SetCourseListHandler
 from handlers.submitAssignment import submitAssgnmentHandler, submitStep2, submitStep3, submitStep4, submitVedio
 from handlers.newuser import SignUpHandler, AdminHandler, AuthUserHandler
-
+from handlers.ForgetPass import ForgetPassHandler,VarifyCodeHandler
 urls = [
     (r'/', IndexHandler),
     (r'/login', LoginHandler),
     (r'/logout', LogoutHandler),
     (r'/signup', SignUpHandler),
+    (r'/forgetpass', ForgetPassHandler),
+    (r'/varifycode',VarifyCodeHandler),
 
     (r'/notification/info/(.*)',InfoDetailHandler),
     (r'/notification/resource/(.*)',ResourseDetailHandler),
