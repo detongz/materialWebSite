@@ -236,7 +236,7 @@ class RemoveNotifHandler(BaseHandler):
             try:
                 delete_notif(iid,uid) # 删除记录
                 from submitAssignment import delete_updated
-                delete_updated(iid) # 删除文件
+                delete_updated('notif',iid) # 删除文件
 
                 self.redirect('/dash/notifications')
 

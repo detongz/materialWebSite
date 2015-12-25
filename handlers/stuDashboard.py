@@ -103,9 +103,9 @@ class RemoveHomeworkHandler(BaseHandler):
                     if homework['type'] == 'pic':
                         # 作业是图片类型
                         from submitAssignment import delete_updated
-                        from models.security import clean
-                        delete_updated(clean(hid))
+                        delete_updated('homework',hid)
                         delete_homework(hid,uid)
+
                     else:
                         delete_homework(hid,uid)
 

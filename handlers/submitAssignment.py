@@ -6,6 +6,7 @@ from base.base import BaseHandler
 from dash import is_loged
 from models.course import get_student_course
 from models.homework import get_homework, submit_homework, submit_homework_vedio
+from models.security import clean
 
 """学生交作业"""
 
@@ -175,10 +176,11 @@ def extensionJudge(fname, uid, request):
     return None
 
 
-def delete_updated(hid):
+def delete_updated(path,hid):
     """删除同id的文件"""
 
-    cmd = 'find -name "%s*" | xargs rm' % hid
+    dirpath = os.path.dirname(__file__)[:-8] + 'static/' + path
+    cmd = 'find %s -name "%s*" | xargs rm' % (dirpath, clean(hid))
 
     #若没有相同id文件，则命令行会打印奇怪的东西。不是报错
     os.system(cmd)
