@@ -64,8 +64,9 @@ def get_homework(hid):
 def update_comment(hid, comment):
     """添加/修改作业的评语"""
 
-    sql = 'update Homework set comment="%s" where idHomework="%s";' % (text2Html(comment), clean(hid))
+    sql = "update Homework set comment='%s' where idHomework='%s';" % (comment, clean(hid))
     return db.execute(sql)
+
 
 def delete_homework(hid,sid):
     """删除已上传的作业"""

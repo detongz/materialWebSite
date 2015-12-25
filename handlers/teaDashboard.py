@@ -114,10 +114,16 @@ class CommentingHandler(BaseHandler):
 
     def get(self, hid):
         gp, uid = is_loged(self)
+
         if gp == 't':
+
+            self.clear_cookie('Iid')
+            self.set_secure_cookie('Iid',hid)
+
             h = get_homework(hid)
-            comment = html2Text(h['comment'])
+            comment = h['comment']
             self.render('teacher_cmt_homework.html', id=uid, active='dsh', active_slide='cmt', hid=hid, comment=comment)
+
         else:
             self.redirect('/404')
 
@@ -125,12 +131,17 @@ class CommentingHandler(BaseHandler):
         gp, uid = is_loged(self)
         if gp == 't':
             comment = self.get_argument('comment')
+
             try:
                 update_comment(hid, comment)
                 self.render('error.html', title='评价成功', content='您对这次作业已经评价过了！', icon='ion-checkmark-circled',
                             active='dsh', id=uid)
+
             except Exception as e:
                 print(e)
+
+            finally:
+                self.clear_cookie('Iid')
 
 
 class PublishEntrenceHandler(BaseHandler):

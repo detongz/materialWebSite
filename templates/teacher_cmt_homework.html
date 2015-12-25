@@ -9,17 +9,20 @@
   <h1>批改作业</h1>
 </div>
 
-<div id="mainContainer" class="container">
-    <form action="" method="post" class="container form-0" id="assignmentForm">
+<div class="row">
+    <form action="" method="post" class="form-0" id="assignmentForm">
         <a href="/dash/commenting/viewHomework/{{ hid }}" class="btn btn-default" target="_blank">查看作业</a>
         <h4>请您为此次作业进行评价</h4>
         <div class="form-group">
             <label></label>
-            <textarea rows="10" name="comment" type="text" class="form-control" placeholder="请为作业给出评价！" required autofocus/>
+            <textarea id="editor1" rows="10" name="comment" type="text" class="form-control" placeholder="请为作业给出评价！" required autofocus/>
                 {% if comment !='' %}{{ comment }}{% end %}
             </textarea>
+            <script>
+                CKEDITOR.replace( 'editor1' );
+            </script>
         </div>
-        <div class="form-group">
+        <div class="form-group right-btn">
             <input type="submit" class="btn btn-primary btn-form-0" value="确认评价">
         </div>
     </form>

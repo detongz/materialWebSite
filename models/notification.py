@@ -29,6 +29,7 @@ def get_all_notif():
             select I.idInfo,I.t‎itle,I.date,I.type,T.name,I.tid
             from Teacher as T,Info as I
             where T.idTeacher=I.tid
+            order by date desc
             '''
     return db.query(sql)
 

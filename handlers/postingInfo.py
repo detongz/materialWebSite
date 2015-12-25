@@ -15,7 +15,7 @@ sys.setdefaultencoding('utf-8')
 
 
 class UploadImageForInfoHandler(BaseHandler):
-    """消息通知上传图片文件"""
+    """消息通知上传图片/文件"""
 
     def post(self):
         gp, uid = is_loged(self)
@@ -47,7 +47,7 @@ class UploadImageForInfoHandler(BaseHandler):
                 <script type="text/javascript">
                     window.parent.CKEDITOR.tools.callFunction("%s","%s",'');
                 </script>
-            '''% (callback,'/static/notif/'+filename))
+                ''' % (callback,'/static/notif/'+filename))
 
 
 def infoIdState(request):

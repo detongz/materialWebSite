@@ -97,6 +97,6 @@ label{
 @media screen and (max-width: 719px){
 	#assignmentForm
 	{
-		padding-left: 0;
+		padding-left:10px;
 	}
 }
