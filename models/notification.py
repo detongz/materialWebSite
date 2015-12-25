@@ -70,7 +70,7 @@ def publish_notif(tid, idInfo, detail, title):
         return 't nt exist'
 
     # 需要加入判断内容长度的部分，防止内容转换后过长
-    detail = text2Html(detail)
+    # detail = text2Html(detail)
     title = clean(title)
 
     sql = "insert into Info (tid,idInfo,detail,t‎itle) values  ('%s','%s','%s','%s');" \
@@ -86,7 +86,7 @@ def publish_res(tid, idInfo, detail, title):
         return 't nt exist'
 
     # 需要加入判断内容长度的部分，防止内容转换后过长
-    detail = text2Html(detail)
+    # detail = text2Html(detail)
     title = clean(title)
 
     sql = '''insert into Info (tid,idInfo,detail,t‎itle,type) values  ('%s','%s','%s','%s','%s');''' \
@@ -105,7 +105,7 @@ def get_info(idInfo):
 def update_notif(idInfo, detail, title):
     """更新消息"""
 
-    detail = text2Html(detail)
+    # detail = text2Html(detail)
     sql = "update Info set detail='%s',t‎itle='%s' where idInfo='%s';" % (detail, title, idInfo)
     db.execute(sql)
 

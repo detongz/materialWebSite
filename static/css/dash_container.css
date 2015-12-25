@@ -84,8 +84,7 @@ label{
 	font-size: 0.85em;
 }
 
-/*******submitassignment*********/
-<<<<<<< HEAD
+
 .put-file
 {
 	position: relative;
@@ -130,4 +129,8 @@ form h4{
 
 textarea{
 	resize: none;
+}
+
+p span{
+	margin-left: 10px;
 }

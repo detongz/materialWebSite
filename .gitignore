@@ -6,6 +6,7 @@ front-end/other/*
 .fuse_hidden00*
 *.doc
 /static/homework/*
+/static/notif/*
 .metadata
 /RemoteSystemsTempFiles
 .~lock*

@@ -13,6 +13,7 @@ from models.homework import get_homework, submit_homework, submit_homework_vedio
 class submitAssgnmentHandler(BaseHandler):
     """ 学生提交作业 """
 
+
     def get(self, *args, **kwargs):
         gp, uid = is_loged(self)
         if gp == 's':
@@ -60,6 +61,7 @@ class submitAssgnmentHandler(BaseHandler):
 class submitStep2(BaseHandler):
     """提交正视图"""
 
+
     def post(self, *args, **kwargs):
         gp, uid = is_loged(self)
         if gp == 's':
@@ -83,6 +85,7 @@ class submitStep2(BaseHandler):
 
 class submitStep3(BaseHandler):
     """提交俯视图"""
+
 
     def post(self, *args, **kwargs):
         gp, uid = is_loged(self)
@@ -108,6 +111,7 @@ class submitStep3(BaseHandler):
 
 class submitStep4(BaseHandler):
     """提交侧视图"""
+
 
     def post(self, *args, **kwargs):
         gp, uid = is_loged(self)
@@ -174,7 +178,7 @@ def extensionJudge(fname, uid, request):
 def delete_updated(hid):
     """删除同id的文件"""
 
-    cmd = 'find -name "%s.*" | xargs rm' % hid
+    cmd = 'find -name "%s*" | xargs rm' % hid
 
     #若没有相同id文件，则命令行会打印奇怪的东西。不是报错
     os.system(cmd)
@@ -182,6 +186,7 @@ def delete_updated(hid):
 
 class submitVedio(BaseHandler):
     """提交视频作业"""
+
 
     def get(self, *args, **kwargs):
         gp, uid = is_loged(self)

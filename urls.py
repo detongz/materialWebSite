@@ -11,6 +11,7 @@ from handlers.stuDashboard import MyHomeworkHandler, MyMessagesHandler, ViewHome
     SetCourseHandler, SetCourseListHandler
 from handlers.submitAssignment import submitAssgnmentHandler, submitStep2, submitStep3, submitStep4, submitVedio
 from handlers.newuser import SignUpHandler, AdminHandler, AuthUserHandler
+from handlers.postingInfo import UploadImageForInfoHandler
 from handlers.ForgetPass import ForgetPassHandler,VarifyCodeHandler
 urls = [
     (r'/', IndexHandler),
@@ -41,6 +42,7 @@ urls = [
     (r'/dash/allStudents', MyStudentsHandler),
     (r'/dash/notifications', MyNotifHandler),
     (r'/dash/removeNotif/(.*)',RemoveNotifHandler),
+    (r'/dash/pubInfoFile',UploadImageForInfoHandler),
 
     # 学生接口
     (r'/dash/setCourse/(.*)', SetCourseHandler),

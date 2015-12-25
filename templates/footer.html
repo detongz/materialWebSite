@@ -4,3 +4,13 @@
       <br>All Rights Reserved
     </div>
 </div>
+<script type="text/javascript">
+    $(function(){
+        var h = $(window).height();
+       var footerHeight = $('#footer').height();
+       var footerTop = $('#footer').position().top;
+       if (footerTop < h) {
+        $('.content').css('height',  (h - footerHeight -150) + 'px');
+       }
+    });
+</script>

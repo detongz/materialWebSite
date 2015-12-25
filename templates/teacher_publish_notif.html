@@ -1,4 +1,3 @@
-
 {% autoescape None %}
 {% extends 'teacher_dash.html' %}
 
@@ -19,9 +18,12 @@
         </div>
         <div class="form-group">
             <label>课程通知详细内容<label>目前发布课程通知支持文字信息</label><label>通知内容请控制在3000字内</label></label>
-            <textarea rows="20" name="content" type="text" class="form-control" placeholder="请为课程通知填写详细内容" required/>
+            <textarea id="editor1" name="content" type="text" class="form-control" placeholder="请为课程通知填写详细内容" required/>
                 {% if content !='' and content is not None %}{{ content }}{% end %}
             </textarea>
+            <script>
+                CKEDITOR.replace( 'editor1' );
+            </script>
         </div>
         <input type="submit" class="btn btn-primary btn-lg" value="确认发布">
     </form>

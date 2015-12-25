@@ -17,6 +17,7 @@ class PublishResourceHandler(BaseHandler):
     def get(self, *args, **kwargs):
         gp, uid = is_loged(self)
         if gp == 't':
+            self.clear_cookie('Iid')
             self.render('teacher_publish_resource.html', id=uid, active='dsh', active_slide='ntfc', r_content=None,
                         r_title=None, act='pub')
         else:
@@ -32,13 +33,16 @@ class PublishResourceHandler(BaseHandler):
                 self.render('error.html', title=None, content='标题过长<br>请重新输入', icon='ion-alert-circled', active='ntfc',
                             id=uid)
             else:
-                idInfo = generateInfoid()
+                from postingInfo import infoIdState
+                idInfo = infoIdState(self)
 
                 try:
                     publish_res(uid, idInfo, content, title)
                     self.render('error.html', title='资源发布成功', content='成功发布了一条课程资源', icon='ion-checkmark-circled',
                                 active='ntfc', id=uid)
+                    self.clear_cookie('Iid')
                 except Exception as e:
+                    self.clear_cookie('Iid')
                     print e
 
 
@@ -48,6 +52,7 @@ class PublishNotificationHandler(BaseHandler):
     def get(self, *args, **kwargs):
         gp, uid = is_loged(self)
         if gp == 't':
+            self.clear_cookie('Iid')
             self.render('teacher_publish_notif.html', id=uid, active='dsh', active_slide='ntfc', n_title=None,
                         content=None, act='pub')
         else:
@@ -63,15 +68,20 @@ class PublishNotificationHandler(BaseHandler):
                 self.render('error.html', title=None, content='标题过长<br>请重新输入', icon='ion-alert-circled', active='ntfc',
                             id=uid)
             else:
-                idInfo = generateInfoid()
+
+                from postingInfo import infoIdState
+                idInfo = infoIdState(self)
 
                 try:
                     if not publish_notif(uid, idInfo, content, title):
                         self.render('error.html', title='通知发布成功', content='成功发布了一条课程通知', icon='ion-checkmark-circled',
                                     active='dsh', id=uid)
+                        self.clear_cookie('Iid')
                     else:
                         print 'teacher not exist'
+                        self.clear_cookie('Iid')
                 except Exception as e:
+                    self.clear_cookie('Iid')
                     print e
 
 
@@ -102,12 +112,17 @@ class EditNotificationHandler(BaseHandler):
         gp, uid = is_loged(self)
 
         if gp == 't':
+
+            self.clear_cookie('Iid')
+            self.set_secure_cookie('Iid',infoId)
+
             info = get_info(infoId)
-            content = html2Text(info['detail'])
+            content = info['detail']
             title = info['t‎itle']
 
             self.render('teacher_publish_notif.html', id=uid, active='dsh', active_slide='ntfc', n_title=title,
                         content=content, act='edit')
+
         else:
             self.redirect('/404')
 
@@ -132,6 +147,8 @@ class EditNotificationHandler(BaseHandler):
                             print 'teacher not exist'
                     except Exception as e:
                         print e
+
+            self.clear_cookie('Iid')
 
 
 class EditResourceHandler(BaseHandler):
@@ -141,12 +158,17 @@ class EditResourceHandler(BaseHandler):
         gp, uid = is_loged(self)
 
         if gp == 't':
+
+            self.clear_cookie('Iid')
+            self.set_secure_cookie('Iid',infoId)
+
             info = get_info(infoId)
-            content = html2Text(info['detail'])
+            content = info['detail']
             title = info['t‎itle']
 
             self.render('teacher_publish_resource.html', id=uid, active='dsh', active_slide='ntfc', r_title=title,
                         r_content=content, act='edit')
+
         else:
             self.redirect('/404')
 
@@ -171,6 +193,7 @@ class EditResourceHandler(BaseHandler):
                             print 'teacher not exist'
                     except Exception as e:
                         print e
+            self.clear_cookie('Iid')
 
 
 class NotificationIndexHandler(BaseHandler):
@@ -202,6 +225,7 @@ class InfoDetailHandler(BaseHandler):
 
         self.render('infoDetail.html',id=uid,info=info,active='notification')
 
+
 class RemoveNotifHandler(BaseHandler):
     """删除已经发布的信息"""
 
@@ -210,8 +234,12 @@ class RemoveNotifHandler(BaseHandler):
 
         if gp == 't':
             try:
-                delete_notif(iid,uid)
+                delete_notif(iid,uid) # 删除记录
+                from submitAssignment import delete_updated
+                delete_updated(iid) # 删除文件
+
                 self.redirect('/dash/notifications')
+
             except Exception as e:
                 print e
         else:

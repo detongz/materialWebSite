@@ -1,3 +1,4 @@
+{% autoescape None %}
 <!DOCTYPE html>
 <html lang="zh-CN">
   <head>
@@ -8,7 +9,9 @@
 	<meta name="description" content="">
 	<meta name="author" content="">
 	<link rel="icon" href="/static/images/favicon.ico">
+	<link rel="stylesheet" type="text/css" href="/static/css/ionicons.min.css">
 	<link rel="stylesheet" type="text/css" href="/static/css/navbar.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/index.css">
 	<link rel="stylesheet" type="text/css" href="/static/css/sidebar.css">
     <link rel="stylesheet" href="/static/css/dash_container.css">
 	<title>课程消息-材料成型工艺课程设计</title>
@@ -45,7 +48,7 @@
   <body>
 {% include 'navibar.html' %}
   <div id="mainContainer" class="container">
-      <div id="mainContainer" class="container">
+      <div id="mainContainer" class="container content">
           <div class="row">
             {% if not info %}
               <h5 id="message_info">无课程资源</h5>
@@ -61,6 +64,7 @@
                 <table class="table">
                   <thead>
                   <tr>
+                      <th></th>
                       <th>标题</th>
                       <th>作者</th>
                       <th>发布时间</th>
@@ -70,6 +74,7 @@
                   {% for i in info %}
                     {% if i['type']=='info' %}
                     <tr>
+                        <td><i class="ion-information"></i></td>
                         <td><a href="/notification/info/{{i['idInfo']}}">{{ i['t\xe2\x80\x8eitle'] }}</a></td>
                         <td>{{ i['name'] }}</td>
                         <td>{{ i['date'].strftime('%Y年%m月%d日') }}</td>
@@ -83,6 +88,7 @@
                 <table class="table">
                     <thead>
                     <tr>
+                        <th></th>
                         <th>标题</th>
                         <th>作者</th>
                         <th>发布时间</th>
@@ -90,8 +96,9 @@
                     </thead>
                     <tbody>
                     {% for i in info %}
-                      {% if i['type']=='resourse' %}
+                      {% if i['type']=='res' %}
                       <tr>
+                          <td><i class="ion-document"></i></td>
                           <td><a href="/notification/resource/{{i['idInfo']}}">{{ i['t\xe2\x80\x8eitle'] }}</a></td>
                           <td>{{ i['name'] }}</td>
                           <td>{{ i['date'].strftime('%Y年%m月%d日') }}</td>
@@ -106,5 +113,6 @@
           </div>
       </div>
   </div>
+  {% include 'footer.html' %}
   </body>
 </html>

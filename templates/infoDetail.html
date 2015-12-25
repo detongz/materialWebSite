@@ -10,6 +10,7 @@
 	<meta name="author" content="">
 	<link rel="icon" href="/static/images/favicon.ico">
 	<link rel="stylesheet" type="text/css" href="/static/css/navbar.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/index.css">
 	<link rel="stylesheet" type="text/css" href="/static/css/sidebar.css">
   <link rel="stylesheet" href="/static/css/dash_container.css">
 	<title>课程{% if info['type'] == 'info' %}通知{% else %}资源{% end %}-材料成型工艺课程设计</title>
@@ -45,7 +46,7 @@
 
   <body>
 {% include 'navibar.html' %}
-  <div id="mainContainer" class="container">
+  <div id="mainContainer" class="container content">
       <div id="mainContainer" class="container">
           <div class="row">
             <div class="row">
@@ -53,6 +54,7 @@
               <div class="info-right">
                 <p>发布人<span>{{ info['name'] }}</span></p>
                 <p>发布时间<span>{{ info['date'].strftime('%Y年%m月%d日') }}</span></p>
+                <p>消息类型<span>{% if info['type']=='info' %}课程通知{% else %}课程资源{% end %}</span></p>
               </div>
             </div>
             <hr>
@@ -64,5 +66,6 @@
           </div>
       </div>
   </div>
+  {% include 'footer.html' %}
   </body>
 </html>
