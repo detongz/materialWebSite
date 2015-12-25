@@ -2,6 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <script language="JavaScript">
+function reloadcode(){
+var verify=document.getElementById('safecode');
+verify.setAttribute('src','/varifycode?'+Math.random());
+//这里必须加入随机数不然地址相同我发重新加载
+}
+</script>
+
     <title>forget Pass</title>
 </head>
 <body>
@@ -10,9 +18,9 @@
   <p>email: <input type="text" name="email" /></p>
 
   <p>VerriftCide: <input type="text" name="code" /></p>
-    <img src="/varifycode">
+    <img src="/varifycode"  id="safecode" onclick="reloadcode()" title="点击更换验证码">
     <input type="hidden" name = "group" value="{{group}}" >
-  <input type="submit" value="Submit" />
+  <input type="submit" value="Submit"/>
 </form>
 {{msg}}
 </body>
