@@ -12,6 +12,7 @@ from handlers.stuDashboard import MyHomeworkHandler, MyMessagesHandler, ViewHome
 from handlers.submitAssignment import submitAssgnmentHandler, submitStep2, submitStep3, submitStep4, submitVedio
 from handlers.newuser import SignUpHandler, AdminHandler, AuthUserHandler
 from handlers.postingInfo import UploadImageForInfoHandler
+from handlers.courseDetail import CourseDetailHandler
 from handlers.ForgetPass import ForgetPassHandler,VarifyCodeHandler
 urls = [
     (r'/', IndexHandler),
@@ -20,6 +21,7 @@ urls = [
     (r'/signup', SignUpHandler),
     (r'/forgetpass', ForgetPassHandler),
     (r'/varifycode',VarifyCodeHandler),
+    (r'/courseDetail',CourseDetailHandler),
 
     (r'/notification/info/(.*)',InfoDetailHandler),
     (r'/notification/resource/(.*)',ResourseDetailHandler),

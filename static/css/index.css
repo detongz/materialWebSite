@@ -9,13 +9,13 @@
 	padding: 0px;
 }
 
-#pictureSliders
-{
-	background-color: #F5F5F5;
+#pictureSliders {
+	background-color: #ffffff;
 	padding-left: 10%;
 	padding-right: 10%;
 	margin-left: auto;
 	margin-right: auto;
+	margin-top: -30px;
 }
 
 .item img
@@ -50,9 +50,8 @@
 	font-weight: 700;
 	border-bottom: 1px solid #EEEEEE;
 	text-align: center;
-	padding-bottom: 20px;
-	margin-bottom: 20px;
-	margin-top: 20px;
+	padding-bottom: 40px;
+	padding-top: 20px;
 }
 
 .sub-part
@@ -63,12 +62,18 @@
 	vertical-align: top;
 	cursor: default;
 	margin-bottom: 50px;
-	padding: 30px;
+	padding: 50px;
 }
 
 .sub-part:hover
 {
 	background-color: #EE5C42;
+}
+
+@media screen and (max-width: 700px) {
+    .sub-part {
+		width: 100%;
+    }
 }
 
 .icon
