@@ -82,7 +82,7 @@
                   <td>{{ i['date'].strftime('%R:%S') }}</td>
                   <td>
                       <a href="/dash/editing/{% if i['type']=='info' %}notification/{{ i['idInfo'] }}{% else %}resource/{{ i['idInfo'] }}{% end %}" class="btn btn-default btn-xs">编辑</a>
-                      <a href="删除消息" class="btn btn-default btn-xs">删除</a>
+                      <a href="/dash/removeNotif/{{ i['idInfo']  }}" class="btn btn-default btn-xs">删除</a>
                   </td>
               </tr>
           {% end %}{#end if#}
