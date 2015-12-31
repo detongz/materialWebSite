@@ -6,28 +6,29 @@ from handlers.dash import DashBoardHandler
 from handlers.teaDashboard import CourseEditHandler, EditingCertainCourseHandler, DeleteCourseHandler, \
     CommentingHandler, CommentingIndexHandler, MyStudentsHandler, MyNotifHandler, PublishEntrenceHandler
 from handlers.information import PublishNotificationHandler, PublishResourceHandler, EditNotificationHandler, \
-    EditResourceHandler,NotificationIndexHandler,ResourseDetailHandler, InfoDetailHandler, RemoveNotifHandler
+    EditResourceHandler, NotificationIndexHandler, ResourseDetailHandler, InfoDetailHandler, RemoveNotifHandler
 from handlers.stuDashboard import MyHomeworkHandler, MyMessagesHandler, ViewHomeworkHandler, RemoveHomeworkHandler, \
     SetCourseHandler, SetCourseListHandler
 from handlers.submitAssignment import submitAssgnmentHandler, submitStep2, submitStep3, submitStep4, submitVedio
 from handlers.newuser import SignUpHandler, AdminHandler, AuthUserHandler
 from handlers.postingInfo import UploadImageForInfoHandler
 from handlers.courseDetail import CourseDetailHandler
-from handlers.ForgetPass import ForgetPassHandler,VarifyCodeHandler
+from handlers.ForgetPass import ForgetPasswordHandler
+
 urls = [
     (r'/', IndexHandler),
     (r'/login', LoginHandler),
     (r'/logout', LogoutHandler),
     (r'/signup', SignUpHandler),
-    (r'/forgetpass', ForgetPassHandler),
-    (r'/varifycode',VarifyCodeHandler),
-    (r'/courseDetail',CourseDetailHandler),
+    (r'/courseDetail', CourseDetailHandler),
 
-    (r'/notification/info/(.*)',InfoDetailHandler),
-    (r'/notification/resource/(.*)',ResourseDetailHandler),
-    (r'/notification/(.*)',InfoDetailHandler),
-    (r'/notification',NotificationIndexHandler),
+    #忘记密码
+    (r'/forgetpwd',ForgetPasswordHandler),
 
+    (r'/notification/info/(.*)', InfoDetailHandler),
+    (r'/notification/resource/(.*)', ResourseDetailHandler),
+    (r'/notification/(.*)', InfoDetailHandler),
+    (r'/notification', NotificationIndexHandler),
 
     # 教师接口
     (r'/dash/commenting/viewHomework/(.*)', ViewHomeworkHandler),
@@ -43,8 +44,8 @@ urls = [
     (r'/dash/publishing', PublishEntrenceHandler),
     (r'/dash/allStudents', MyStudentsHandler),
     (r'/dash/notifications', MyNotifHandler),
-    (r'/dash/removeNotif/(.*)',RemoveNotifHandler),
-    (r'/dash/pubInfoFile',UploadImageForInfoHandler),
+    (r'/dash/removeNotif/(.*)', RemoveNotifHandler),
+    (r'/dash/pubInfoFile', UploadImageForInfoHandler),
 
     # 学生接口
     (r'/dash/setCourse/(.*)', SetCourseHandler),

@@ -7,11 +7,16 @@
 
 #loginContent
 {
-	width: 300px;
-	height: 300px;
+	width: 350px;
+	height: 340px;
 	border: solid 1px #9D9D9D;
 	border-radius: 5px;
 	padding-top: 10px;
+}
+
+#loginContent #fgtpwd{
+	float: right;
+	color:#889;
 }
 
 .form-group.form-group-margin-15
@@ -27,4 +32,30 @@
 
 #signupContent{
 	width:500px;
+}
+
+/************forget pwd *************/
+
+#pwdContent
+{
+	width: 500px;
+	height: 400px;
+	padding-top: 10px;
+}
+#pwdContent .btn{
+	width: 30%;
+	margin-left: 35%;
+	min-width: 100px;
+}
+
+#vcode{
+	width: calc(95% - 100px);
+	margin-right: 0;
+	float: right;
+	margin-top: 20px;
+}
+
+#verify-img{
+	margin: 0;
+	float: none;
 }

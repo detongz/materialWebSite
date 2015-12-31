@@ -14,7 +14,6 @@ from models.security import clean
 class submitAssgnmentHandler(BaseHandler):
     """ 学生提交作业 """
 
-
     def get(self, *args, **kwargs):
         gp, uid = is_loged(self)
         if gp == 's':
@@ -62,7 +61,6 @@ class submitAssgnmentHandler(BaseHandler):
 class submitStep2(BaseHandler):
     """提交正视图"""
 
-
     def post(self, *args, **kwargs):
         gp, uid = is_loged(self)
         if gp == 's':
@@ -86,7 +84,6 @@ class submitStep2(BaseHandler):
 
 class submitStep3(BaseHandler):
     """提交俯视图"""
-
 
     def post(self, *args, **kwargs):
         gp, uid = is_loged(self)
@@ -112,7 +109,6 @@ class submitStep3(BaseHandler):
 
 class submitStep4(BaseHandler):
     """提交侧视图"""
-
 
     def post(self, *args, **kwargs):
         gp, uid = is_loged(self)
@@ -176,19 +172,18 @@ def extensionJudge(fname, uid, request):
     return None
 
 
-def delete_updated(path,hid):
+def delete_updated(path, hid):
     """删除同id的文件"""
 
     dirpath = os.path.dirname(__file__)[:-8] + 'static/' + path
     cmd = 'find %s -name "%s*" | xargs rm' % (dirpath, clean(hid))
 
-    #若没有相同id文件，则命令行会打印奇怪的东西。不是报错
+    # 若没有相同id文件，则命令行会打印奇怪的东西。不是报错
     os.system(cmd)
 
 
 class submitVedio(BaseHandler):
     """提交视频作业"""
-
 
     def get(self, *args, **kwargs):
         gp, uid = is_loged(self)

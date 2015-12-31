@@ -7,6 +7,7 @@ front-end/other/*
 *.doc
 /static/homework/*
 /static/notif/*
+/static/tmp/*
 .metadata
 /RemoteSystemsTempFiles
 .~lock*
