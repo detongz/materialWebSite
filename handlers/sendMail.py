@@ -6,7 +6,7 @@
 
 import smtplib
 from email.mime.text import MIMEText
-from sendMailConf import mail_user,mail_pass
+from sendConf import mail_user,mail_pass
 
 mail_host = 'smtp.dlut.edu.cn'  # 转发邮箱服务器地址
 mail_postfix = "dlut.edu.cn"  # 发件箱的后缀
