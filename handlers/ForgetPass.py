@@ -1,10 +1,13 @@
 # coding: utf-8
+from tornado import gen
 from base.base import BaseHandler
-import random
 from sendMail import send_forget_mail
 
 from models.userOperation import getTeacher, getStudent
-from verification import get_verify_pic,remove_pics
+from verification import get_verify_pic, remove_pics, remove_pic
+
+import random
+import os
 
 
 # class ForgetPassHandler(BaseHandler):
@@ -59,6 +62,7 @@ class ForgetPasswordHandler(BaseHandler):
         """生成验证码和验证码图片"""
         remove_pics()
         self.code, self.pic_name = get_verify_pic()
+        self.set_secure_cookie('v', self.code)
 
     def get(self):
         if not self.get_secure_cookie('id'):
@@ -66,6 +70,46 @@ class ForgetPasswordHandler(BaseHandler):
         else:
             self.redirect('/dash')
 
+    @gen.engine
     def post(self):
-        pass
+        if not self.get_secure_cookie('id'):
+            uid = self.get_argument('pwdid')
+            ug = self.get_argument('ug')
+            email = self.get_argument('email')
+            vcode = self.get_argument('vcode')
+            if vcode.lower() == self.get_secure_cookie('v').lower():
+                user = None
+                if ug == 'student':
+                    user = getStudent(uid)
+                else:
+                    user = getTeacher(uid)
 
+                if user is not None:
+                    if email == user['email']:
+
+                        u = {'uid': uid, 'pwd': user['pwd']}
+                        print send_forget_mail(email, u)
+
+                        self.render('error.html', title='邮件已发送',
+                                    content='''
+                                    <label>您的密码已发送到邮箱</label>
+                                    <br><br>
+                                    请<a href="http://mail.%s">进入邮箱</a>查收
+                            ''' % email.split('@')[-1], icon='ion-happy', active=None, id=None)
+
+                    else:
+                        self.render('error.html', title='邮箱输入错误', content='请输入申请帐时使用的邮箱', icon='ion-close-circled',
+                                    active=None, id=None)
+                else:
+                    self.render('error.html', title='用户不存在', content='用户不存在', icon='ion-close-circled', active=None,
+                                id=None)
+            else:
+                self.render('error.html', title='验证码错误',
+                            content='''
+                                    <label>验证码错误</label>
+                                    <br><br>
+                                    请<a href="/forgetpwd">返回</a>重新输入
+                            ''', icon='ion-sad', active=None, id=None)
+
+        remove_pic(self.pic_name)
+        self.clear_cookie('v')

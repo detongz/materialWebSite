@@ -71,7 +71,12 @@ def get_verify_pic():
 
 
 def remove_pics():
-    cmd = 'rm ' + PIC_PATH +'*'
+    cmd = 'rm ' + PIC_PATH + '*'
+    os.system(cmd)
+
+
+def remove_pic(one):
+    cmd = 'rm ' + PIC_PATH + one
     os.system(cmd)
 
 

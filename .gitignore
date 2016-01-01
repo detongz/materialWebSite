@@ -11,3 +11,4 @@ front-end/other/*
 .metadata
 /RemoteSystemsTempFiles
 .~lock*
+/handlers/sendMail.py

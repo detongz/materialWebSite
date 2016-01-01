@@ -77,17 +77,17 @@
 					<form method="post" action="">
 						<div class="form-group form-group-margin-15">
 							<label for="pwdid">教工号</label>
-							<input type="text" class="form-control" id="pwdid" name="pwdid" placeholder="教工号">
+							<input type="text" class="form-control" id="pwdid" name="pwdid" placeholder="教工号" required>
 						</div>
 						<div class="form-group form-group-margin-15">
 							<label for="loginPassword">邮箱<label>请填写申请帐号时使用的邮箱</label></label>
-							<input type="email" class="form-control" name="email" placeholder="邮箱">
+							<input type="email" class="form-control" name="email" placeholder="邮箱" required>
 						</div>
 						<input id="ugp" name="ug" value="t" hidden>
 						<div id="submitButton" class="form-group">
 							<label for="vcode">请输入验证码</label>
                             <div>
-                                <input type="verify-code" id="vcode" class="form-control" name="vcode" placeholder="验证码">
+                                <input type="verify-code" id="vcode" class="form-control" name="vcode" placeholder="验证码" required>
                                 <img src="/static/tmp/{{ pic_name }}" id="verify-img"/>
                             </div>
                         </div>
