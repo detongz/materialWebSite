@@ -15,11 +15,16 @@
             <a class="btn btn-primary picsButton" href="javascript:void(0);">二维装配图
                 <input type="file" name="top" id="top" class="pics" accept='image/jpeg' style="opacity:0; height:50px; margin-top:-20px;" autofocus required>
             </a>
-            <label id="topLab"></label>
+            <label class="topLab"></label>
         </div>
         <div class="form-group">
             <input type="submit" class="btn btn-default btn-form-2" value="下一步">
         </div>
     </form>
+  <script>
+    $(function(){
+        $('.topLab').html($('#top').val());
+    })
+    </script>
 </div>
 {% end %}{# end block #}
