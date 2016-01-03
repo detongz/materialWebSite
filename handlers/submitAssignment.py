@@ -44,7 +44,7 @@ class submitAssgnmentHandler(BaseHandler):
                 idHomework = uid + str(random.randint(99, 1000))
 
             # 删除文件夹下所有相同id的文件
-            delete_updated(idHomework)
+            delete_updated('homework', idHomework)
 
             self.clear_cookie('content')
             self.clear_cookie('submitName')
