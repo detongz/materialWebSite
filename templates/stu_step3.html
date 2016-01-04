@@ -12,9 +12,7 @@
     <form action="/submitAssgnment-2" method="post" class="container form-2" enctype="multipart/form-data" id="assignmentForm">
         <label>请上传 二维装配图</label>
         <div class="form-group">
-            <a class="btn btn-primary picsButton" href="javascript:void(0);">二维装配图
-                <input type="file" name="top" id="top" class="pics" accept='image/jpeg' style="opacity:0; height:50px; margin-top:-20px;" autofocus required>
-            </a>
+            <input type="file" name="top" id="top" class="pics" accept='image/jpeg' autofocus required>
             <label class="topLab"></label>
         </div>
         <div class="form-group">
@@ -23,7 +21,7 @@
     </form>
   <script>
     $(function(){
-        $('.topLab').html($('#top').val());
+        $('.topLab').html($('.pics').val());
     })
     </script>
 </div>
